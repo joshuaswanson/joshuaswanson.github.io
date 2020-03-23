@@ -4,5 +4,7 @@ body {
 }
 
 #facebook {
-    background: "/icons8-facebook.svg";
+    display: block;
+    height: 48px;
+    background-image: url();
 }
