@@ -1,10 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 20px;
     font-family: 'Open Sans', sans-serif;
 }
 
+.social {
+    background-image: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/social.png);
+    background-size: 40px 120px;
+    background-repeat: no-repeat;
+}
+
+.button {
+    margin-right: 5px;
+    display: inline-block;
+    background-color: #eee;
+    border-bottom: 3px solid #ddd;
+    border-radius: 10px;
+    padding: 0 10px 0 50px;
+    line-height: 45px;
+    text-decoration: none;
+    color: #888;
+}
+
 #facebook {
-    display: block;
-    height: 48px;
-    background-image: url();
+    background-position: 5px 2.5px;
+}
+
+#instagram {
+    background-position: 5px -37.5px;
+}
+
+#linkedin {
+    background-position: 5px -77.5px;
 }
