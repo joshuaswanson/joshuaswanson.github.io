@@ -2,3 +2,7 @@ body {
     margin: 20px;
     font-family: 'Open Sans', sans-serif;
 }
+
+#facebook {
+    background: "/icons8-facebook.svg";
+}
