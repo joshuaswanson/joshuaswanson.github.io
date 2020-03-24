@@ -31,8 +31,8 @@ p {
     position: relative;
     overflow: hidden;
     height: 100vh;
-    text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, .6);
+    text-align: center;
     color: #fff;
 }
 
@@ -45,15 +45,22 @@ p {
 
 #header-content-container {
     display: inline-block;
-    margin: auto;
     vertical-align: middle;
 }
 
+#profile-container {
+    display: inline-block;
+    width: 125px;
+    height: 125px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+}
+
 #profile {
+    margin-top: 7.5px;
     margin-bottom: 20px;
     width: 100px;
     height: 100px;
-    border: 5px solid #fff;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, .6);
 }
@@ -119,6 +126,9 @@ p {
 .container {
     display: flex;
     align-items: stretch;
+}
+
+.container:not(:last-of-type) {
     border-bottom: 1px solid rgba(144, 144, 144, 0.25);
 }
 
@@ -177,6 +187,10 @@ p {
 .container > div + div {
     flex: 2;
     vertical-align: top;
+}
+
+.button-container {
+    margin: 10px 0;
 }
 
 .social {
