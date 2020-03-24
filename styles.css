@@ -7,6 +7,15 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+    margin-top: 0;
+    letter-spacing: 0.05em;
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #555;
+}
+
 #header {
     position: relative;
     overflow: hidden;
@@ -30,19 +39,18 @@ body {
 }
 
 #profile {
+    margin-bottom: 20px;
     width: 150px;
     height: 150px;
     border: 5px solid #fff;
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,.6);
 }
 
-#header h1 {
-    letter-spacing: 0.05em;
-    font-size: 3.5rem;
-    font-weight: 300;
-}
+#header h1 { color: #fff }
 
 #header p {
+    margin: 0;
     font-size: 20px;
 }
 
@@ -85,6 +93,10 @@ body {
     content: "Rocher de la Vierge, Biarritz, France";
     font-size: 16px;
     z-index: 2;
+}
+
+.container {
+    padding: 50px;
 }
 
 .social {
