@@ -36,7 +36,7 @@ p {
 }
 
 #header:before {
-    content: ' ';
+    content: "";
     display: inline-block;
     vertical-align: middle;
     height: 100%;
@@ -110,8 +110,8 @@ p {
 
 #header video {
     display: none;
-}
-*/
+}*/
+
 .container {
     padding: 50px;
     border-bottom: 1px solid rgba(144, 144, 144, 0.25);
@@ -127,6 +127,10 @@ p {
 
 .heading p {
     color: #bbb;
+}
+
+#study-abroad {
+    background: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/study-abroad.png);
 }
 
 .social {
