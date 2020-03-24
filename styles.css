@@ -18,7 +18,9 @@ h1 {
     font-size: 3rem;
 }
 
-h2 { font-size: 2rem }
+h2 {
+    font-size: 2rem
+}
 
 p {
     margin: 0;
@@ -30,7 +32,7 @@ p {
     overflow: hidden;
     height: 100vh;
     text-align: center;
-    text-shadow: 0 0 10px rgba(0,0,0,.6);
+    text-shadow: 0 0 10px rgba(0, 0, 0, .6);
     color: #fff;
 }
 
@@ -53,10 +55,12 @@ p {
     height: 100px;
     border: 5px solid #fff;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .6);
 }
 
-#header h1 { color: #fff }
+#header h1 {
+    color: #fff
+}
 
 #header p {
     margin: 0;
@@ -97,7 +101,7 @@ p {
     right: 10px;
     padding: 5px 10px;
     border-radius: 5px;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     content: "Rocher de la Vierge, Biarritz, France";
     font-size: 16px;
     z-index: 2;
@@ -113,15 +117,13 @@ p {
 }*/
 
 .container {
-    padding: 50px;
+    display: flex;
+    align-items: stretch;
     border-bottom: 1px solid rgba(144, 144, 144, 0.25);
 }
 
-.container-with-img {
-    display: flex;
-    align-items: stretch;
-    padding: 0;
-    border-bottom: 1px solid rgba(144, 144, 144, 0.25);
+.content-container {
+    padding: 50px;
 }
 
 .heading {
@@ -136,32 +138,35 @@ p {
     color: #bbb;
 }
 
-#eiffel-tower-container {
+.image-container {
+    display: inline-block;
     width: 500px;
     position: relative;
-    background: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/study-abroad.jpeg) bottom center/cover;
+    overflow: hidden;
 }
 
-img#eiffel-tower {
-    display: none;
+.image-container img {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    max-height: 100%;
 }
 
-#eiffel-tower-container:after {
+#eiffel-tower:after {
     position: absolute;
     top: 10px;
     left: 10px;
     padding: 5px 10px;
     border-radius: 5px;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     content: "Eiffel Tower, Paris, France";
     font-size: 16px;
     color: #fff;
     z-index: 2;
 }
 
-.container-with-img > div + div {
+.container > div + div {
     flex: 2;
-    padding: 50px;
     vertical-align: top;
 }
 
@@ -185,6 +190,14 @@ img#eiffel-tower {
     color: #555;
 }
 
-#facebook { background-position: 5px 2.5px }
-#instagram { background-position: 5px -27.5px }
-#linkedin { background-position: 5px -57.5px }
+#facebook {
+    background-position: 5px 2.5px
+}
+
+#instagram {
+    background-position: 5px -27.5px
+}
+
+#linkedin {
+    background-position: 5px -57.5px
+}
