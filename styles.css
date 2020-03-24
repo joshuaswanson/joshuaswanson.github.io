@@ -4,16 +4,20 @@
 
 body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
 }
 
 h1 {
     margin-top: 0;
     letter-spacing: 0.05em;
     font-size: 3rem;
-    font-weight: 300;
-    text-transform: uppercase;
+    font-weight: inherit;
     color: #555;
+}
+
+p {
+    font-size: 18px;
 }
 
 #header {
@@ -51,7 +55,6 @@ h1 {
 
 #header p {
     margin: 0;
-    font-size: 20px;
 }
 
 #header #video-container {
@@ -97,6 +100,7 @@ h1 {
 
 .container {
     padding: 50px;
+    border-bottom: 1px solid rgba(144, 144, 144, 0.25);
 }
 
 .social {
