@@ -3,12 +3,20 @@
 }
 
 body {
-    margin: 20px;
+    margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
 #header {
-    width: calc(100vw - 20px);
+    height: 700px;
+}
+
+#header video {
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .social {
@@ -25,6 +33,9 @@ body {
     border-radius: 8px;
     padding: 0 10px 0 40px;
     line-height: 35px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
     text-decoration: none;
     color: #888;
 }
