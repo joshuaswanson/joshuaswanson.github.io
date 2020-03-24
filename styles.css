@@ -5,12 +5,11 @@
 body {
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
     color: #888;
 }
 
 h1, h2 {
-    font-weight: inherit;
+    font-weight: 400;
     color: #555;
 }
 
@@ -103,6 +102,7 @@ p {
     font-size: 16px;
     z-index: 2;
 }
+
 /*
 #header {
     background: repeating-linear-gradient(45deg, rgba(180,180,180,0.04), rgba(255,255,255,0.04) 200px), linear-gradient(45deg,#9dc66b 3%,#4fa49a 30%,#4361c2);
@@ -114,6 +114,13 @@ p {
 
 .container {
     padding: 50px;
+    border-bottom: 1px solid rgba(144, 144, 144, 0.25);
+}
+
+.container-with-img {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
     border-bottom: 1px solid rgba(144, 144, 144, 0.25);
 }
 
@@ -129,10 +136,33 @@ p {
     color: #bbb;
 }
 
-#study-abroad {
-    padding-left: 400px;
-    background: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/study-abroad.png) no-repeat left center;
+#eiffel-tower-container {
+    width: 500px;
+    position: relative;
+    background: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/study-abroad.jpeg) bottom center/cover;
+}
+
+img#eiffel-tower {
+    display: none;
+}
+
+#eiffel-tower-container:after {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.5);
+    content: "Eiffel Tower, Paris, France";
+    font-size: 16px;
     color: #fff;
+    z-index: 2;
+}
+
+.container-with-img > div + div {
+    flex: 2;
+    padding: 50px;
+    vertical-align: top;
 }
 
 .social {
