@@ -130,7 +130,9 @@ p {
 }
 
 #study-abroad {
-    background: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/study-abroad.png);
+    padding-left: 400px;
+    background: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/study-abroad.png) no-repeat left center;
+    color: #fff;
 }
 
 .social {
