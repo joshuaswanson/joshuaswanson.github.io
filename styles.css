@@ -79,7 +79,6 @@ body {
     margin-right: 5px;
     display: inline-block;
     background-color: #eee;
-    border-bottom: 3px solid #ddd;
     border-radius: 8px;
     padding: 0 10px 0 40px;
     line-height: 35px;
@@ -88,12 +87,6 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     color: #888;
-}
-
-.button:active {
-    position: relative;
-    top: 3px;
-    border-bottom: 0;
 }
 
 #facebook { background-position: 5px 2.5px }
