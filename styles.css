@@ -38,10 +38,8 @@ body {
 
 #header h1 {
     letter-spacing: 0.05em;
-    font-style: italic;
     font-size: 3.5rem;
     font-weight: 300;
-    text-transform: uppercase;
 }
 
 #header p {
@@ -57,7 +55,7 @@ body {
     z-index: -1;
 }
 
-#header #video-container:before {
+#video-container:before {
     content: '';
     background-color: #1e2731;
     opacity: 0.5;
@@ -77,15 +75,16 @@ body {
     width: 100%;
 }
 
-#header:after {
+#video-container:after {
     position: absolute;
     bottom: 10px;
     right: 10px;
     padding: 5px 10px;
     border-radius: 5px;
     background: rgba(0,0,0,.5);
-    content: "Biarritz, France";
-    font-size: 12px;
+    content: "Rocher de la Vierge, Biarritz, France";
+    font-size: 16px;
+    z-index: 2;
 }
 
 .social {
