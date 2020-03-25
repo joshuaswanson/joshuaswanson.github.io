@@ -206,6 +206,9 @@ p {
 
 #resume {
     background-image: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/resume-icon.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px
 }
 
 .social {
