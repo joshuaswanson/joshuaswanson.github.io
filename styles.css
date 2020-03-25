@@ -204,8 +204,12 @@ p {
     background-color: rgba(144, 144, 144, 0.075);
 }
 
+#resume {
+    background-image: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/resume-icon.png);
+}
+
 .social {
-    background-image: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/social.png);
+    background-image: url(https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/social-icons.png);
     background-size: 30px 150px;
     background-repeat: no-repeat;
 }
