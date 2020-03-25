@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
     font-weight: 300;
     color: #888;
 }
@@ -25,7 +26,6 @@ h2 {
 
 p {
     margin: 0;
-    font-size: 18px
 }
 
 #header {
