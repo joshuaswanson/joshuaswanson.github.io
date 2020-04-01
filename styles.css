@@ -22,9 +22,9 @@ h1 {
     font-size: 1.5em;
 }
 
-h2, h3, h4 { font-size: 0.9em }
+h2, h3, h4 { font-size: 1em }
 
-h5 { font-size: 0.9em }
+h5 { font-size: 0.8em }
 
 p { margin: 0 0 2em 0 }
 
@@ -153,8 +153,8 @@ h1:after {
 }
 
 .inner-image-container {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     position: relative;
     overflow: hidden;
     border-radius: 5px;
