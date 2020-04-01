@@ -4,29 +4,29 @@
 
 body {
     margin: 0;
-    font-family: 'Open Sans Pro', sans-serif;
-    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
     font-weight: 300;
     color: #888;
 }
 
-h1, h2, h3 {
-    font-weight: 300;
-    color: #555;
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    line-height: 1.5em;
+    letter-spacing: 0.05em;
+    color: #4d5968;
 }
 
 h1 {
     margin-top: 0;
-    font-size: 3rem;
+    font-size: 1.5em;
 }
 
-h2 {
-    font-size: 1.5rem
-}
+h2, h3, h4 { font-size: 0.9em }
 
-p {
-    margin: 0;
-}
+h5 { font-size: 0.9em }
+
+p { margin: 0 0 2em 0 }
 
 #header {
     position: relative;
@@ -57,8 +57,9 @@ p {
     box-shadow: 0 0 10px rgba(0, 0, 0, .6);
 }
 
-#header h1 {
-    color: #fff
+#header h1,
+#header h2 {
+    color: inherit
 }
 
 #header p {
@@ -129,7 +130,7 @@ p {
 }
 
 .heading {
-    margin-bottom: 20px;
+    margin-bottom: 2em;
 }
 
 .heading h2 {
@@ -137,7 +138,17 @@ p {
 }
 
 .heading p {
+    margin: 0;
     color: #bbb;
+}
+
+h1:after {
+    margin-top: 1em;
+    content: '';
+    display: block;
+    height: 2px;
+    width: 4em;
+    background-color: rgba(144, 144, 144, 0.25);
 }
 
 .image-container {
