@@ -35,7 +35,7 @@ p { margin: 0 0 2em 0 }
 #header {
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: 400px;
     text-align: center;
     color: #fff;
 }
@@ -75,51 +75,56 @@ p { margin: 0 0 2em 0 }
     font-size: 1.25em;
 }
 
-#header #video-container {
-    position: absolute;
-    left: 0;
+#video-container {
+    position: fixed;
     top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    right: 0;
+    height: 500px;
     z-index: -1;
 }
 
 #video-container:before {
-    content: '';
     background-color: #1e2731;
     opacity: 0.5;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    bottom: 0;
     z-index: 1;
+    content: "";
 }
 
 #header video {
     object-fit: cover;
     object-position: center;
-    position: relative;
-    height: 100%;
-    width: 100%;
 }
 
-#video-container:after {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    padding: 5px 10px;
+#header-cover {
+    position: fixed;
+    top: 500px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: -1;
+}
+
+#content {
+    margin: 0 120px 50px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    background: rgba(0, 0, 0, .5);
-    content: "Rocher de la Vierge, Biarritz, France";
-    font-size: 16px;
-    z-index: 2;
+    background: #fff;
+    z-index: 1;
 }
 
 .section {
-    margin: 50px 120px;
     padding: 50px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+.section:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .content-container {
