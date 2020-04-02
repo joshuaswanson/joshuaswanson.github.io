@@ -17,10 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #4d5968;
 }
 
-h1 {
-    font-size: 2.75rem;
-    text-transform: uppercase;
-}
+h1 { font-size: 2.75rem }
 
 h2 { font-size: 2.15rem }
 
