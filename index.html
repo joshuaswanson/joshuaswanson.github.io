@@ -7,14 +7,14 @@
     <script src="index.js"></script>
 </head>
 <body>
-<div id="video-container">
-    <video src="https://github.com/joshuaswanson/joshuaswanson.github.io/blob/master/header.mp4?raw=true"
-           autoplay loop></video>
+<div id="header-background">
 </div>
 <div id="header">
     <div id="header-content-container">
-        <img src="https://github.com/joshuaswanson/joshuaswanson.github.io/blob/master/profile.jpeg?raw=true"
-             alt="" id="profile">
+        <div id="profile-container">
+            <img src="https://github.com/joshuaswanson/joshuaswanson.github.io/blob/master/profile.jpeg?raw=true"
+                 alt="" id="profile">
+        </div>
         <h1>Hi. I'm Joshua Swanson.</h1>
         <p>Welcome to my website.</p>
     </div>
@@ -33,9 +33,8 @@
 
         <div class="entry">
             <h3>Resume</h3>
-            <p>
-                <a href="https://raw.githubusercontent.com/joshuaswanson/joshuaswanson.github.io/master/joshua-swanson-resume.pdf"
-                   target="_blank" class="button" id="resume">Resume (pdf)</a></p>
+            <p id="resume-container">
+                <a class="button" id="resume" onclick="showError()">Resume (pdf)</a></p>
         </div>
 
     </div>
@@ -78,8 +77,8 @@
                     </div>
                     <p>
                         Next year, I'll be taking advanced bachelors courses and masters courses in
-                        Computer
-                        Science at EPFL. Expected coursework includes Applied Data Analysis, Pattern
+                        computer
+                        science at EPFL. Expected coursework includes Applied Data Analysis, Pattern
                         Classification & Machine Learning, and Deep Learning.
                     </p>
                 </div>

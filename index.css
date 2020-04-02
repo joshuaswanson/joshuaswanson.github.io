@@ -16,17 +16,29 @@ h1, h2, h3, h4, h5, h6 {
     color: #4d5968;
 }
 
-h1 { font-size: 2.75rem }
+h1 {
+    font-size: 2.75rem
+}
 
-h2 { font-size: 2.15rem }
+h2 {
+    font-size: 2.15rem
+}
 
-h3 { font-size: 1.5em }
+h3 {
+    font-size: 1.5em
+}
 
-h4 { font-size: 1em }
+h4 {
+    font-size: 1em
+}
 
-h5 { font-size: 0.8em }
+h5 {
+    font-size: 0.8em
+}
 
-p { margin: 0 0 2em 0 }
+p {
+    margin: 0 0 2em 0
+}
 
 #header {
     position: relative;
@@ -46,15 +58,22 @@ p { margin: 0 0 2em 0 }
 #header-content-container {
     display: inline-block;
     vertical-align: middle;
-    text-shadow: 0 0 10px rgba(0, 0, 0, .6);
+}
+
+#profile-container {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 115px;
+    height: 115px;
+    border: 3px solid #fff;
+    border-radius: 50%;
 }
 
 #profile {
-    margin-bottom: 20px;
+    margin-top: 4.5px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .6);
 }
 
 #header h1,
@@ -71,30 +90,14 @@ p { margin: 0 0 2em 0 }
     font-size: 1.25em;
 }
 
-#video-container {
+#header-background {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 500px;
+    background: repeating-linear-gradient(45deg,rgba(255,255,255,0),rgba(255,255,255,0.04) 200px,rgba(255,255,255,0) 200px,rgba(255,255,255,0.04) 400px), linear-gradient(45deg,#9dc66b 3%,#4fa49a 30%,#4361c2);
     z-index: -1;
-}
-
-#video-container:before {
-    background-color: #1e2731;
-    opacity: 0.5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    bottom: 0;
-    z-index: 1;
-    content: "";
-}
-
-#header video {
-    object-fit: cover;
-    object-position: center;
 }
 
 #header-cover {
@@ -161,6 +164,7 @@ p { margin: 0 0 2em 0 }
     position: relative;
     overflow: hidden;
     border-radius: 5px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 .image-container img {
