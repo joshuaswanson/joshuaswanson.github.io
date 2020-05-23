@@ -2,24 +2,18 @@
 <html>
 <head>
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,700&display=swap"
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap"
           rel="stylesheet">
     <script src="index.js"></script>
 </head>
 <body>
-<div id="header-background">
-</div>
 <div id="header">
     <div id="header-content-container">
-        <div id="profile-container">
-            <img src="https://github.com/joshuaswanson/joshuaswanson.github.io/blob/master/profile.jpeg?raw=true"
-                 alt="" id="profile">
-        </div>
+        <img src="https://github.com/joshuaswanson/joshuaswanson.github.io/blob/master/profile.jpeg?raw=true"
+             alt="" id="profile">
         <h1>Hi. I'm Joshua Swanson.</h1>
         <p>Welcome to my website.</p>
     </div>
-</div>
-<div id="header-cover">
 </div>
 <div id="content">
     <div class="section">
@@ -33,56 +27,58 @@
 
         <div class="entry">
             <h3>Resume</h3>
-            <p id="resume-container">
-                <a class="button" id="resume" onclick="showError()">Resume (pdf)</a></p>
+
+            <a class="button" id="resume" onclick="showError()">Resume (pdf)</a>
         </div>
 
     </div>
     <div class="section">
 
         <h2>Education</h2>
-        <div class="heading">
-            <h3>University of Washington (Seattle, Washington)</h3>
-            <p>B.Sc. in Computer Science, B.A. in Mathematics</p>
+        <div class="content-container">
+            <div class="image-container">
+                <div class="inner-image-container">
+                    <img src="http://cdn.doem.washington.edu/misc/admissions/2017/Montlake%20W.jpg"
+                         alt="">
+                </div>
+            </div>
+            <div class="entry">
+                <div class="heading">
+                    <h3>University of Washington</h3>
+                    <p>B.Sc. in Computer Science, B.A. in Mathematics</p>
+                    <p>Seattle, Washington, USA, 2017 - 2022</p>
+                </div>
+                <p>Relevant courses: Foundations of Computing I, II, Software Design and
+                    Implementation,
+                    Data Structures and Parallelism, The Hardware/Software Interface, Matrix Algebra
+                    with
+                    Applications, Linear Analysis, Advanced Multivariable Calculus, Real
+                    Analysis</p>
+            </div>
         </div>
-        <h3>Relevant Coursework</h3>
-        <ul>
-            <li>Software Design and Implementation</li>
-            <li>Data Structures and Parallelism</li>
-            <li>The Hardware/Software Interface</li>
-            <li>Matrix Algebra with Applications</li>
-            <li>Advanced Multivariable Calculus</li>
-            <li>Introductory Real Analysis</li>
-        </ul>
-
+        <div class="content-container">
+            <div class="image-container">
+                <div class="inner-image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/EPFL_campus_2017.jpg"
+                         alt="">
+                </div>
+            </div>
+            <div class="entry">
+                <div class="heading">
+                    <h3>&Eacute;cole polytechnique f&eacute;d&eacute;rale de Lausanne</h3>
+                    <p>Study Abroad, CSE Departmental Exchange</p>
+                    <p>Lausanne, Switzerland, 2021 - 2022</p>
+                </div>
+                <p>Expected courses: Applied Data Analysis, Natural Language Processing, Pattern
+                    Classification & Machine Learning, Convex Optimization, Deep Learning</p>
+            </div>
+        </div>
     </div>
     <div class="section">
         <div class="entry">
-            <h2>Study Abroad</h2>
+            <h2>Experiences Abroad</h2>
             <p>In my nine quarters at UW, I've taken nine French courses and one German class, which
                 have allowed me to learn from various institutions across Europe.</p>
-            <div class="content-container">
-                <div id="epfl" class="image-container">
-                    <div class="inner-image-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/EPFL_campus_2017.jpg"
-                             alt="">
-                    </div>
-                </div>
-                <div class="entry">
-                    <div class="heading">
-                        <h3>&Eacute;cole polytechnique f&eacute;d&eacute;rale de Lausanne (Lausanne,
-                            Switzerland)</h3>
-                        <p>Program: CSE Departmental Exchange</p>
-                        <p>Time Frame: September 2020 &ndash; July 2021 (Expected)</p>
-                    </div>
-                    <p>
-                        Next year, I'll be taking advanced bachelors courses and masters courses in
-                        computer
-                        science at EPFL. Expected coursework includes Applied Data Analysis, Pattern
-                        Classification & Machine Learning, and Deep Learning.
-                    </p>
-                </div>
-            </div>
         </div>
         <div class="content-container">
             <div id="max-planck" class="image-container">
@@ -93,9 +89,9 @@
             </div>
             <div class="entry">
                 <div class="heading">
-                    <h3>Max Planck Institute for Software Systems (Saarbr&uumlcken, Germany)</h3>
+                    <h3>Max-Planck-Institut f&uumlr Softwaresysteme</h3>
                     <p>Program: The Cornell, Maryland, Max Planck Pre-doctoral Research School</p>
-                    <p>Time Frame: August 2020 (Expected)</p>
+                    <p>Saarbr&uumlcken, Germany, 2020</p>
                 </div>
                 <p>I'll be learning about cutting-edge research in computer science, including
                     databases
@@ -115,9 +111,9 @@
             </div>
             <div class="entry">
                 <div class="heading">
-                    <h3>Cit&eacute; internationale universitaire de Paris (Paris, France)</h3>
+                    <h3>Cit&eacute; internationale universitaire de Paris</h3>
                     <p>Program: Summer in Paris</p>
-                    <p>Time Frame: July &ndash; August 2018</p>
+                    <p>Paris, France, 2018</p>
                 </div>
                 <p>I studied the cultural history and development of Paris from its settlement, to
                     the
@@ -133,9 +129,9 @@
     </div>
     <div class="section">
         <div class="heading">
-            <h3>Contact / Links</h3>
-            <p>Wanna chat? Find me here!</p>
+            <h2>Get in Touch</h2>
         </div>
+        <p>Feel free to contact me about work, or to just say hello!</p>
         <p>
             <a href="https://facebook.com/josh.swanson.7503" target="_blank" id="facebook"
                class="social button">Facebook</a>
