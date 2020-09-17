@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    font-family: 'Avenir Next','Source Sans Pro', sans-serif;
+    font-family: -apple-system, 'Avenir Next','Source Sans Pro', sans-serif;
     font-size: 16px;
     background: #eee;
     color: #888;
