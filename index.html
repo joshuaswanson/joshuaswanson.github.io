@@ -43,25 +43,6 @@
             "about": "Ich bin ein Student an der University of Washington mit Doppelmajor in Informatik und Mathematik. Ich strebe eine Karriere in der künstlichen Intelligenz an, insbesondere in den Bereichen maschinelles Lernen oder Verarbeitung natürlicher Sprache."
         }
     };
-
-    if (window.location.hash) {
-        if (window.location.hash === "#en") {
-            document.getElementById("header-title").textContent = language.en.headerTitle;
-            document.getElementById("about-me-content").textContent = language.en.about;
-        } else if (window.location.hash === "#fr") {
-            document.getElementById("header-title").textContent = language.fr.headerTitle;
-            document.getElementById("about-me-content").textContent = language.fr.about;
-        } else if (window.location.hash === "#de") {
-            document.getElementById("header-title").textContent = language.de.headerTitle;
-            document.getElementById("about-me-content").textContent = language.de.about;
-        }
-    }
-
-    for (let i = 0; i <= dataReload.length; i++) {
-        dataReload[i].onclick = function () {
-            location.reload(true);
-        };
-    }
 </script>
 <div id="header">
     <h1 class="header-title">Hi. I'm Joshua Swanson.</h1>
