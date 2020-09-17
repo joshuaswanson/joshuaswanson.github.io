@@ -7,6 +7,7 @@ body {
     font-family: -apple-system, 'Avenir Next','Source Sans Pro', sans-serif;
     font-size: 19px;
     font-weight: 600;
+    letter-spacing: .012em;
     background: #f5f5f7;
 }
 
@@ -38,7 +39,7 @@ h5 {
 
 p {
     margin: 0 0 2em 0;
-    letter-spacing: .012em;
+    line-height: 1.4211;
 }
 
 #header {
