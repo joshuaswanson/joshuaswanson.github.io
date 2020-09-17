@@ -18,10 +18,10 @@
         el.addEventListener('click', () => {
             document.getElementById('lang-selector').querySelector('.active').classList.remove('active');
             el.classList.add('active');
-            const attr = el.getAttribute('language');
-            document.querySelector('.title').textContent = data[attr].headerTitle;
-            document.querySelector('.header-subtitle').textContent = data[attr].headerSubtitle;
-            document.querySelector('.about-me-content').textContent = data[attr].about;
+            const lang = el.getAttribute('language');
+            document.querySelector('.header-title').textContent = data[lang].headerTitle;
+            document.querySelector('.header-subtitle').textContent = data[lang].headerSubtitle;
+            document.querySelector('.about-me-content').textContent = data[lang].about;
         });
     });
     var data = {
@@ -51,7 +51,7 @@
 <div id="content">
     <div class="section">
         <h2>About Me</h2>
-        <p id="about-me-content">I'm an undergraduate student at the University of Washington double
+        <p class="about-me-content">I'm an undergraduate student at the University of Washington double
             majoring in computer science
             and mathematics. I aspire for a career in artificial intelligence, specifically in the
             fields of machine learning or natural language processing.</p>
