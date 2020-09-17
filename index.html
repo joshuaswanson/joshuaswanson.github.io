@@ -14,8 +14,8 @@
     <a href="#de" data-reload>DE</a>
 </div>
 <script>
-    var dataReload = document.querySelectorAll("[dataReload]");
-    var language = {
+    const dataReload = document.querySelectorAll("[dataReload]");
+    const language = {
         en: {
             headerTitle: "Hi. I'm Joshua Swanson.",
             header2: "This is my website.",
@@ -39,10 +39,10 @@
         if(window.location.hash === "#en") {
             document.getElementById("header-title").textContent = language.en.headerTitle;
             document.getElementById("about-me-content").textContent = language.en.about;
-        } else if (window.locationhash === "#fr") {
+        } else if (window.location.hash === "#fr") {
             document.getElementById("header-title").textContent = language.fr.headerTitle;
             document.getElementById("about-me-content").textContent = language.fr.about;
-        } else if (window.locationhash === "#de") {
+        } else if (window.location.hash === "#de") {
             document.getElementById("header-title").textContent = language.de.headerTitle;
             document.getElementById("about-me-content").textContent = language.de.about;
         }
