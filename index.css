@@ -44,25 +44,13 @@ p {
 }
 
 #header {
-    position: relative;
-    overflow: hidden;
-    height: 350px;
-}
-
-#header:before {
-    content: "";
     display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-#header-content {
-    display: inline-block;
+    padding: 100px;
     vertical-align: middle;
     font-size: 64px;
 }
 
-#header-content h1 {
+#header h1 {
     color: #0e90db;
 }
 
