@@ -3,7 +3,7 @@
 <head>
     <title>Joshua Swanson</title>
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap"
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap"
           rel="stylesheet">
     <script src="index.js"></script>
 </head>
@@ -36,7 +36,7 @@
     };
 
     if (window.location.hash) {
-        if(window.location.hash === "#en") {
+        if (window.location.hash === "#en") {
             document.getElementById("header-title").textContent = language.en.headerTitle;
             document.getElementById("about-me-content").textContent = language.en.about;
         } else if (window.location.hash === "#fr") {
@@ -48,8 +48,8 @@
         }
     }
 
-    for(i = 0; i <= dataReload.length; i++) {
-        dataReload[i].onclick = function() {
+    for (i = 0; i <= dataReload.length; i++) {
+        dataReload[i].onclick = function () {
             location.reload(true);
         };
     }
@@ -62,7 +62,8 @@
     <div class="section">
 
         <h2>About Me</h2>
-        <p id="about-me-content">I'm an undergraduate student at the University of Washington double majoring in computer science
+        <p id="about-me-content">I'm an undergraduate student at the University of Washington double
+            majoring in computer science
             and mathematics. I aspire for a career in artificial intelligence, specifically in the
             fields of machine learning or natural language processing.</p>
         <div class="entry">
