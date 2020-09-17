@@ -8,15 +8,61 @@
     <script src="index.js"></script>
 </head>
 <body>
+<div id="lang-selector">
+    <a href="#en" data-reload>EN</a>
+    <a href="#fr" data-reload>FR</a>
+    <a href="#de" data-reload>DE</a>
+</div>
+<script>
+    var dataReload = document.querySelectorAll("[dataReload]");
+    var language = {
+        en: {
+            headerTitle: "Hi. I'm Joshua Swanson.",
+            header2: "This is my website.",
+            about: "I'm an undergraduate student at the University of Washington double majoring in computer science" +
+                "and mathematics. I aspire for a career in artificial intelligence, specifically in the" +
+                "fields of machine learning or natural language processing."
+        },
+        fr: {
+            headerTitle: "Hallo. Je suis Joshua Swanson.",
+            header2: "Ceci est mon site Web.",
+            about: "Je suis étudiante à l’université de Washington. Je poursuis un double diplôme en informatique et en mathématiques. Je souhaite une carrière en intelligence artificielle, en particulier dans les domaines de l’apprentissage automatique ou du traitement automatique des langages."
+        },
+        de: {
+            headerTitle: "Hallo. Ich bin Joshua Swanson.",
+            header2: "Dies ist meine Website.",
+            about: "Ich bin ein Student an der University of Washington mit Doppelmajor in Informatik und Mathematik. Ich strebe eine Karriere in der künstlichen Intelligenz an, insbesondere in den Bereichen maschinelles Lernen oder Verarbeitung natürlicher Sprache."
+        }
+    };
+
+    if (window.location.hash) {
+        if(window.location.hash === "#en") {
+            document.getElementById("header-title").textContent = language.en.headerTitle;
+            document.getElementById("about-me-content").textContent = language.en.about;
+        } else if (window.locationhash === "#fr") {
+            document.getElementById("header-title").textContent = language.fr.headerTitle;
+            document.getElementById("about-me-content").textContent = language.fr.about;
+        } else if (window.locationhash === "#de") {
+            document.getElementById("header-title").textContent = language.de.headerTitle;
+            document.getElementById("about-me-content").textContent = language.de.about;
+        }
+    }
+
+    for(i = 0; i <= dataReload.length; i++) {
+        dataReload[i].onclick = function() {
+            location.reload(true);
+        };
+    }
+</script>
 <div id="header">
-    <h1>Hi. I'm Joshua Swanson.</h1>
+    <h1 id="header-title">Hi. I'm Joshua Swanson.</h1>
     <p>This is my website.</p>
 </div>
 <div id="content">
     <div class="section">
 
         <h2>About Me</h2>
-        <p>I'm an undergraduate student at the University of Washington double majoring in computer science
+        <p id="about-me-content">I'm an undergraduate student at the University of Washington double majoring in computer science
             and mathematics. I aspire for a career in artificial intelligence, specifically in the
             fields of machine learning or natural language processing.</p>
         <div class="entry">
