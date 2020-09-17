@@ -60,15 +60,6 @@ p {
     vertical-align: middle;
 }
 
-#profile {
-    display: inline-block;
-    margin-bottom: 20px;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-}
-
 #header h1,
 #header h2 {
     color: #5b5b5b;
@@ -76,7 +67,7 @@ p {
 
 #header p {
     margin: 0;
-    font-size: 1.25em;
+    font-size: 80px;
 }
 
 #content {
