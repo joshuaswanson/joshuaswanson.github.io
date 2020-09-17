@@ -58,16 +58,12 @@ p {
 #header-content-container {
     display: inline-block;
     vertical-align: middle;
+    font-size: 80px;
 }
 
 #header h1,
 #header h2 {
     color: #5b5b5b;
-}
-
-#header p {
-    margin: 0;
-    font-size: 80px;
 }
 
 #content {
@@ -113,34 +109,12 @@ h2:after {
     background-color: #767676;
 }
 
-.image-container {
-    padding-right: 50px;
-}
-
-.inner-image-container {
-    width: 130px;
-    height: 130px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-}
-
-.image-container img {
-    object-fit: cover;
-    object-position: center;
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
 .button {
     vertical-align: top;
     overflow: hidden;
     position: relative;
     margin-right: 10px;
     display: inline-block;
-    border: 1px solid rgba(0,0,0,0.1);
     border-radius: 10px;
     padding: 0 50px;
     background: #efefef;
