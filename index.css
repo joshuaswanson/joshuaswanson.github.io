@@ -52,6 +52,10 @@ p {
     color: #000
 }
 
+#lang-selector a:active {
+    color: #000
+}
+
 #lang-selector a.active {
     color: #0e90db;
     border-bottom: 5px solid #0e90db;
