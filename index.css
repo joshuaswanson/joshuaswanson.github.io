@@ -149,7 +149,8 @@ h2:after {
     position: relative;
     margin-right: 10px;
     display: inline-block;
-    border-bottom: 3px solid rgba(0,0,0,.2);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
     padding: 0 50px;
     background: #efefef;
     line-height: 50px;
@@ -195,11 +196,6 @@ h2:after {
     100% {
         left: 125%
     }
-}
-
-.button:active {
-    border-top: 3px solid #fff;
-    border-bottom: 0;
 }
 
 #resume {
