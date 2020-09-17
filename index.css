@@ -43,6 +43,10 @@ p {
     line-height: 1.4211;
 }
 
+#lang-selector {
+    text-align: right;
+}
+
 #header {
     display: inline-block;
     padding: 100px;
