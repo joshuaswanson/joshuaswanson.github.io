@@ -91,7 +91,7 @@ p {
 }
 
 .section:not(:last-of-type) {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 1px solid #f5f5f7;
 }
 
 .content-container {
