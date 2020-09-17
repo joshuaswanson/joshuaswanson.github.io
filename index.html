@@ -14,9 +14,9 @@
     <a href="#" language='de'>DE</a>
 </div>
 <script>
-    document.getElementById('#lang-selector').querySelectorAll('a').forEach(el => {
+    document.getElementById('lang-selector').querySelectorAll('a').forEach(el => {
         el.addEventListener('click', () => {
-            document.getElementById('#lang-selector').querySelector('.active').classList.remove('active');
+            document.getElementById('lang-selector').querySelector('.active').classList.remove('active');
             el.classList.add('active');
             const attr = el.getAttribute('language');
             document.querySelector('.title').textContent = data[attr].headerTitle;
