@@ -49,6 +49,7 @@ p {
 
 #lang-selector a {
     text-decoration: none;
+    color: #000
 }
 
 #lang-selector a.active {
