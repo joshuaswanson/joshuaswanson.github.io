@@ -62,7 +62,7 @@ p {
 }
 
 .section {
-    padding: 50px;
+    padding: 50px 200px 50px 50px;
 }
 
 .section:not(:last-of-type) {
