@@ -48,13 +48,12 @@ p {
 }
 
 #lang-selector a {
-    color: #eee;
     text-decoration: none;
 }
 
 #lang-selector a.active {
-    color: #000;
-    border-bottom: 5px solid;
+    color: #0e90db;
+    border-bottom: 5px solid #0e90db;
 }
 
 #header {
