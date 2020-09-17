@@ -47,7 +47,6 @@ p {
     position: relative;
     overflow: hidden;
     height: 350px;
-    color: #0e90db;
 }
 
 #header:before {
@@ -57,10 +56,14 @@ p {
     height: 100%;
 }
 
-#header-content-container {
+#header-content {
     display: inline-block;
     vertical-align: middle;
     font-size: 64px;
+}
+
+#header-content h1 {
+    color: #0e90db;
 }
 
 #content {
