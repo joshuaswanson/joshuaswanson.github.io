@@ -52,7 +52,7 @@ p {
     text-decoration: none;
 }
 
-#lang-selector a.selected {
+#lang-selector a.active {
     color: #000;
     border-bottom: 5px solid;
 }
