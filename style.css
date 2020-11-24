@@ -2,7 +2,70 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-weight: normal
+}
+
 body {
     margin: 20px;
-    font-family: -apple-system, sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+.background {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #E5E5F7;
+    opacity: 0.4;
+    background-position: center;
+    background-image: radial-gradient(#444CF7 2px, #E5E5F7 2px);
+    background-size: 50px 50px;
+}
+
+.content {
+    width: 550px;
+    margin: 20px auto;
+}
+
+.card {
+    display: block;
+    margin:  0 auto 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    border-radius: 20px;
+    padding: 20px;
+    background: #fff;
+}
+
+.card > *:first-child {
+    margin-top: 0;
+}
+
+.card > *:last-child {
+    margin-bottom: 0;
+}
+
+.button {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    border-radius: 10px;
+    text-decoration: none;
+    background: lavender;
+    color: #fff;
+}
+
+#facebook {
+    background: #4267b2;
+}
+
+#instagram {
+    background: #E1306C;
+}
+
+#linkedin {
+    background: #0073b1
 }
