@@ -35,11 +35,18 @@ body {
 }
 
 .card {
+    position: relative;
+    top: 0;
     flex-basis: 100%;
     vertical-align: top;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
     border-radius: 20px;
-    transition: .1s
+    transition: .2s
+}
+
+.card:hover {
+    top: -3px;
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
 }
 
 .img-card {
