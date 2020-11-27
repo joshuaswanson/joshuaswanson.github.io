@@ -2,8 +2,6 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     margin: 20px;
     font-family: "IBM Plex Sans", sans-serif;
@@ -18,7 +16,7 @@ body {
     height: 100vh;
     background-color: #E5E5F7;
     opacity: 0.4;
-    background-position: center 25px;
+    background-position: center 0;
     background-image: radial-gradient(#444CF7 2px, #E5E5F7 2px);
     background-size: 50px 50px;
 }
@@ -29,7 +27,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     width: 550px;
-    margin: 20px auto;
+    margin: 50px auto;
 }
 
 .content > * {
@@ -79,16 +77,26 @@ body {
 }
 
 .button {
-    display: block;
+    display: inline-block;
+    vertical-align: top;
     margin-bottom: 10px;
-    padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
-    border-radius: 10px;
-    line-height: 30px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     text-align: center;
     text-decoration: none;
+    font-size: 30px;
     background: lavender;
     color: #fff;
+}
+
+.button:before {
+    line-height: 50px;
+}
+
+.button:nth-of-type(odd) {
+    margin-right: 10px;
 }
 
 #facebook {
