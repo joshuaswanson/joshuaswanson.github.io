@@ -20,7 +20,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     margin: 50px auto 0;
-    width: min(550px, calc(100vw - 140px));
+    width: min(550px, calc(100vw - 40px));
 }
 
 .content > * {
