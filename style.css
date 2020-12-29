@@ -68,6 +68,12 @@ body {
     margin-bottom: 0;
 }
 
+.button-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .button {
     display: inline-block;
     vertical-align: top;
@@ -85,10 +91,6 @@ body {
 
 .button:before {
     line-height: 50px;
-}
-
-.button:nth-of-type(odd) {
-    margin-right: 10px;
 }
 
 #facebook {
