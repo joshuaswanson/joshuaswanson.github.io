@@ -38,7 +38,6 @@ body {
 
 .img-card {
     overflow: hidden;
-    height: calc(530px / 3);
 }
 
 .text-card {
