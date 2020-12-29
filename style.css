@@ -34,6 +34,7 @@ body {
     vertical-align: top;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
     border-radius: 20px;
+    background: #fff
 }
 
 .img-card {
@@ -71,12 +72,13 @@ body {
 .button-card {
     display: flex;
     flex-wrap: wrap;
-    align-content: space-between;
-    justify-content: space-between;
+    align-content: center;
+    justify-content: center
 }
 
 .button {
     display: inline-block;
+    margin: 5px;
     vertical-align: top;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
     border-radius: 50%;
