@@ -2,42 +2,62 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: #FF696A
+}
+
 h1, h2 {
     font-weight: 600
 }
 
 body {
     margin: 20px;
-    font-family: -apple-system, sans-serif;
+    font-family: "IBM Plex Sans", -apple-system, sans-serif;
     background: #f7f7f7;
     line-height: 1.5;
-    color: #363636
+    color: #515e71
 }
 
 .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
     margin: 50px auto 0;
     width: min(550px, calc(100vw - 40px));
 }
 
-.content > * {
-    margin-bottom: 20px;
+.title-block > * {
+    margin: 0
+}
+
+.name {
+    display: inline-block;
+    font-size: 48px;
+}
+
+.orange {
+    color: #FF696A
+}
+
+.row {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 50px;
 }
 
 .card {
     position: relative;
     top: 0;
-    flex-basis: 100%;
     vertical-align: top;
+    width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
     border-radius: 20px;
     background: #fff
 }
 
 .img-card {
+    background: #dedede;
+    border-radius: 50%;
     overflow: hidden;
 }
 
@@ -55,10 +75,7 @@ body {
 .square {
     width: 150px;
     max-width: 150px;
-}
-
-.fill-remainder {
-    flex-basis: calc(100% - 170px);
+    height: 150px;
 }
 
 .text-card > *:first-child {
@@ -69,41 +86,28 @@ body {
     margin-bottom: 0;
 }
 
-.button-card {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    padding: 15px;
+span {
+    margin: 0 5px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    padding: 5px 15px;
+    background: #fff
 }
 
 .button {
     display: inline-block;
-    margin: 5px;
+    margin: 0 20px 0 0;
     vertical-align: top;
-    box-shadow: inset -3px -3px 10px rgba(0, 0, 0, .2), 0 2px 5px rgba(0, 0, 0, .2);
-    border-radius: 50%;
     width: 50px;
     height: 50px;
+    border-radius: 50%;
     text-align: center;
     text-decoration: none;
-    font-size: 26px;
-    background: lavender;
-    color: #fff;
+    font-size: 28px;
+    background: #e3e4e8;
+    color: #737e93;
 }
 
 .button:before {
     line-height: 50px;
-}
-
-#facebook {
-    background: #4267b2;
-}
-
-#instagram {
-    background: #E1306C;
-}
-
-#linkedin {
-    background: #0073b1
 }
