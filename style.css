@@ -1,7 +1,7 @@
 :root {
-    --main: #ff696a;
+    --highlight-color: #ff696a;
+    --text-color: #515e71
 }
-
 
 * {
     box-sizing: border-box;
@@ -9,11 +9,14 @@
 
 a {
     text-decoration: none;
-    color: var(--main)
+}
+
+a {
+    color: var(--highlight-color)
 }
 
 a:hover {
-    box-shadow: inset 0 -100px var(--main);
+    box-shadow: inset 0 -100px var(--highlight-color);
     color: #fff
 }
 
@@ -26,7 +29,7 @@ body {
     font-family: "IBM Plex Sans", -apple-system, sans-serif;
     background: #f7f7f7;
     line-height: 1.5;
-    color: #515e71
+    color: var(--text-color)
 }
 
 .content {
@@ -67,7 +70,7 @@ body {
 }
 
 .last-name {
-    color: var(--main)
+    color: var(--highlight-color)
 }
 
 .row {
@@ -107,7 +110,7 @@ body {
 
 span {
     display: inline-block;
-    margin: 5px 10px;
+    margin: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
     border-radius: 4px;
     padding: 5px 15px;
