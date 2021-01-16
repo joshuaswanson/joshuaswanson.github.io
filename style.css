@@ -58,14 +58,9 @@ body {
     overflow: hidden;
 }
 
-.first-name, .last-name {
-    display: inline-block;
+.name {
     vertical-align: top;
     font-size: 48px;
-}
-
-.first-name {
-    margin-right: 10px;
 }
 
 .last-name {
@@ -101,7 +96,7 @@ body {
     margin-bottom: 0;
 }
 
-span {
+table span {
     display: inline-block;
     margin: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
