@@ -1,6 +1,6 @@
 :root {
-    --highlight-color: #ff696a;
-    --text-color: #515e71
+    --highlight-color: #333;
+    --text-color: #222
 }
 
 * {
@@ -8,7 +8,7 @@
 }
 
 a {
-    text-decoration: none;
+
 }
 
 a {
@@ -16,13 +16,13 @@ a {
 }
 
 h1, h2 {
-    font-weight: 600
+    font-weight: 400
 }
 
 body {
     margin: 20px;
     font-family: "IBM Plex Sans", -apple-system, sans-serif;
-    background: #f7f7f7;
+    background: #fff;
     line-height: 1.5;
     color: var(--text-color)
 }
@@ -72,14 +72,13 @@ body {
 }
 
 .card {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-    border-radius: 20px;
-    background: #fff
+    border: 2px solid #000;
+    border-left: 0;
+    border-right: 0
 }
 
 .text-card {
-    padding: 20px;
-    background: #fff;
+    padding: 30px 0;
 }
 
 .img-card > img {
@@ -116,7 +115,7 @@ table span {
     text-decoration: none;
     font-size: 28px;
     background: #e3e4e8;
-    color: #737e93;
+    color: var(--text-color)
 }
 
 .button:before {
