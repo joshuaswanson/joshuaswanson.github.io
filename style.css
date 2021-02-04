@@ -21,7 +21,7 @@ h1, h2 {
 
 body {
     margin: 20px;
-    font-family: "IBM Plex Sans", -apple-system, sans-serif;
+    font-family: 'Sanchez', -apple-system, sans-serif;
     background: #fff;
     line-height: 1.5;
     color: var(--text-color)
