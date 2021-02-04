@@ -1,6 +1,6 @@
 :root {
     --highlight-color: #333;
-    --text-color: #222
+    --text-color: #7D8B94
 }
 
 * {
@@ -12,17 +12,18 @@ a {
 }
 
 a {
-    color: var(--highlight-color);
+    color: #66B8DD;
+    text-decoration: none;
 }
 
-h1, h2 {
-    font-weight: 400
+a:hover {
+    text-decoration: underline;
 }
 
 body {
     margin: 20px;
-    font-family: 'Sanchez', -apple-system, sans-serif;
-    background: #fff;
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    background: #e5eaee;
     line-height: 1.5;
     color: var(--text-color)
 }
@@ -63,22 +64,14 @@ body {
     font-size: 48px;
 }
 
-.last-name {
-    color: var(--highlight-color)
-}
-
 .row {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .card {
-    border: 2px solid #000;
-    border-left: 0;
-    border-right: 0
-}
-
-.text-card {
-    padding: 30px 0;
+    width: 550px;
+    padding: 20px 30px;
+    background: #fff
 }
 
 .img-card > img {
@@ -95,29 +88,28 @@ body {
     margin-bottom: 0;
 }
 
-table span {
-    display: inline-block;
-    margin: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-    border-radius: 4px;
-    padding: 5px 15px;
-    background: #fff
-}
-
 .button {
     display: inline-block;
-    margin: 0 20px 0 0;
+    margin: 0 30px 0 0;
     vertical-align: top;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
     text-align: center;
     text-decoration: none;
     font-size: 28px;
-    background: #e3e4e8;
     color: var(--text-color)
 }
 
 .button:before {
     line-height: 50px;
+}
+
+.fa-facebook-f {
+    color: #5B8DB0
+}
+
+.fa-instagram {
+    color: #cd486b
+}
+
+.fa-linkedin-in {
+    color: #2867B2
 }
