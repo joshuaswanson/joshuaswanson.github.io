@@ -1,6 +1,6 @@
 :root {
     --highlight-color: #333;
-    --text-color: #7D8B94
+    --text-color: #262d43
 }
 
 * {
@@ -23,7 +23,7 @@ a:hover {
 body {
     margin: 20px;
     font-family: 'IBM Plex Sans', -apple-system, sans-serif;
-    background: #e5eaee;
+    background: #f6f8fd;
     line-height: 1.5;
     color: var(--text-color)
 }
@@ -69,7 +69,9 @@ body {
 }
 
 .card {
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
     width: 550px;
+    border-radius: 4px;
     padding: 20px 30px;
     background: #fff
 }
