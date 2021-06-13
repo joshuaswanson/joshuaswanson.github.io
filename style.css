@@ -1,14 +1,10 @@
 :root {
-    --highlight-color: #333;
+    --highlight-color: #0c0c0c;
     --text-color: #767a86
 }
 
 * {
     box-sizing: border-box;
-}
-
-a {
-
 }
 
 a {
@@ -22,7 +18,7 @@ a:hover {
 
 body {
     margin: 20px;
-    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
     background: #f6f8fd;
     line-height: 1.5;
     color: var(--text-color)
@@ -34,7 +30,7 @@ body {
 }
 
 .row {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .centered {
@@ -44,7 +40,7 @@ body {
 .card {
     box-shadow: 0 5px 10px rgba(0,0,0,.05);
     width: 550px;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 20px 30px;
     background: #fff
 }
@@ -55,6 +51,10 @@ body {
 
 .text-card > *:last-child {
     margin-bottom: 0;
+}
+
+h1+p {
+    font-size: larger
 }
 
 .button {
