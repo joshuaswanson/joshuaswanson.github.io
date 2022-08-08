@@ -46,7 +46,7 @@ body {
     border: 1px solid rgba(255,255,255,.05);
     border-radius: 20px;
     padding: 30px;
-    background-color: rgba(150, 150, 150, 0.2);
+    background-color: rgba(190, 190, 190, 0.2);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     text-align: center;
