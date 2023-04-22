@@ -1,7 +1,7 @@
 :root {
     --highlight-color: #0c0c0c;
-    --text-color: rgba(18, 33, 36, 0.6);
-    --anchor-color: #45a3cf
+    --text-color: #5e6875;
+    --anchor-color: #5f9dd2
 }
 
 * {
@@ -9,30 +9,76 @@
 }
 
 a {
-    color: var(--anchor-color);
     text-decoration: none;
+    color: var(--anchor-color);
 }
 
-a:hover,
-a.active {
-    border-bottom: 2px solid var(--anchor-color);
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #647487
+}
+
+h2 {
+    font-size: 1.75em;
+    line-height: 1.5em;
+}
+
+h3 {
+    font-size: 0.9em
+}
+
+h2 + p {
+    font-size: 1.25em;
+    margin-top: -0.7em;
+    line-height: 1.5em;
 }
 
 body {
-    margin: 50px;
-    font-family: 'Zilla Slab', serif;
-    font-size: larger;
+    margin: 0;
+    font-family: 'Zilla Slab', sans-serif;
+    font-size: 14pt;
+    font-weight: 300;
     color: var(--text-color);
+    background: rgb(239, 240, 241);
 }
 
-.card>*:first-child {
-    margin-top: 0;
+#wrapper {
+    margin: 0 auto;
+    padding: 4em 0;
+    width: min(40em, 100vw);
 }
 
-.card>*:last-child {
-    margin-bottom: 0;
+#main {
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0,0,0,.05);
+    background: #fff;
 }
 
 .de, .fr {
     display: none;
+}
+
+.language-switcher {
+    display: inline-flex;
+    margin-top: 20px;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    background:rgb(239, 240, 241)
+}
+
+.language-switcher button {
+    border: 0;
+    border-radius: 5px;
+    background: #fff;
+    font: inherit;
+    color: inherit
+}
+
+.language-switcher button.active {
+    background: rgb(204, 215, 220);
+    color: #fff
 }
