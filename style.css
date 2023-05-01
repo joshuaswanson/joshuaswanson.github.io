@@ -1,6 +1,6 @@
 :root {
     --highlight-color: #0c0c0c;
-    --text-color: #5e6875;
+    --text-color: #444;
     --anchor-color: #5f9dd2
 }
 
@@ -39,7 +39,8 @@ h2 + p {
 body {
     margin: 0;
     font-family: 'Zilla Slab', sans-serif;
-    font-size: 14pt;
+    line-height: 1.6;
+    font-size: 18px;
     font-weight: 300;
     color: var(--text-color);
     background: rgb(239, 240, 241);
