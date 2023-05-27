@@ -1,6 +1,5 @@
 :root {
-    --highlight-color: #0c0c0c;
-    --text-color: #666;
+    --text-color: #8b8b8b;
     --anchor-color: #5f9dd2
 }
 
@@ -18,7 +17,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #647487
+    color: #7a7a7a
 }
 
 h2 {
@@ -38,9 +37,9 @@ h2 + p {
 
 body {
     margin: 0;
-    font-family: 'Zilla Slab', sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     color: var(--text-color);
     background: rgb(239, 240, 241);
@@ -70,20 +69,19 @@ body {
     margin-top: 20px;
     gap: 10px;
     padding: 10px;
-    border-radius: 15px;
-    background:rgb(239, 240, 241)
+    box-shadow: 0 0 rgba(0,0,0,.05);
 }
 
 .language-switcher button {
     border: 0;
-    border-radius: 5px;
-    padding: 0 10px;
+    border-bottom: 5px solid transparent;
+    padding: 5px 0;
     background: #fff;
     font: inherit;
     color: inherit
 }
 
 .language-switcher button.active {
-    background: rgb(204, 215, 220);
-    color: #fff
+    border-bottom: 5px solid #6db0ff;
+    color:#6db0ff
 }
