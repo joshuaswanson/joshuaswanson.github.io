@@ -105,7 +105,7 @@ h1 {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("assets/mountains_night.png");
+    background-image: url("assets/mountains_aurora.png");
     background-position: center var(--parallax-offset);
     background-size: cover;
     opacity: 0;
