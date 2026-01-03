@@ -22,43 +22,77 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <!-- Fonts - only load weights actually used -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Theme toggle -->
+    <nav class="switcher theme-toggle" aria-label="Theme selection">
+        <div class="switcher-inner">
+            <span class="switcher-bg"></span>
+            <button class="theme-light active" aria-label="Light mode">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+            <button class="theme-dark" aria-label="Dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Language switcher -->
+    <nav class="switcher language-switcher" aria-label="Language selection">
+        <div class="switcher-inner">
+            <span class="switcher-bg"></span>
+            <button class="de-link" aria-label="Switch to German" lang="de">de</button>
+            <button class="en-link active" aria-label="Switch to English" aria-current="true" lang="en">en</button>
+            <button class="fr-link" aria-label="Switch to French" lang="fr">fr</button>
+        </div>
+    </nav>
+
+    <!-- Hero image -->
+    <section class="hero" role="img" aria-label="Mountain landscape">
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- Main content -->
     <main id="wrapper">
         <article class="card">
-            <div id="banner" role="img" aria-label="Mountain landscape"></div>
             <div class="text en">
                 <h1>Hey. I'm Joshua Swanson.</h1>
                 <p>Welcome to my website.</p>
                 <p>I studied mathematics and computer science at the <a href="https://www.washington.edu">University of
-                        Washington</a> in Seattle. I'm currently pursuing my masters in Machine Intelligence with a minor in Data Management at <a
-                        href="https://ethz.ch/en.html">ETH Zürich</a>.</p>
+                        Washington</a> in Seattle. I'm currently pursuing my Master's in Computer Science at <a
+                        href="https://ethz.ch/en.html">ETH Zürich</a>, with a major in Machine Intelligence and a minor in Data Management.</p>
                 <p>For a more comprehensive review of my professional background, please visit <a
                         href="https://www.linkedin.com/in/joshuaswanson1/">my LinkedIn profile</a>.</p>
                 <p>Website last updated: January 2026.<br>Designed by: Joshua Swanson</p>
             </div>
             <div class="text de">
                 <h1>Hallo. Ich bin Joshua Swanson.</h1>
-                <p>Sorry, ich spreche kein Deutsch. Bitte ändere die Sprache auf Englisch.</p>
+                <p>Willkommen auf meiner Website.</p>
+                <p>Leider spreche ich kein Deutsch. Bitte wechsle die Sprache auf Englisch, um mehr über mich zu erfahren.</p>
+                <p>Zuletzt aktualisiert: Januar 2026.<br>Gestaltet von: Joshua Swanson</p>
             </div>
             <div class="text fr">
                 <h1>Salut. Je suis Joshua Swanson.</h1>
-                <p>Bienvenue sur mon site web. Veuillez changer la langue en anglais.</p>
+                <p>Bienvenue sur mon site web.</p>
+                <p>Malheureusement, je ne parle pas français. Veuillez changer la langue en anglais pour en savoir plus sur moi.</p>
+                <p>Dernière mise à jour : janvier 2026.<br>Conçu par : Joshua Swanson</p>
             </div>
         </article>
-        <nav class="language-switcher" aria-label="Language selection">
-            <button class="de-link" aria-label="Switch to German" lang="de">deutsch</button>
-            <button class="en-link active" aria-label="Switch to English" aria-current="true" lang="en">english</button>
-            <button class="fr-link" aria-label="Switch to French" lang="fr">français</button>
-        </nav>
     </main>
+
+    <div class="footer-space"></div>
+
     <script src="script.js"></script>
 </body>
 

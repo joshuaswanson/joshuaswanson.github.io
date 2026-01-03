@@ -1,111 +1,368 @@
 :root {
-    --text-color: #8b8b8b;
-    --anchor-color: #5f9dd2;
+    /* Light theme (default) */
+    --bg-primary: #fafafa;
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --text-primary: #1a1a2e;
+    --text-secondary: #64648c;
+    --switcher-inactive: #64648c;
+    --accent: #da291c;
+    --accent-light: #e54b3c;
+    --accent-glow: rgba(218, 41, 28, 0.12);
+    --border: rgba(0, 0, 0, 0.08);
+    --shadow: rgba(0, 0, 0, 0.08);
+    --hero-overlay: linear-gradient(
+        to bottom,
+        rgba(250, 250, 250, 0) 0%,
+        rgba(250, 250, 250, 0.3) 70%,
+        rgba(250, 250, 250, 1) 100%
+    );
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --text-primary: #f0f0f5;
+    --text-secondary: #8b8d98;
+    --switcher-inactive: #c0c0c8;
+    --accent: #da291c;
+    --accent-light: #e54b3c;
+    --accent-glow: rgba(218, 41, 28, 0.2);
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --hero-overlay: linear-gradient(
+        to bottom,
+        rgba(10, 10, 15, 0) 0%,
+        rgba(10, 10, 15, 0.4) 70%,
+        rgba(10, 10, 15, 1) 100%
+    );
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
     text-decoration: none;
-    color: var(--anchor-color);
+    color: var(--accent);
+    transition: color 0.2s ease;
 }
 
 a:hover {
+    color: var(--accent-light);
     text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #7a7a7a;
+h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
 }
 
-h2 {
-    font-size: 1.75em;
-    line-height: 1.5em;
-}
-
-h3 {
-    font-size: 1.25em;
-}
-
-h2 + p {
-    font-size: 1.25em;
-    margin-top: -0.7em;
-    line-height: 1.5em;
-}
-
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--text-color);
-    background: rgb(239, 240, 241);
-}
-
-#wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: auto;
-    width: min(40em, 100vw);
-    height: 100vh;
-}
-
-.card {
-    display: block;
+/* Hero section - full width expansive */
+.hero {
+    position: relative;
     width: 100%;
-    box-shadow: 0 0 20px rgba(0,0,0,.05);
-    background: #fff;
+    height: 70vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: hidden;
 }
 
-#banner {
-    height: 200px;
+.hero-image {
+    width: 100%;
+    height: 100%;
     background-image: url("assets/mountains.jpg");
-    background-position: center -25px;
+    background-position: center 40%;
     background-size: cover;
+    animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--hero-overlay);
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+/* Main content */
+#wrapper {
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content card */
+.card {
+    max-width: 680px;
+    margin: -80px auto 0;
+    position: relative;
+    z-index: 10;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px -15px var(--shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: cardFloat 0.8s ease-out 0.2s both;
+}
+
+@keyframes cardFloat {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Text content */
 .text {
-    padding: 25px 50px;
+    padding: 48px 56px 56px;
 }
 
+.text p {
+    margin-top: 1.25rem;
+}
+
+.text p:first-of-type {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.text p:last-of-type {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.875rem;
+    opacity: 0.6;
+}
+
+/* Hide non-active languages */
 .de, .fr {
     display: none;
 }
 
+/* Shared switcher styles */
+.switcher {
+    position: fixed;
+    top: 20px;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    animation: fadeIn 0.6s ease-out 0.4s both;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.switcher-inner {
+    position: relative;
+    display: flex;
+    gap: 4px;
+    cursor: grab;
+}
+
+.switcher-inner:active {
+    cursor: grabbing;
+}
+
+/* Sliding background */
+.switcher-bg {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.switcher button {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    border: none;
+    height: 32px;
+    padding: 0 12px;
+    background: transparent;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--switcher-inactive);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switcher button.active {
+    color: white;
+}
+
+.switcher button:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+.switcher button:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+}
+
+/* Language switcher */
 .language-switcher {
-    display: inline-flex;
-    gap: 20px;
-    margin-top: 20px;
-    padding: 0 20px;
-    box-shadow: 0 0 rgba(0,0,0,.05);
-    background: #fff;
+    right: 20px;
 }
 
 .language-switcher button {
-    border: 0;
-    border-bottom: 5px solid transparent;
-    padding: 15px 0 10px 0;
-    background: none;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
+    width: 32px;
+    padding: 0;
 }
 
-.language-switcher button.active {
-    border-bottom: 3px solid #6db0ff;
-    color: #6db0ff;
+/* Theme toggle */
+.theme-toggle {
+    left: 20px;
 }
 
-.language-switcher button:hover:not(.active) {
-    color: var(--anchor-color);
+.theme-toggle button {
+    width: 32px;
+    padding: 0;
 }
 
-.language-switcher button:focus-visible {
-    outline: 2px solid var(--anchor-color);
-    outline-offset: 2px;
+.theme-toggle button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Footer spacing */
+.footer-space {
+    height: 100px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .card {
+        margin: -60px 16px 0;
+        border-radius: 20px;
+    }
+
+    .text {
+        padding: 36px 32px 44px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .switcher {
+        top: 12px;
+    }
+
+    .language-switcher {
+        right: 12px;
+    }
+
+    .theme-toggle {
+        left: 12px;
+    }
+
+    .switcher button {
+        height: 28px;
+        width: 28px;
+        padding: 0;
+        font-size: 0.7rem;
+    }
+
+    .theme-toggle button svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 45vh;
+        min-height: 250px;
+    }
+
+    .card {
+        margin: -40px 12px 0;
+        border-radius: 16px;
+    }
+
+    .text {
+        padding: 28px 24px 36px;
+    }
+
+    .switcher button {
+        height: 26px;
+        width: 26px;
+        padding: 0;
+        font-size: 0.65rem;
+    }
+
+    .theme-toggle button svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Selection styling */
+::selection {
+    background: var(--accent);
+    color: white;
 }
