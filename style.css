@@ -26,9 +26,9 @@
     --text-primary: #f0f0f5;
     --text-secondary: #8b8d98;
     --switcher-inactive: #c0c0c8;
-    --accent: #da291c;
-    --accent-light: #e54b3c;
-    --accent-glow: rgba(218, 41, 28, 0.2);
+    --accent: #2dd4bf;
+    --accent-light: #5eead4;
+    --accent-glow: rgba(45, 212, 191, 0.2);
     --border: rgba(255, 255, 255, 0.08);
     --shadow: rgba(0, 0, 0, 0.4);
     --hero-overlay: linear-gradient(
