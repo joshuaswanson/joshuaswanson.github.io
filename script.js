@@ -242,11 +242,13 @@ function makeSwitcherDraggable(switcher, onSelect) {
         const currentX = getBgPosition();
         const closestBtn = getClosestButton(currentX);
 
-        // Animate switcher jiggle, then snap slider to button
-        springSwitcherBack(() => {
-            onSelect(closestBtn);
-            resetButtonColors(switcher);
-        });
+        // Restore transition and snap slider simultaneously with jiggle
+        bg.style.transition = '';
+        onSelect(closestBtn);
+        resetButtonColors(switcher);
+
+        // Animate switcher jiggle
+        springSwitcherBack();
     }
 
     // Mouse events on the inner container
