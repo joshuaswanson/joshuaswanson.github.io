@@ -152,8 +152,22 @@ function makeSwitcherDraggable(switcher, onSelect) {
             const absOverdragY = Math.abs(overdragY);
             const stretchFactorX = maxStretchX * (absOverdragX / (absOverdragX + damping));
             const stretchFactorY = maxStretchY * (absOverdragY / (absOverdragY + damping));
-            const scaleX = 1 + stretchFactorX;
-            const scaleY = 1 + stretchFactorY;
+
+            // Squish effect: stretching one axis compresses the other
+            // Squish is proportional to how close cursor is to the center line
+            // Fades to zero at the boundary, no squish once outside
+            const squishFactor = 0.3;
+            const halfHeight = switcherRect.height / 2;
+            const halfWidth = switcherRect.width / 2;
+            const switcherCenterY = (switcherRect.top + switcherRect.bottom) / 2;
+            const switcherCenterX = (switcherRect.left + switcherRect.right) / 2;
+            const distFromCenterY = Math.abs(currentY - switcherCenterY);
+            const distFromCenterX = Math.abs(currentX - switcherCenterX);
+            // 1 at center, 0 at boundary and beyond
+            const centerFactorX = Math.max(0, 1 - distFromCenterX / halfWidth);
+            const centerFactorY = Math.max(0, 1 - distFromCenterY / halfHeight);
+            const scaleX = 1 + stretchFactorX - (stretchFactorY * squishFactor * centerFactorX);
+            const scaleY = 1 + stretchFactorY - (stretchFactorX * squishFactor * centerFactorY);
 
             // Set transform-origin based on drag direction
             let originX = 'center';
