@@ -55,6 +55,7 @@ function makeSwitcherDraggable(switcher, onSelect) {
     let isDragging = false;
     let hasMoved = false;
     let startX = 0;
+    let startY = 0;
     let bgStartX = 0;
 
     function getBgPosition() {
@@ -95,7 +96,10 @@ function makeSwitcherDraggable(switcher, onSelect) {
         isDragging = true;
         hasMoved = false;
         bg.style.transition = 'none';
+        // Clear any CSS animation so we can apply transforms
+        switcher.style.animation = 'none';
         startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+        startY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY;
         bgStartX = getBgPosition();
         e.preventDefault();
     }
@@ -104,19 +108,66 @@ function makeSwitcherDraggable(switcher, onSelect) {
         if (!isDragging) return;
 
         const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+        const currentY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
         const deltaX = currentX - startX;
+        const deltaY = currentY - startY;
 
         // Only count as moved if we've dragged more than 3px
-        if (Math.abs(deltaX) > 3) {
+        if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) {
             hasMoved = true;
         }
 
         let newX = bgStartX + deltaX;
 
-        // Clamp to bounds
         const minX = 0;
         const maxX = inner.offsetWidth - bg.offsetWidth;
-        newX = Math.max(minX, Math.min(maxX, newX));
+
+        // Calculate X overdrag
+        let overdragX = 0;
+        if (newX < minX) {
+            overdragX = newX - minX; // negative
+            newX = minX;
+        } else if (newX > maxX) {
+            overdragX = newX - maxX; // positive
+            newX = maxX;
+        }
+
+        // Calculate Y overdrag based on cursor position relative to switcher
+        const switcherRect = switcher.getBoundingClientRect();
+        let overdragY = 0;
+        if (currentY < switcherRect.top) {
+            overdragY = currentY - switcherRect.top; // negative (above)
+        } else if (currentY > switcherRect.bottom) {
+            overdragY = currentY - switcherRect.bottom; // positive (below)
+        }
+
+        // Apply stretch to the entire switcher with diminishing returns
+        if (overdragX !== 0 || overdragY !== 0) {
+            // Asymptotic formula: approaches maxStretch but never exceeds it
+            const maxStretchX = 0.25; // Max 25% stretch in X
+            const maxStretchY = 0.35; // Max 35% stretch in Y
+            const damping = 40; // How quickly it resists (higher = more resistance)
+
+            const absOverdragX = Math.abs(overdragX);
+            const absOverdragY = Math.abs(overdragY);
+            const stretchFactorX = maxStretchX * (absOverdragX / (absOverdragX + damping));
+            const stretchFactorY = maxStretchY * (absOverdragY / (absOverdragY + damping));
+            const scaleX = 1 + stretchFactorX;
+            const scaleY = 1 + stretchFactorY;
+
+            // Set transform-origin based on drag direction
+            let originX = 'center';
+            let originY = 'center';
+            if (overdragX < 0) originX = 'right';
+            else if (overdragX > 0) originX = 'left';
+            if (overdragY < 0) originY = 'bottom';
+            else if (overdragY > 0) originY = 'top';
+
+            switcher.style.transformOrigin = `${originX} ${originY}`;
+            switcher.style.transform = `scale(${scaleX}, ${scaleY})`;
+        } else {
+            switcher.style.transform = '';
+        }
 
         bg.style.transform = `translateX(${newX}px)`;
 
@@ -126,17 +177,61 @@ function makeSwitcherDraggable(switcher, onSelect) {
         }
     }
 
+    // Spring animation for switcher jiggle
+    function springSwitcherBack(callback) {
+        const currentTransform = switcher.style.transform;
+        const match = currentTransform.match(/scale\(([^,]+),\s*([^)]+)\)/);
+        const startScaleX = match ? parseFloat(match[1]) : 1;
+        const startScaleY = match ? parseFloat(match[2]) : 1;
+
+        if (startScaleX === 1 && startScaleY === 1) {
+            if (callback) callback();
+            return;
+        }
+
+        const duration = 400;
+        const startTime = performance.now();
+
+        // Spring parameters
+        const damping = 0.5;
+        const frequency = 4;
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Damped spring formula - oscillates around 1
+            const decay = Math.exp(-damping * progress * 10);
+            const oscillation = Math.cos(frequency * progress * Math.PI * 2);
+            const scaleOffsetX = (startScaleX - 1) * decay * oscillation;
+            const scaleOffsetY = (startScaleY - 1) * decay * oscillation;
+            const currentScaleX = 1 + scaleOffsetX;
+            const currentScaleY = 1 + scaleOffsetY;
+
+            switcher.style.transform = `scale(${currentScaleX}, ${currentScaleY})`;
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                switcher.style.transform = '';
+                if (callback) callback();
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
     function onDragEnd(e) {
         if (!isDragging) return;
         isDragging = false;
-
-        bg.style.transition = '';
 
         // Reset colors - they'll be set properly by the active class
         resetButtonColors(switcher);
 
         if (!hasMoved) {
             // It was a click, not a drag - find which button was clicked
+            switcher.style.transform = '';
+            bg.style.transition = ''; // Restore transition for smooth animation
             const clientX = e.type === 'mouseup' ? e.clientX : e.changedTouches[0].clientX;
             const clickedBtn = getButtonAtPosition(clientX);
             if (clickedBtn) {
@@ -149,8 +244,10 @@ function makeSwitcherDraggable(switcher, onSelect) {
         const currentX = getBgPosition();
         const closestBtn = getClosestButton(currentX);
 
-        // Trigger the selection
-        onSelect(closestBtn);
+        // Animate switcher jiggle, then snap slider to button
+        springSwitcherBack(() => {
+            onSelect(closestBtn);
+        });
     }
 
     // Mouse events on the inner container
