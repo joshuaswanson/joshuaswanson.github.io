@@ -346,3 +346,22 @@ window.addEventListener('resize', () => {
     updateSwitcherBg(langSwitcher, false);
     updateSwitcherBg(themeSwitcher, false);
 });
+
+// Parallax effect for hero image
+const heroImage = document.querySelector('.hero-image');
+const hero = document.querySelector('.hero');
+
+function updateParallax() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    // Only apply parallax while hero is visible
+    if (scrollY < heroHeight) {
+        // Move background slower than scroll (0.4 = 40% of scroll speed)
+        const parallaxOffset = scrollY * 0.4;
+        heroImage.style.backgroundPositionY = `calc(40% + ${parallaxOffset}px)`;
+    }
+}
+
+window.addEventListener('scroll', updateParallax, { passive: true });
+updateParallax(); // Initial call
