@@ -2,21 +2,38 @@
 <html lang="en">
 
 <head>
-    <title>Joshua</title>
-    <link href="style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Joshua Swanson | Mathematics & Computer Science</title>
+    <meta name="description" content="Personal website of Joshua Swanson, studying mathematics and computer science at ETH Zürich.">
+    <meta name="author" content="Joshua Swanson">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Joshua Swanson | Mathematics & Computer Science">
+    <meta property="og:description" content="Personal website of Joshua Swanson, studying mathematics and computer science at ETH Zürich.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://joshuaswanson.github.io">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Joshua Swanson">
+    <meta name="twitter:description" content="Personal website of Joshua Swanson, studying mathematics and computer science at ETH Zürich.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts - only load weights actually used -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="wrapper">
-        <div class="card">
-            <div id="banner"></div>
+    <main id="wrapper">
+        <article class="card">
+            <div id="banner" role="img" aria-label="Mountain landscape"></div>
             <div class="text en">
                 <h1>Hey. I'm Joshua Swanson.</h1>
                 <p>Welcome to my website.</p>
@@ -25,27 +42,24 @@
                         href="https://ethz.ch/en.html">ETH Zürich</a>.</p>
                 <p>For a more comprehensive review of my professional background, please visit <a
                         href="https://www.linkedin.com/in/joshuaswanson1/">my LinkedIn profile</a>.</p>
-                <p>Website last updated: 22 April 2023. <br> Designed by: Joshua Swanson
-                </p>
-                <p></p>
+                <p>Website last updated: January 2026.<br>Designed by: Joshua Swanson</p>
             </div>
             <div class="text de">
                 <h1>Hallo. Ich bin Joshua Swanson.</h1>
                 <p>Sorry, ich spreche kein Deutsch. Bitte ändere die Sprache auf Englisch.</p>
-                <p></p>
             </div>
             <div class="text fr">
                 <h1>Salut. Je suis Joshua Swanson.</h1>
-                <p>Bienvenue sur mon siteweb. Veuillez changer la langue en anglais.</p>
+                <p>Bienvenue sur mon site web. Veuillez changer la langue en anglais.</p>
             </div>
-        </div>
-        <div class="language-switcher">
-            <button class="de-link">deutsch</button>
-            <button class="en-link active">english</button>
-            <button class="fr-link">français</button>
-        </div>
-    </div>
+        </article>
+        <nav class="language-switcher" aria-label="Language selection">
+            <button class="de-link" aria-label="Switch to German" lang="de">deutsch</button>
+            <button class="en-link active" aria-label="Switch to English" aria-current="true" lang="en">english</button>
+            <button class="fr-link" aria-label="Switch to French" lang="fr">français</button>
+        </nav>
+    </main>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 
 </html>

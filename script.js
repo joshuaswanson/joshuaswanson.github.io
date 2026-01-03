@@ -1,41 +1,26 @@
-const enLink = document.querySelector('.en-link');
-const deLink = document.querySelector('.de-link');
-const frLink = document.querySelector('.fr-link');
-const enDiv = document.querySelector('.en');
-const deDiv = document.querySelector('.de');
-const frDiv = document.querySelector('.fr');
+// Language switcher functionality
+const languages = ['en', 'de', 'fr'];
 
-// Show the English div by default
-enLink.classList.add('active');
-enDiv.style.display = 'block';
+function switchLanguage(lang) {
+    languages.forEach(l => {
+        const link = document.querySelector(`.${l}-link`);
+        const div = document.querySelector(`.${l}`);
 
-// Add event listeners to language switcher links
-enLink.addEventListener('click', function(event) {
-    event.preventDefault();
-    enLink.classList.add('active');
-    deLink.classList.remove('active');
-    frLink.classList.remove('active');
-    enDiv.style.display = 'block';
-    deDiv.style.display = 'none';
-    frDiv.style.display = 'none';
-});
+        if (l === lang) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'true');
+            div.style.display = 'block';
+        } else {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+            div.style.display = 'none';
+        }
+    });
+}
 
-deLink.addEventListener('click', function(event) {
-    event.preventDefault();
-    enLink.classList.remove('active');
-    deLink.classList.add('active');
-    frLink.classList.remove('active');
-    enDiv.style.display = 'none';
-    deDiv.style.display = 'block';
-    frDiv.style.display = 'none';
-});
-
-frLink.addEventListener('click', function(event) {
-    event.preventDefault();
-    enLink.classList.remove('active');
-    deLink.classList.remove('active');
-    frLink.classList.add('active');
-    enDiv.style.display = 'none';
-    deDiv.style.display = 'none';
-    frDiv.style.display = 'block';
+// Add event listeners to all language buttons
+languages.forEach(lang => {
+    document.querySelector(`.${lang}-link`).addEventListener('click', () => {
+        switchLanguage(lang);
+    });
 });
