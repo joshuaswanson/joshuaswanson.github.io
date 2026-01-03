@@ -225,9 +225,6 @@ function makeSwitcherDraggable(switcher, onSelect) {
         if (!isDragging) return;
         isDragging = false;
 
-        // Reset colors - they'll be set properly by the active class
-        resetButtonColors(switcher);
-
         if (!hasMoved) {
             // It was a click, not a drag - find which button was clicked
             switcher.style.transform = '';
@@ -236,6 +233,7 @@ function makeSwitcherDraggable(switcher, onSelect) {
             const clickedBtn = getButtonAtPosition(clientX);
             if (clickedBtn) {
                 onSelect(clickedBtn);
+                resetButtonColors(switcher);
                 return;
             }
         }
@@ -247,6 +245,7 @@ function makeSwitcherDraggable(switcher, onSelect) {
         // Animate switcher jiggle, then snap slider to button
         springSwitcherBack(() => {
             onSelect(closestBtn);
+            resetButtonColors(switcher);
         });
     }
 
