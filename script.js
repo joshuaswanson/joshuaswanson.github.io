@@ -57,6 +57,10 @@ function makeSwitcherDraggable(switcher, onSelect) {
     let startX = 0;
     let startY = 0;
     let bgStartX = 0;
+    let currentScaleX = 1;
+    let currentScaleY = 1;
+    let currentOriginX = 'center';
+    let currentOriginY = 'center';
 
     function getBgPosition() {
         const transform = bg.style.transform;
@@ -95,6 +99,10 @@ function makeSwitcherDraggable(switcher, onSelect) {
     function onDragStart(e) {
         isDragging = true;
         hasMoved = false;
+        currentScaleX = 1;
+        currentScaleY = 1;
+        currentOriginX = 'center';
+        currentOriginY = 'center';
         bg.style.transition = 'none';
         // Clear any CSS animation so we can apply transforms
         switcher.style.animation = 'none';
@@ -142,6 +150,9 @@ function makeSwitcherDraggable(switcher, onSelect) {
         }
 
         // Apply stretch to the entire switcher with diminishing returns
+        let targetScaleX = 1;
+        let targetScaleY = 1;
+
         if (overdragX !== 0 || overdragY !== 0) {
             // Asymptotic formula: approaches maxStretch but never exceeds it
             const maxStretchX = 0.25; // Max 25% stretch in X
@@ -150,36 +161,32 @@ function makeSwitcherDraggable(switcher, onSelect) {
 
             const absOverdragX = Math.abs(overdragX);
             const absOverdragY = Math.abs(overdragY);
-            const stretchFactorX = maxStretchX * (absOverdragX / (absOverdragX + damping));
-            const stretchFactorY = maxStretchY * (absOverdragY / (absOverdragY + damping));
-
-            // Squish effect: stretching one axis compresses the other
-            // Squish is proportional to how close cursor is to the center line
-            // Fades to zero at the boundary, no squish once outside
-            const squishFactor = 0.3;
-            const halfHeight = switcherRect.height / 2;
-            const halfWidth = switcherRect.width / 2;
-            const switcherCenterY = (switcherRect.top + switcherRect.bottom) / 2;
-            const switcherCenterX = (switcherRect.left + switcherRect.right) / 2;
-            const distFromCenterY = Math.abs(currentY - switcherCenterY);
-            const distFromCenterX = Math.abs(currentX - switcherCenterX);
-            // 1 at center, 0 at boundary and beyond
-            const centerFactorX = Math.max(0, 1 - distFromCenterX / halfWidth);
-            const centerFactorY = Math.max(0, 1 - distFromCenterY / halfHeight);
-            const scaleX = 1 + stretchFactorX - (stretchFactorY * squishFactor * centerFactorX);
-            const scaleY = 1 + stretchFactorY - (stretchFactorX * squishFactor * centerFactorY);
+            targetScaleX = 1 + maxStretchX * (absOverdragX / (absOverdragX + damping));
+            targetScaleY = 1 + maxStretchY * (absOverdragY / (absOverdragY + damping));
 
             // Set transform-origin based on drag direction
-            let originX = 'center';
-            let originY = 'center';
-            if (overdragX < 0) originX = 'right';
-            else if (overdragX > 0) originX = 'left';
-            if (overdragY < 0) originY = 'bottom';
-            else if (overdragY > 0) originY = 'top';
+            if (overdragX < 0) currentOriginX = 'right';
+            else if (overdragX > 0) currentOriginX = 'left';
+            else currentOriginX = 'center';
+            if (overdragY < 0) currentOriginY = 'bottom';
+            else if (overdragY > 0) currentOriginY = 'top';
+            else currentOriginY = 'center';
+        }
 
-            switcher.style.transformOrigin = `${originX} ${originY}`;
-            switcher.style.transform = `scale(${scaleX}, ${scaleY})`;
+        // Smoothly interpolate current scale toward target scale
+        const lerpFactor = 0.3; // How quickly to approach target (0-1)
+        currentScaleX += (targetScaleX - currentScaleX) * lerpFactor;
+        currentScaleY += (targetScaleY - currentScaleY) * lerpFactor;
+
+        // Apply transform if scale is noticeably different from 1
+        if (Math.abs(currentScaleX - 1) > 0.001 || Math.abs(currentScaleY - 1) > 0.001) {
+            switcher.style.transformOrigin = `${currentOriginX} ${currentOriginY}`;
+            switcher.style.transform = `scale(${currentScaleX}, ${currentScaleY})`;
         } else {
+            currentScaleX = 1;
+            currentScaleY = 1;
+            currentOriginX = 'center';
+            currentOriginY = 'center';
             switcher.style.transform = '';
         }
 
