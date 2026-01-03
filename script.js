@@ -360,7 +360,7 @@ function updateParallax() {
     if (scrollY < heroHeight) {
         // Move background slower than scroll (0.4 = 40% of scroll speed)
         const parallaxOffset = scrollY * 0.4;
-        heroImage.style.backgroundPositionY = `calc(40% + ${parallaxOffset}px)`;
+        heroImage.style.setProperty('--parallax-offset', `calc(40% + ${parallaxOffset}px)`);
     }
 }
 
