@@ -179,6 +179,43 @@ h1 {
     opacity: 0.6;
 }
 
+/* Social links */
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                color 0.2s ease,
+                background-color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+    background: var(--accent-glow);
+    transform: scale(1.15);
+    text-decoration: none;
+}
+
+.social-links a:active {
+    transform: scale(0.95);
+}
+
+.social-links svg {
+    width: 22px;
+    height: 22px;
+}
+
 /* Hide non-active languages */
 .de, .fr {
     display: none;
