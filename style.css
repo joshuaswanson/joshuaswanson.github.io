@@ -177,9 +177,36 @@ h1 {
     }
 }
 
+/* Portrait image */
+.portrait {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: auto;
+    margin-bottom: -35px;
+    z-index: 15;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25));
+    animation: portraitFloat 0.8s ease-out 0.1s both;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+@keyframes portraitFloat {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+}
+
 /* Content card */
 .card {
-    max-width: 680px;
+    max-width: 750px;
     margin: -80px auto 0;
     position: relative;
     z-index: 10;
@@ -379,6 +406,11 @@ h1 {
         min-height: 300px;
     }
 
+    .portrait {
+        width: 200px;
+        margin-bottom: -45px;
+    }
+
     .card {
         margin: -60px 16px 0;
         border-radius: 20px;
@@ -430,6 +462,11 @@ h1 {
     .hero {
         height: 45vh;
         min-height: 250px;
+    }
+
+    .portrait {
+        width: 170px;
+        margin-bottom: -35px;
     }
 
     .card {
