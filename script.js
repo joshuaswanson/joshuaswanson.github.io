@@ -210,12 +210,12 @@ function makeSwitcherDraggable(switcher, onSelect) {
             return;
         }
 
-        const duration = 400;
+        const duration = 600;
         const startTime = performance.now();
 
         // Spring parameters
         const damping = 0.5;
-        const frequency = 4;
+        const frequency = 3;
 
         function animate(currentTime) {
             const elapsed = currentTime - startTime;
