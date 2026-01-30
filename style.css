@@ -1,3 +1,7 @@
+/* ==========================================================================
+   CSS Custom Properties
+   ========================================================================== */
+
 :root {
     /* Light theme (default) */
     --bg-primary: #fafafa;
@@ -39,6 +43,10 @@
     );
 }
 
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -59,6 +67,15 @@ body {
     overflow-x: hidden;
     transition: background 0.5s ease, color 0.5s ease;
 }
+
+::selection {
+    background: var(--accent);
+    color: white;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
 
 a {
     text-decoration: none;
@@ -81,7 +98,10 @@ h1 {
     text-align: center;
 }
 
-/* Hero section - full width expansive */
+/* ==========================================================================
+   Layout: Hero Section
+   ========================================================================== */
+
 .hero {
     position: relative;
     width: 100%;
@@ -115,11 +135,6 @@ h1 {
 
 [data-theme="dark"] .hero-image::before {
     opacity: 1;
-}
-
-@keyframes heroZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
 }
 
 .hero::before,
@@ -161,24 +176,15 @@ h1 {
     opacity: 0;
 }
 
-/* Main content */
+/* ==========================================================================
+   Layout: Main Content
+   ========================================================================== */
+
 #wrapper {
     position: relative;
     animation: fadeIn 0.8s ease-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Portrait image */
 .portrait {
     position: absolute;
     bottom: 100%;
@@ -194,18 +200,6 @@ h1 {
     user-select: none;
 }
 
-@keyframes portraitFloat {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%);
-    }
-}
-
-/* Content card */
 .card {
     max-width: 750px;
     margin: -140px auto 0;
@@ -219,18 +213,6 @@ h1 {
     animation: cardFloat 0.8s ease-out 0.2s both;
 }
 
-@keyframes cardFloat {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Text content */
 .text {
     padding: 48px 56px 56px;
 }
@@ -246,7 +228,7 @@ h1 {
     text-align: center;
 }
 
-.text p:last-of-type {
+.text .footnote {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
@@ -254,16 +236,17 @@ h1 {
     opacity: 0.6;
 }
 
-/* Social links */
-.social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 2rem;
+.footer-space {
+    height: 100px;
 }
 
-.social-links a {
+/* ==========================================================================
+   Components: Pill Buttons (shared)
+   ========================================================================== */
+
+.pill-btn,
+.social-links a,
+.pub-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -281,7 +264,9 @@ h1 {
                 box-shadow 0.2s ease;
 }
 
-.social-links a:hover {
+.pill-btn:hover,
+.social-links a:hover,
+.pub-link:hover {
     color: var(--accent);
     transform: scale(1.08);
     box-shadow: 0 4px 12px var(--shadow),
@@ -290,17 +275,36 @@ h1 {
     text-decoration: none;
 }
 
-.social-links a:active {
+.pill-btn:active,
+.social-links a:active,
+.pub-link:active {
     transform: scale(0.95);
 }
 
-.social-links svg {
+.pill-btn svg,
+.social-links svg,
+.pub-link svg {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
 }
 
-/* Hide non-active tab content */
+/* ==========================================================================
+   Components: Social Links
+   ========================================================================== */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Components: Tab System
+   ========================================================================== */
+
 .tab-content {
     display: none;
 }
@@ -310,7 +314,165 @@ h1 {
     animation: fadeIn 0.3s ease-out;
 }
 
-/* Settings pill - bottom right corner */
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    padding: 24px 24px 0;
+}
+
+.tab-nav .switcher-inner {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    background: var(--bg-card);
+    border-radius: 23px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    cursor: grab;
+}
+
+.tab-nav .switcher-inner:active {
+    cursor: grabbing;
+}
+
+.tab-nav .switcher-bg {
+    position: absolute;
+    top: 5px;
+    height: calc(100% - 10px);
+    background: var(--accent);
+    border-radius: 18px;
+    box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.tab-btn {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    border: none;
+    height: 36px;
+    padding: 0 16px;
+    background: transparent;
+    border-radius: 18px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--switcher-inactive);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.tab-btn.active {
+    color: white;
+}
+
+.tab-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+.tab-btn:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Components: Switcher (shared)
+   ========================================================================== */
+
+.switcher {
+    position: fixed;
+    top: 20px;
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 23px;
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    animation: fadeIn 0.6s ease-out 0.4s both;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.switcher-inner {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    cursor: grab;
+}
+
+.switcher-inner:active {
+    cursor: grabbing;
+}
+
+.switcher-bg {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 18px;
+    box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.switcher button {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    border: none;
+    height: 36px;
+    width: 36px;
+    padding: 0;
+    background: transparent;
+    border-radius: 18px;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--switcher-inactive);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switcher button.active {
+    color: white;
+}
+
+.switcher button:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+.switcher button:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+}
+
+/* Theme toggle */
+.theme-toggle button {
+    width: 36px;
+    padding: 0;
+}
+
+.theme-toggle button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   Components: Settings Pill
+   ========================================================================== */
+
 .settings-pill {
     position: fixed;
     bottom: 20px;
@@ -330,6 +492,10 @@ h1 {
     will-change: transform;
 }
 
+.settings-pill.expanded {
+    gap: 8px;
+}
+
 .settings-pill.jiggle-open {
     animation: settingsJiggleOpen 0.6s ease-out;
     transform-origin: right center;
@@ -338,22 +504,6 @@ h1 {
 .settings-pill.jiggle-close {
     animation: settingsJiggleClose 0.6s ease-out;
     transform-origin: right center;
-}
-
-@keyframes settingsJiggleOpen {
-    0% { transform: scaleX(1.15); }
-    25% { transform: scaleX(0.97); }
-    50% { transform: scaleX(1.03); }
-    75% { transform: scaleX(0.99); }
-    100% { transform: scaleX(1); }
-}
-
-@keyframes settingsJiggleClose {
-    0% { transform: scaleX(0.85); }
-    25% { transform: scaleX(1.03); }
-    50% { transform: scaleX(0.97); }
-    75% { transform: scaleX(1.01); }
-    100% { transform: scaleX(1); }
 }
 
 .settings-toggle {
@@ -412,21 +562,20 @@ h1 {
     max-width: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-width 0.3s ease, opacity 0.25s ease, gap 0.3s ease, overflow 0s 0.3s;
-}
-
-.settings-pill.expanded .settings-content {
-    overflow: visible;
-    transition: max-width 0.3s ease, opacity 0.25s ease, gap 0.3s ease, overflow 0s 0s;
+    transition: max-width 0.3s ease,
+                opacity 0.25s ease,
+                gap 0.3s ease,
+                overflow 0s 0.3s;
 }
 
 .settings-pill.expanded .settings-content {
     max-width: 300px;
+    overflow: visible;
     opacity: 1;
-}
-
-.settings-pill.expanded {
-    gap: 8px;
+    transition: max-width 0.3s ease,
+                opacity 0.25s ease,
+                gap 0.3s ease,
+                overflow 0s 0s;
 }
 
 .settings-divider {
@@ -436,7 +585,7 @@ h1 {
     flex-shrink: 0;
 }
 
-/* Switchers inside settings pill - remove fixed positioning */
+/* Switchers inside settings pill - reset positioning */
 .settings-pill .switcher {
     position: static;
     padding: 0;
@@ -447,159 +596,10 @@ h1 {
     animation: none;
 }
 
-/* Tab navigation */
-.tab-nav {
-    display: flex;
-    justify-content: center;
-    padding: 24px 24px 0;
-}
+/* ==========================================================================
+   Content: Publications
+   ========================================================================== */
 
-.tab-nav .switcher-inner {
-    position: relative;
-    display: flex;
-    gap: 5px;
-    padding: 5px;
-    background: var(--bg-card);
-    border-radius: 23px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    cursor: grab;
-}
-
-.tab-nav .switcher-inner:active {
-    cursor: grabbing;
-}
-
-.tab-nav .switcher-bg {
-    position: absolute;
-    top: 5px;
-    height: calc(100% - 10px);
-    background: var(--accent);
-    border-radius: 18px;
-    box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 0;
-}
-
-.tab-btn {
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-    border: none;
-    height: 36px;
-    padding: 0 16px;
-    background: transparent;
-    border-radius: 18px;
-    font: inherit;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--switcher-inactive);
-    cursor: pointer;
-    transition: color 0.2s ease;
-    white-space: nowrap;
-}
-
-.tab-btn.active {
-    color: white;
-}
-
-.tab-btn:hover:not(.active) {
-    color: var(--text-primary);
-}
-
-.tab-btn:focus-visible {
-    outline: 2px solid var(--accent-light);
-    outline-offset: 2px;
-}
-
-/* Shared switcher styles */
-.switcher {
-    position: fixed;
-    top: 20px;
-    display: flex;
-    gap: 5px;
-    padding: 5px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 23px;
-    backdrop-filter: blur(20px);
-    z-index: 100;
-    animation: fadeIn 0.6s ease-out 0.4s both;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.switcher-inner {
-    position: relative;
-    display: flex;
-    gap: 5px;
-    cursor: grab;
-}
-
-.switcher-inner:active {
-    cursor: grabbing;
-}
-
-/* Sliding background */
-.switcher-bg {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    background: var(--accent);
-    border-radius: 18px;
-    box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 0;
-}
-
-.switcher button {
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-    border: none;
-    height: 36px;
-    width: 36px;
-    padding: 0;
-    background: transparent;
-    border-radius: 18px;
-    font: inherit;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--switcher-inactive);
-    cursor: pointer;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.switcher button.active {
-    color: white;
-}
-
-.switcher button:hover:not(.active) {
-    color: var(--text-primary);
-}
-
-.switcher button:focus-visible {
-    outline: 2px solid var(--accent-light);
-    outline-offset: 2px;
-}
-
-/* Theme toggle */
-.theme-toggle button {
-    width: 36px;
-    padding: 0;
-}
-
-.theme-toggle button svg {
-    width: 16px;
-    height: 16px;
-}
-
-/* Publications section */
 .tab-content.publications h1 {
     text-align: left;
     margin-bottom: 1.5rem;
@@ -624,8 +624,8 @@ h1 {
 .publication-authors {
     font-size: 0.95rem;
     color: var(--text-secondary);
-    margin: 0 0 0.25rem 0 !important;
-    text-align: left !important;
+    margin: 0 0 0.25rem 0;
+    text-align: left;
 }
 
 .publication-venue {
@@ -633,8 +633,8 @@ h1 {
     color: var(--text-secondary);
     font-weight: 500;
     font-style: italic;
-    margin: 0 0 1rem 0 !important;
-    text-align: left !important;
+    margin: 0 0 1rem 0;
+    text-align: left;
 }
 
 .publication-links {
@@ -643,49 +643,104 @@ h1 {
     gap: 0.75rem;
 }
 
-.pub-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1rem;
-    background: var(--bg-card);
-    border-radius: 20px;
-    font-size: 0.85rem;
+/* ==========================================================================
+   Content: Dated Entry
+   ========================================================================== */
+
+.dated-entry {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dated-entry p {
+    margin: 0 0 1rem 0;
+    padding: 0;
+    border: none;
+    font-size: 0.95rem;
+    opacity: 1;
+}
+
+.entry-date {
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
-    box-shadow: 0 2px 8px var(--shadow),
-                0 1px 2px var(--shadow),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                color 0.2s ease,
-                box-shadow 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
 }
 
-.pub-link:hover {
-    color: var(--accent);
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px var(--shadow),
-                0 2px 4px var(--shadow),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    text-decoration: none;
+.dated-entry .mood-meter {
+    margin-top: 1rem;
 }
 
-.pub-link:active {
-    transform: scale(0.95);
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.pub-link svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 
-/* Footer spacing */
-.footer-space {
-    height: 100px;
+@keyframes portraitFloat {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
 }
 
-/* Responsive adjustments */
+@keyframes cardFloat {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes settingsJiggleOpen {
+    0% { transform: scaleX(1.15); }
+    25% { transform: scaleX(0.97); }
+    50% { transform: scaleX(1.03); }
+    75% { transform: scaleX(0.99); }
+    100% { transform: scaleX(1); }
+}
+
+@keyframes settingsJiggleClose {
+    0% { transform: scaleX(0.85); }
+    25% { transform: scaleX(1.03); }
+    50% { transform: scaleX(0.97); }
+    75% { transform: scaleX(1.01); }
+    100% { transform: scaleX(1); }
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
 @media (max-width: 768px) {
     .hero {
         height: 50vh;
@@ -735,7 +790,8 @@ h1 {
         border-radius: 25px;
     }
 
-    .tab-nav .switcher-bg {
+    .tab-nav .switcher-bg,
+    .switcher-bg {
         border-radius: 20px;
     }
 
@@ -750,14 +806,9 @@ h1 {
         border-radius: 25px;
     }
 
-    .switcher-bg {
-        border-radius: 20px;
-    }
-
     .switcher button {
         height: 40px;
         width: 40px;
-        padding: 0;
         font-size: 0.85rem;
         border-radius: 20px;
     }
@@ -795,409 +846,5 @@ h1 {
     .tab-btn {
         padding: 0 12px;
         font-size: 0.8rem;
-    }
-
-    .switcher {
-        border-radius: 25px;
-    }
-
-    .switcher-bg {
-        border-radius: 20px;
-    }
-
-    .switcher button {
-        height: 40px;
-        width: 40px;
-        padding: 0;
-        font-size: 0.85rem;
-        border-radius: 20px;
-    }
-
-    .theme-toggle button svg {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-/* Selection styling */
-::selection {
-    background: var(--accent);
-    color: white;
-}
-
-/* Mood Meter */
-.mood-meter {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #F5F0EB;
-    border-radius: 16px;
-}
-
-.mood-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    text-align: center;
-    margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-}
-
-.mood-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-    padding-left: 50px;
-}
-
-.mood-y-axis {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    text-align: center;
-    width: 45px;
-}
-
-.mood-main {
-    position: relative;
-    width: 100%;
-    max-width: 320px;
-}
-
-.mood-arrow {
-    background: #1a1a2e;
-}
-
-.mood-arrow-vertical {
-    width: 2px;
-    height: 200px;
-    position: relative;
-}
-
-.mood-arrow-vertical::before,
-.mood-arrow-vertical::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-}
-
-.mood-arrow-vertical::before {
-    top: -4px;
-    border-bottom: 6px solid #1a1a2e;
-}
-
-.mood-arrow-vertical::after {
-    bottom: -4px;
-    border-top: 6px solid #1a1a2e;
-}
-
-.mood-arrow-horizontal {
-    height: 2px;
-    flex: 1;
-    position: relative;
-    margin: 0 0.5rem;
-}
-
-.mood-arrow-horizontal::before,
-.mood-arrow-horizontal::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-}
-
-.mood-arrow-horizontal::before {
-    left: -4px;
-    border-right: 6px solid #1a1a2e;
-}
-
-.mood-arrow-horizontal::after {
-    right: -4px;
-    border-left: 6px solid #1a1a2e;
-}
-
-.mood-x-axis {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 320px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin-top: 0.25rem;
-}
-
-.mood-grid {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 8px;
-    overflow: hidden;
-    background: transparent;
-}
-
-.mood-cell {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-weight: 700;
-    color: #1a1a2e;
-    line-height: 1.2;
-}
-
-/* Fuck it we ball - top left */
-.mood-fuckitball {
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 35%;
-    background: #8B4739;
-    font-size: 1.1rem;
-    z-index: 2;
-}
-
-/* We are so fucking back - yellow area */
-.mood-soback {
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    background: #e7c177;
-    font-size: 0.85rem;
-    overflow: visible;
-}
-
-.mood-soback span {
-    display: block;
-    transform: rotate(45deg);
-}
-
-/* Mom would be sad - separate square in bottom-left corner */
-.mood-momsad {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 20%;
-    height: 20%;
-    background: #778ca4;
-    font-size: 0.5rem;
-    font-weight: 800;
-    color: #1a1a2e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.2;
-}
-
-/* LETS FUCKING GO - independent element in top-right corner */
-.mood-letsgo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20%;
-    height: 20%;
-    background: #f2df7f;
-    font-size: 0.5rem;
-    font-weight: 800;
-    color: #1a1a2e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.2;
-}
-
-/* It's so over - bottom left */
-.mood-itsover {
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-    background: #99abc5;
-    font-size: 0.85rem;
-}
-
-/* We vibing - bottom right */
-.mood-vibing {
-    bottom: 0;
-    right: 0;
-    width: 35%;
-    height: 50%;
-    background: #A5B88F;
-    font-size: 1rem;
-    font-style: italic;
-    z-index: 2;
-}
-
-.mood-itis {
-    background: #D4854A;
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    z-index: 10;
-}
-
-/* "It is" - horizontal, from left-center to center-center */
-.mood-itis1 {
-    position: absolute;
-    top: 35%;
-    left: 0%;
-    right: 35%;
-    bottom: 50%;
-    justify-content: flex-end;
-    padding-right: 65px;
-}
-
-/* "it is" - rotated 90 degrees clockwise, from center to bottom */
-.mood-itis2 {
-    position: absolute;
-    top: 85%;
-    left: -15%;
-    right: 50%;
-    bottom: 0%;
-    transform: rotate(90deg);
-    transform-origin: bottom right;
-    justify-content: flex-start;
-    padding-left: 65px;
-}
-
-/* "what" - rotated 45 degrees clockwise */
-.mood-what {
-    position: absolute;
-    bottom: 55%;
-    left: 55%;
-    transform: translate(-50%, 50%) rotate(45deg);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 10;
-}
-
-
-
-/* Draggable dot */
-.mood-dot {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background: #1a1a2e;
-    border: 4px solid #fff;
-    border-radius: 50%;
-    cursor: grab;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.2s ease;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: none;
-}
-
-.mood-dot:active {
-    cursor: grabbing;
-}
-
-.mood-dot:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Vibration animations for cells */
-@keyframes moodVibrate {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    10% { transform: translate(-1px, 1px) rotate(-1deg); }
-    20% { transform: translate(1px, -1px) rotate(1deg); }
-    30% { transform: translate(-1px, -1px) rotate(-1deg); }
-    40% { transform: translate(1px, 1px) rotate(1deg); }
-    50% { transform: translate(0, -1px) rotate(-1deg); }
-    60% { transform: translate(-1px, 0) rotate(1deg); }
-    70% { transform: translate(1px, 1px) rotate(-1deg); }
-    80% { transform: translate(0, -1px) rotate(1deg); }
-    90% { transform: translate(-1px, 1px) rotate(-1deg); }
-}
-
-@keyframes moodVibrateIntense {
-    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    5% { transform: translate(-2px, 2px) rotate(3deg) scale(1.02); }
-    10% { transform: translate(2px, -2px) rotate(-4deg) scale(0.98); }
-    15% { transform: translate(-2px, -2px) rotate(4deg) scale(1.03); }
-    20% { transform: translate(2px, 2px) rotate(-3deg) scale(0.99); }
-    25% { transform: translate(0, -2px) rotate(5deg) scale(1.02); }
-    30% { transform: translate(-2px, 0) rotate(-5deg) scale(0.98); }
-    35% { transform: translate(2px, 2px) rotate(3deg) scale(1.01); }
-    40% { transform: translate(0, -2px) rotate(-4deg) scale(1.03); }
-    45% { transform: translate(-2px, 2px) rotate(4deg) scale(0.99); }
-    50% { transform: translate(2px, 0) rotate(-3deg) scale(1.02); }
-    55% { transform: translate(-2px, -2px) rotate(5deg) scale(0.98); }
-    60% { transform: translate(2px, 2px) rotate(-5deg) scale(1.01); }
-    65% { transform: translate(0, -2px) rotate(3deg) scale(1.03); }
-    70% { transform: translate(-2px, 0) rotate(-4deg) scale(0.99); }
-    75% { transform: translate(2px, 2px) rotate(4deg) scale(1.02); }
-    80% { transform: translate(-2px, -2px) rotate(-3deg) scale(0.98); }
-    85% { transform: translate(2px, 0) rotate(5deg) scale(1.01); }
-    90% { transform: translate(0, 2px) rotate(-5deg) scale(1.03); }
-    95% { transform: translate(-2px, -2px) rotate(3deg) scale(0.99); }
-}
-
-.mood-soback.vibrating {
-    animation: moodVibrate 0.12s ease-in-out infinite;
-}
-
-.mood-letsgo.vibrating {
-    animation: moodVibrateIntense 0.08s ease-in-out infinite;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .mood-meter {
-        padding: 1rem;
-    }
-
-    .mood-title {
-        font-size: 1.25rem;
-    }
-
-    .mood-y-axis {
-        display: none;
-    }
-
-    .mood-cell {
-        font-size: 0.7rem !important;
-        padding: 0.25rem;
-    }
-
-    .mood-fuckitball {
-        font-size: 0.85rem !important;
-    }
-
-    .mood-letsgo {
-        font-size: 0.45rem !important;
-    }
-
-    .mood-momsad {
-        font-size: 0.4rem !important;
     }
 }
