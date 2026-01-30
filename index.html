@@ -28,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link href="style.css" rel="stylesheet">
+    <link href="mood-meter.css" rel="stylesheet">
 </head>
 
 <body>
@@ -117,7 +118,7 @@
                             Twitter
                         </a>
                     </div>
-                    <p>Website last updated: January 2026.<br>Designed by: Joshua Swanson</p>
+                    <p class="footnote">Website last updated: January 2026.<br>Designed by: Joshua Swanson</p>
                 </div>
                 <div class="tab-content now">
                     <h1>Now</h1>
@@ -152,10 +153,14 @@
                 </div>
                 <div class="tab-content random">
                     <h1>Random</h1>
-                    <p>Just random stuff</p>
-                    <p>I recently saw this Mood Meter on Instagram and thought it was super funny. I recreated it here in HTML/CSS. There's something weirdly validating about being able to pinpoint exactly where I am on it at any given moment.</p>
-                    <!-- Mood Meter -->
-                    <div class="mood-meter">
+                    <p>Just random stuff.</p>
+
+                    <!-- Dated Entry -->
+                    <article class="dated-entry">
+                        <header class="entry-date">28 January 2026</header>
+                        <p>I recently saw this Mood Meter on Instagram and thought it was super funny. I recreated it here in HTML/CSS. There's something weirdly validating about being able to pinpoint exactly where I am on it at any given moment.</p>
+                        <!-- Mood Meter -->
+                        <div class="mood-meter">
                         <h2 class="mood-title">THE MOOD METER</h2>
                         <div class="mood-container">
                             <div class="mood-y-axis">
@@ -168,7 +173,7 @@
                                     <div class="mood-cell mood-fuckitball">F**k it<br>we ball</div>
                                     <div class="mood-cell mood-soback"><span>We are <br>so back</span></div>
                                     <div class="mood-letsgo">LETS F**KING<br>GOOOOOOOO</div>
-                                    <div class="mood-cell mood-itsover">It's so<br>over</div>
+                                    <div class="mood-cell mood-itsover"><span>It's so<br>over</span></div>
                                     <div class="mood-momsad">Mom would<br>be sad</div>
                                     <div class="mood-cell mood-vibing">We<br>vibing</div>
                                     <div class="mood-itis mood-itis1">It is</div>
@@ -183,8 +188,8 @@
                                 <span>PLEASANT</span>
                             </div>
                         </div>
-                    </div>
-                    <p></p>
+                        </div>
+                    </article>
                 </div>
             </div>
 
