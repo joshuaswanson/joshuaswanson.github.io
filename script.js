@@ -797,6 +797,7 @@ function initMoodDot(dot) {
     const grid = dot.closest('.mood-main').querySelector('.mood-grid');
     const sobackCell = grid.querySelector('.mood-soback');
     const letsgoEl = grid.querySelector('.mood-letsgo');
+    const vibingCell = grid.querySelector('.mood-vibing');
     const itisEls = grid.querySelectorAll('.mood-itis');
 
     let isDragging = false;
@@ -855,11 +856,24 @@ function initMoodDot(dot) {
         } else if (letsgoEl) {
             letsgoEl.classList.remove('vibrating');
         }
+
+        // Check if dot center is within "We vibing" cell
+        if (vibingCell) {
+            const vibingRect = vibingCell.getBoundingClientRect();
+            const inVibing = dotCenterX >= vibingRect.left && dotCenterX <= vibingRect.right &&
+                             dotCenterY >= vibingRect.top && dotCenterY <= vibingRect.bottom;
+            if (inVibing) {
+                vibingCell.classList.add('vibrating');
+            } else {
+                vibingCell.classList.remove('vibrating');
+            }
+        }
     }
 
     function onDragStart(e) {
         isDragging = true;
         dot.style.cursor = 'grabbing';
+        dot.classList.add('dragging');
 
         const pos = getDotPosition();
         const gridRect = grid.getBoundingClientRect();
@@ -915,16 +929,66 @@ function initMoodDot(dot) {
         if (!isDragging) return;
         isDragging = false;
         dot.style.cursor = 'grab';
+        dot.classList.remove('dragging');
         // Check if dot is in vibration zone and maintain vibration if so
         checkCellOverlap();
     }
 
+    function onGridClick(e) {
+        // Skip if clicking on the dot itself
+        if (e.target === dot) return;
+
+        const gridRect = grid.getBoundingClientRect();
+        let clientX, clientY;
+
+        if (e.type === 'touchstart') {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        }
+
+        // Calculate position relative to grid
+        let newX = clientX - gridRect.left;
+        let newY = clientY - gridRect.top;
+
+        // Clamp to grid bounds
+        const dotRadius = dot.offsetWidth / 2;
+        newX = Math.max(dotRadius, Math.min(gridRect.width - dotRadius, newX));
+        newY = Math.max(dotRadius, Math.min(gridRect.height - dotRadius, newY));
+
+        // Convert to percentage
+        const leftPercent = (newX / gridRect.width) * 100;
+        const topPercent = (newY / gridRect.height) * 100;
+
+        setDotPosition(leftPercent, topPercent);
+        checkCellOverlap();
+
+        // Start dragging so user can continue moving
+        isDragging = true;
+        dot.style.cursor = 'grabbing';
+        startX = clientX;
+        startY = clientY;
+        dotStartX = newX;
+        dotStartY = newY;
+
+        // Add dragging class after transition completes to disable transition for subsequent moves
+        setTimeout(() => {
+            if (isDragging) dot.classList.add('dragging');
+        }, 150);
+
+        e.preventDefault();
+    }
+
     // Mouse events
+    grid.addEventListener('mousedown', onGridClick);
     dot.addEventListener('mousedown', onDragStart);
     document.addEventListener('mousemove', onDragMove);
     document.addEventListener('mouseup', onDragEnd);
 
     // Touch events
+    grid.addEventListener('touchstart', onGridClick, { passive: false });
     dot.addEventListener('touchstart', onDragStart, { passive: false });
     document.addEventListener('touchmove', onDragMove, { passive: true });
     document.addEventListener('touchend', onDragEnd);
