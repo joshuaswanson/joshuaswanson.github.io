@@ -185,19 +185,56 @@ h1 {
     animation: fadeIn 0.8s ease-out;
 }
 
-.portrait {
+.portrait-container {
     position: absolute;
     bottom: 100%;
-    left: 50%;
+    left: 45%;
     transform: translateX(-50%);
+    margin-bottom: -39px;
+    z-index: 15;
+    animation: portraitFloat 0.8s ease-out 0.1s both;
+    pointer-events: none;
+}
+
+.portrait {
     width: 260px;
     height: auto;
-    margin-bottom: -10px;
-    z-index: 15;
-    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25));
-    animation: portraitFloat 0.8s ease-out 0.1s both;
     -webkit-user-drag: none;
     user-select: none;
+    pointer-events: none;
+}
+
+.speech-bubble {
+    position: absolute;
+    top: -3%;
+    left: 55%;
+    background: var(--bg-secondary);
+    padding: 16px 24px;
+    border-radius: 20px;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.speech-subtext {
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 0;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    bottom: -22px;
+    width: 0;
+    height: 0;
+    border-left: 28px solid var(--bg-secondary);
+    border-bottom: 22px solid transparent;
 }
 
 .card {
@@ -315,6 +352,8 @@ h1 {
 }
 
 .tab-nav {
+    position: relative;
+    z-index: 20;
     display: flex;
     justify-content: center;
     padding: 24px 24px 0;
@@ -607,7 +646,7 @@ h1 {
 
 .publication {
     padding: 1.5rem;
-    background: var(--bg-secondary);
+    background: transparent;
     border: 1px solid var(--border);
     border-radius: 16px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -747,9 +786,19 @@ h1 {
         min-height: 300px;
     }
 
+    .portrait-container {
+        left: 20%;
+        margin-bottom: -25px;
+    }
+
     .portrait {
         width: 200px;
-        margin-bottom: -20px;
+    }
+
+    .speech-bubble {
+        font-size: 1rem;
+        padding: 12px 18px;
+        left: 80%;
     }
 
     .card {
@@ -825,9 +874,20 @@ h1 {
         min-height: 250px;
     }
 
+    .portrait-container {
+        left: 25%;
+        margin-bottom: -20px;
+    }
+
     .portrait {
         width: 170px;
-        margin-bottom: -15px;
+    }
+
+    .speech-bubble {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+        left: 75%;
+        top: 30%;
     }
 
     .card {
