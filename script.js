@@ -370,40 +370,10 @@ settingsToggle.addEventListener('click', () => {
     // Update switcher backgrounds when expanded (after transition)
     if (!isExpanded) {
         setTimeout(() => {
-            updateSwitcherBg(langSwitcher, false);
             updateSwitcherBg(themeSwitcher, false);
         }, 50);
     }
 });
-
-// Language switcher functionality
-const languages = ['en', 'de', 'fr'];
-const langSwitcher = document.querySelector('.language-switcher');
-
-function switchLanguage(lang) {
-    languages.forEach(l => {
-        const link = document.querySelector(`.${l}-link`);
-        const div = document.querySelector(`.${l}`);
-
-        if (l === lang) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'true');
-            div.style.display = 'block';
-        } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
-            div.style.display = 'none';
-        }
-    });
-    updateSwitcherBg(langSwitcher);
-}
-
-// Make language switcher draggable (also handles clicks)
-// Pass settingsPill as jiggle target since switcher is inside it
-makeSwitcherDraggable(langSwitcher, (btn) => {
-    const lang = languages.find(l => btn.classList.contains(`${l}-link`));
-    if (lang) switchLanguage(lang);
-}, settingsPill);
 
 // Theme toggle functionality
 const themeSwitcher = document.querySelector('.theme-toggle');
@@ -438,7 +408,6 @@ function setTheme(theme) {
 setTheme(getPreferredTheme());
 
 // Initialize switcher backgrounds after DOM is ready
-updateSwitcherBg(langSwitcher);
 updateSwitcherBg(themeSwitcher);
 
 // Make theme switcher draggable (also handles clicks)
@@ -798,7 +767,6 @@ makeTabNavDraggable(tabNav, (btn) => {
 
 // Update backgrounds on resize
 window.addEventListener('resize', () => {
-    updateSwitcherBg(langSwitcher, false);
     updateSwitcherBg(themeSwitcher, false);
     updateTabNavBg(tabNav, false);
 });
@@ -821,3 +789,146 @@ function updateParallax() {
 
 window.addEventListener('scroll', updateParallax, { passive: true });
 updateParallax(); // Initial call
+
+// Mood Meter draggable dot functionality
+function initMoodDot(dot) {
+    if (!dot) return;
+
+    const grid = dot.closest('.mood-main').querySelector('.mood-grid');
+    const sobackCell = grid.querySelector('.mood-soback');
+    const letsgoEl = grid.querySelector('.mood-letsgo');
+    const itisEls = grid.querySelectorAll('.mood-itis');
+
+    let isDragging = false;
+    let startX, startY, dotStartX, dotStartY;
+
+    function getDotPosition() {
+        const left = parseFloat(dot.style.left) || 50;
+        const top = parseFloat(dot.style.top) || 50;
+        return { left, top };
+    }
+
+    function setDotPosition(left, top) {
+        dot.style.left = `${left}%`;
+        dot.style.top = `${top}%`;
+    }
+
+    function checkCellOverlap() {
+        const dotRect = dot.getBoundingClientRect();
+        const dotCenterX = dotRect.left + dotRect.width / 2;
+        const dotCenterY = dotRect.top + dotRect.height / 2;
+
+        const sobackRect = sobackCell.getBoundingClientRect();
+        const letsgoRect = letsgoEl ? letsgoEl.getBoundingClientRect() : null;
+
+        // Check if dot center is within "LETS FUCKING GOOOOOOOO" area (more intense vibration)
+        let inLetsgo = false;
+        if (letsgoRect) {
+            inLetsgo = dotCenterX >= letsgoRect.left && dotCenterX <= letsgoRect.right &&
+                       dotCenterY >= letsgoRect.top && dotCenterY <= letsgoRect.bottom;
+        }
+
+        // Check if dot center is within any "it is" orange elements
+        let inItis = false;
+        itisEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (dotCenterX >= rect.left && dotCenterX <= rect.right &&
+                dotCenterY >= rect.top && dotCenterY <= rect.bottom) {
+                inItis = true;
+            }
+        });
+
+        // Check if dot center is within "We are so fucking back" cell (but not in letsgo or itis areas)
+        const inSoback = !inLetsgo && !inItis &&
+                         dotCenterX >= sobackRect.left && dotCenterX <= sobackRect.right &&
+                         dotCenterY >= sobackRect.top && dotCenterY <= sobackRect.bottom;
+
+        // Toggle vibration classes
+        if (inSoback) {
+            sobackCell.classList.add('vibrating');
+        } else {
+            sobackCell.classList.remove('vibrating');
+        }
+
+        if (inLetsgo && letsgoEl) {
+            letsgoEl.classList.add('vibrating');
+        } else if (letsgoEl) {
+            letsgoEl.classList.remove('vibrating');
+        }
+    }
+
+    function onDragStart(e) {
+        isDragging = true;
+        dot.style.cursor = 'grabbing';
+
+        const pos = getDotPosition();
+        const gridRect = grid.getBoundingClientRect();
+
+        if (e.type === 'mousedown') {
+            startX = e.clientX;
+            startY = e.clientY;
+        } else {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
+
+        dotStartX = (pos.left / 100) * gridRect.width;
+        dotStartY = (pos.top / 100) * gridRect.height;
+
+        e.preventDefault();
+    }
+
+    function onDragMove(e) {
+        if (!isDragging) return;
+
+        const gridRect = grid.getBoundingClientRect();
+        let clientX, clientY;
+
+        if (e.type === 'mousemove') {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        } else {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        }
+
+        const deltaX = clientX - startX;
+        const deltaY = clientY - startY;
+
+        let newX = dotStartX + deltaX;
+        let newY = dotStartY + deltaY;
+
+        // Clamp to grid bounds
+        const dotRadius = dot.offsetWidth / 2;
+        newX = Math.max(dotRadius, Math.min(gridRect.width - dotRadius, newX));
+        newY = Math.max(dotRadius, Math.min(gridRect.height - dotRadius, newY));
+
+        // Convert to percentage
+        const leftPercent = (newX / gridRect.width) * 100;
+        const topPercent = (newY / gridRect.height) * 100;
+
+        setDotPosition(leftPercent, topPercent);
+        checkCellOverlap();
+    }
+
+    function onDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        dot.style.cursor = 'grab';
+        // Check if dot is in vibration zone and maintain vibration if so
+        checkCellOverlap();
+    }
+
+    // Mouse events
+    dot.addEventListener('mousedown', onDragStart);
+    document.addEventListener('mousemove', onDragMove);
+    document.addEventListener('mouseup', onDragEnd);
+
+    // Touch events
+    dot.addEventListener('touchstart', onDragStart, { passive: false });
+    document.addEventListener('touchmove', onDragMove, { passive: true });
+    document.addEventListener('touchend', onDragEnd);
+}
+
+// Initialize all mood dots (one per language)
+document.querySelectorAll('.mood-dot').forEach(initMoodDot);
