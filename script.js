@@ -2,7 +2,15 @@
 const tabNav = document.querySelector('.tab-nav');
 const tabButtons = tabNav.querySelectorAll('.tab-btn');
 
+const avatar = document.querySelector('.avatar');
+const avatarDefault = 'assets/joshua.png';
+const avatarBallroom = 'assets/joshua_ballroom.png';
+
 function switchTab(tabName) {
+    // Swap avatar image and position
+    avatar.src = tabName === 'ballroom' ? avatarBallroom : avatarDefault;
+    avatar.classList.toggle('avatar-ballroom', tabName === 'ballroom');
+
     // Update button states
     tabButtons.forEach(btn => {
         if (btn.dataset.tab === tabName) {
