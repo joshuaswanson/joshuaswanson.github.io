@@ -154,6 +154,7 @@ h1 {
 
 .text p {
     margin-top: 1.25rem;
+    font-size: 0.95rem;
 }
 
 .text h1+p:first-of-type {
@@ -161,6 +162,7 @@ h1 {
     color: var(--text-primary);
     opacity: 0.8;
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .text .footnote {
@@ -349,7 +351,6 @@ h1 {
    ========================================================================== */
 
 .tab-content.publications h1 {
-    text-align: left;
     margin-bottom: 1.5rem;
 }
 
@@ -373,7 +374,6 @@ h1 {
     font-size: 0.95rem;
     color: var(--text-secondary);
     margin: 0 0 0.25rem 0;
-    text-align: left;
 }
 
 .publication-venue {
@@ -382,7 +382,6 @@ h1 {
     font-weight: 500;
     font-style: italic;
     margin: 0 0 1rem 0;
-    text-align: left;
 }
 
 .publication-links {
