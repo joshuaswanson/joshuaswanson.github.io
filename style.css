@@ -166,7 +166,7 @@ h1 {
 .avatar.avatar-ballroom {
     width: 290px;
     bottom: calc(100% - 33px);
-    transform: translateX(-50%) rotate(0.5deg);
+    transform: translateX(calc(-50% + 30px)) rotate(0.5deg);
 }
 
 .avatar.avatar-now {
