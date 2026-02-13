@@ -367,21 +367,21 @@ h1 {
     font-weight: 600;
     color: var(--text-primary);
     line-height: 1.4;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.4rem 0;
 }
 
-.publication-authors {
+.publication .publication-authors {
     font-size: 0.95rem;
     color: var(--text-secondary);
-    margin: 0 0 0.25rem 0;
+    margin: 0.15rem 0 0;
 }
 
-.publication-venue {
+.publication .publication-venue {
     font-size: 0.9rem;
     color: var(--text-secondary);
     font-weight: 500;
     font-style: italic;
-    margin: 0 0 1rem 0;
+    margin: 0.15rem 0 0.6rem;
 }
 
 .publication-links {
