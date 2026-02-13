@@ -23,25 +23,6 @@
     );
 }
 
-[data-theme="dark"] {
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #12121a;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --text-primary: #f0f0f5;
-    --text-secondary: #8b8d98;
-    --switcher-inactive: #c0c0c8;
-    --accent: #2dd4bf;
-    --accent-light: #5eead4;
-    --accent-glow: rgba(45, 212, 191, 0.2);
-    --border: rgba(255, 255, 255, 0.08);
-    --shadow: rgba(0, 0, 0, 0.4);
-    --hero-overlay: linear-gradient(
-        to bottom,
-        rgba(10, 10, 15, 0) 0%,
-        rgba(10, 10, 15, 0.4) 70%,
-        rgba(10, 10, 15, 1) 100%
-    );
-}
 
 /* ==========================================================================
    Reset & Base Styles
@@ -122,21 +103,6 @@ h1 {
     animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
-.hero-image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("assets/mountains_aurora.png");
-    background-position: center var(--parallax-offset);
-    background-size: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-[data-theme="dark"] .hero-image::before {
-    opacity: 1;
-}
-
 .hero::before,
 .hero::after {
     content: '';
@@ -147,14 +113,7 @@ h1 {
 }
 
 .hero::before {
-    background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 15, 0) 0%,
-        rgba(10, 10, 15, 0.4) 70%,
-        rgba(10, 10, 15, 1) 100%
-    );
-    opacity: 0;
-    z-index: 1;
+    display: none;
 }
 
 .hero::after {
@@ -164,16 +123,7 @@ h1 {
         rgba(250, 250, 250, 0.3) 70%,
         rgba(250, 250, 250, 1) 100%
     );
-    opacity: 1;
     z-index: 1;
-}
-
-[data-theme="dark"] .hero::before {
-    opacity: 1;
-}
-
-[data-theme="dark"] .hero::after {
-    opacity: 0;
 }
 
 /* ==========================================================================
@@ -183,58 +133,6 @@ h1 {
 #wrapper {
     position: relative;
     animation: fadeIn 0.8s ease-out;
-}
-
-.portrait-container {
-    position: absolute;
-    bottom: 100%;
-    left: 45%;
-    transform: translateX(-50%);
-    margin-bottom: -39px;
-    z-index: 15;
-    animation: portraitFloat 0.8s ease-out 0.1s both;
-    pointer-events: none;
-}
-
-.portrait {
-    width: 260px;
-    height: auto;
-    -webkit-user-drag: none;
-    user-select: none;
-    pointer-events: none;
-}
-
-.speech-bubble {
-    position: absolute;
-    top: -3%;
-    left: 55%;
-    background: var(--bg-secondary);
-    padding: 16px 24px;
-    border-radius: 20px;
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    white-space: nowrap;
-    text-align: center;
-}
-
-.speech-subtext {
-    display: block;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-secondary);
-    margin-top: 0;
-}
-
-.speech-bubble::before {
-    content: '';
-    position: absolute;
-    left: 25px;
-    bottom: -22px;
-    width: 0;
-    height: 0;
-    border-left: 28px solid var(--bg-secondary);
-    border-bottom: 22px solid transparent;
 }
 
 .card {
@@ -423,21 +321,6 @@ h1 {
    Components: Switcher (shared)
    ========================================================================== */
 
-.switcher {
-    position: fixed;
-    top: 20px;
-    display: flex;
-    gap: 5px;
-    padding: 5px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 23px;
-    backdrop-filter: blur(20px);
-    z-index: 100;
-    animation: fadeIn 0.6s ease-out 0.4s both;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
 .switcher-inner {
     position: relative;
     display: flex;
@@ -459,180 +342,6 @@ h1 {
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
                 width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 0;
-}
-
-.switcher button {
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-    border: none;
-    height: 36px;
-    width: 36px;
-    padding: 0;
-    background: transparent;
-    border-radius: 18px;
-    font: inherit;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--switcher-inactive);
-    cursor: pointer;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.switcher button.active {
-    color: white;
-}
-
-.switcher button:hover:not(.active) {
-    color: var(--text-primary);
-}
-
-.switcher button:focus-visible {
-    outline: 2px solid var(--accent-light);
-    outline-offset: 2px;
-}
-
-/* Theme toggle */
-.theme-toggle button {
-    width: 36px;
-    padding: 0;
-}
-
-.theme-toggle button svg {
-    width: 16px;
-    height: 16px;
-}
-
-/* ==========================================================================
-   Components: Settings Pill
-   ========================================================================== */
-
-.settings-pill {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    padding: 5px;
-    background: var(--bg-card);
-    border-radius: 26px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    z-index: 100;
-    animation: fadeIn 0.6s ease-out 0.4s both;
-    transition: background-color 0.3s ease, gap 0.3s ease;
-    transform-origin: center center;
-    will-change: transform;
-}
-
-.settings-pill.expanded {
-    gap: 8px;
-}
-
-.settings-pill.jiggle-open {
-    animation: settingsJiggleOpen 0.6s ease-out;
-    transform-origin: right center;
-}
-
-.settings-pill.jiggle-close {
-    animation: settingsJiggleClose 0.6s ease-out;
-    transform-origin: right center;
-}
-
-.settings-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: none;
-    background: transparent;
-    border-radius: 21px;
-    color: var(--switcher-inactive);
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.3s ease;
-    flex-shrink: 0;
-}
-
-.settings-toggle:hover {
-    color: var(--text-primary);
-}
-
-.settings-toggle:focus-visible {
-    outline: 2px solid var(--accent-light);
-    outline-offset: 2px;
-}
-
-.settings-toggle svg {
-    width: 22px;
-    height: 22px;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    position: absolute;
-    pointer-events: none;
-}
-
-.settings-toggle .icon-gear {
-    opacity: 1;
-}
-
-.settings-toggle .icon-collapse {
-    opacity: 0;
-}
-
-.settings-pill.expanded .settings-toggle .icon-gear {
-    opacity: 0;
-}
-
-.settings-pill.expanded .settings-toggle .icon-collapse {
-    opacity: 1;
-}
-
-.settings-content {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    max-width: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-width 0.3s ease,
-                opacity 0.25s ease,
-                gap 0.3s ease,
-                overflow 0s 0.3s;
-}
-
-.settings-pill.expanded .settings-content {
-    max-width: 300px;
-    overflow: visible;
-    opacity: 1;
-    transition: max-width 0.3s ease,
-                opacity 0.25s ease,
-                gap 0.3s ease,
-                overflow 0s 0s;
-}
-
-.settings-divider {
-    width: 1px;
-    height: 24px;
-    background: var(--border);
-    flex-shrink: 0;
-}
-
-/* Switchers inside settings pill - reset positioning */
-.settings-pill .switcher {
-    position: static;
-    padding: 0;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    backdrop-filter: none;
-    animation: none;
 }
 
 /* ==========================================================================
@@ -738,16 +447,6 @@ h1 {
     to { transform: scale(1.05); }
 }
 
-@keyframes portraitFloat {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%);
-    }
-}
 
 @keyframes cardFloat {
     from {
@@ -760,21 +459,6 @@ h1 {
     }
 }
 
-@keyframes settingsJiggleOpen {
-    0% { transform: scaleX(1.15); }
-    25% { transform: scaleX(0.97); }
-    50% { transform: scaleX(1.03); }
-    75% { transform: scaleX(0.99); }
-    100% { transform: scaleX(1); }
-}
-
-@keyframes settingsJiggleClose {
-    0% { transform: scaleX(0.85); }
-    25% { transform: scaleX(1.03); }
-    50% { transform: scaleX(0.97); }
-    75% { transform: scaleX(1.01); }
-    100% { transform: scaleX(1); }
-}
 
 /* ==========================================================================
    Media Queries
@@ -784,33 +468,6 @@ h1 {
     .hero {
         height: 50vh;
         min-height: 300px;
-    }
-
-    .portrait-container {
-        left: 50%;
-        margin-bottom: -32px;
-    }
-
-    .portrait {
-        width: 200px;
-    }
-
-    .speech-bubble {
-        font-size: 1rem;
-        padding: 12px 18px;
-        left: 50%;
-        top: -15%;
-        transform: translateX(-50%);
-    }
-
-    .speech-bubble::before {
-        left: 50%;
-        bottom: -17px;
-        transform: translateX(-50%);
-        border-left: 14px solid transparent;
-        border-right: 14px solid transparent;
-        border-top: 18px solid var(--bg-secondary);
-        border-bottom: 0;
     }
 
     .card {
@@ -826,23 +483,6 @@ h1 {
         font-size: 1.75rem;
     }
 
-    .settings-pill {
-        bottom: 12px;
-        right: 12px;
-        border-radius: 28px;
-    }
-
-    .settings-toggle {
-        width: 46px;
-        height: 46px;
-        border-radius: 23px;
-    }
-
-    .settings-toggle svg {
-        width: 24px;
-        height: 24px;
-    }
-
     .tab-nav {
         padding: 20px 16px 0;
     }
@@ -851,8 +491,7 @@ h1 {
         border-radius: 25px;
     }
 
-    .tab-nav .switcher-bg,
-    .switcher-bg {
+    .tab-nav .switcher-bg {
         border-radius: 20px;
     }
 
@@ -863,54 +502,12 @@ h1 {
         border-radius: 20px;
     }
 
-    .switcher {
-        border-radius: 25px;
-    }
-
-    .switcher button {
-        height: 40px;
-        width: 40px;
-        font-size: 0.85rem;
-        border-radius: 20px;
-    }
-
-    .theme-toggle button svg {
-        width: 18px;
-        height: 18px;
-    }
 }
 
 @media (max-width: 480px) {
     .hero {
         height: 45vh;
         min-height: 250px;
-    }
-
-    .portrait-container {
-        left: 50%;
-        margin-bottom: -26px;
-    }
-
-    .portrait {
-        width: 170px;
-    }
-
-    .speech-bubble {
-        font-size: 0.85rem;
-        padding: 10px 14px;
-        left: 50%;
-        top: -20%;
-        transform: translateX(-50%);
-    }
-
-    .speech-bubble::before {
-        left: 50%;
-        bottom: -15px;
-        transform: translateX(-50%);
-        border-left: 12px solid transparent;
-        border-right: 12px solid transparent;
-        border-top: 16px solid var(--bg-secondary);
-        border-bottom: 0;
     }
 
     .card {
