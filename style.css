@@ -512,6 +512,16 @@ h1 {
         border-radius: 20px;
     }
 
+    .avatar {
+        width: 200px;
+        bottom: calc(100% - 24px);
+    }
+
+    .avatar.avatar-ballroom {
+        width: 210px;
+        bottom: calc(100% - 25px);
+    }
+
     .text {
         padding: 36px 32px 44px;
     }
@@ -550,6 +560,16 @@ h1 {
     .card {
         margin: -70px 12px 0;
         border-radius: 16px;
+    }
+
+    .avatar {
+        width: 150px;
+        bottom: calc(100% - 18px);
+    }
+
+    .avatar.avatar-ballroom {
+        width: 160px;
+        bottom: calc(100% - 19px);
     }
 
     .text {
