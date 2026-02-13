@@ -394,6 +394,23 @@ h1 {
    Content: Dated Entry
    ========================================================================== */
 
+.section-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    margin-bottom: 0;
+}
+
+.section-label:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
 .dated-entry {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -404,7 +421,7 @@ h1 {
 }
 
 .dated-entry p {
-    margin: 0 0 1rem 0;
+    margin: 0;
     padding: 0;
     border: none;
     font-size: 0.95rem;
