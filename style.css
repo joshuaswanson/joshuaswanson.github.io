@@ -169,6 +169,11 @@ h1 {
     transform: translateX(-50%) rotate(0.5deg);
 }
 
+.avatar.avatar-now {
+    width: 286px;
+    bottom: calc(100% - 32px);
+}
+
 .text {
     padding: 48px 56px 56px;
 }
@@ -522,6 +527,11 @@ h1 {
         bottom: calc(100% - 25px);
     }
 
+    .avatar.avatar-now {
+        width: 200px;
+        bottom: calc(100% - 24px);
+    }
+
     .text {
         padding: 36px 32px 44px;
     }
@@ -570,6 +580,11 @@ h1 {
     .avatar.avatar-ballroom {
         width: 160px;
         bottom: calc(100% - 19px);
+    }
+
+    .avatar.avatar-now {
+        width: 150px;
+        bottom: calc(100% - 18px);
     }
 
     .text {

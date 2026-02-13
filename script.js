@@ -5,11 +5,17 @@ const tabButtons = tabNav.querySelectorAll('.tab-btn');
 const avatar = document.querySelector('.avatar');
 const avatarDefault = 'assets/joshua.png';
 const avatarBallroom = 'assets/joshua_ballroom.png';
+const avatarRandom = 'assets/joshua_random.png';
+
+const avatarMap = {
+    ballroom: avatarBallroom,
+    now: avatarRandom,
+};
 
 function switchTab(tabName) {
     // Swap avatar image and position
-    avatar.src = tabName === 'ballroom' ? avatarBallroom : avatarDefault;
-    avatar.classList.toggle('avatar-ballroom', tabName === 'ballroom');
+    avatar.src = avatarMap[tabName] || avatarDefault;
+    avatar.className = 'avatar' + (tabName !== 'about' && tabName !== 'publications' ? ` avatar-${tabName}` : '');
 
     // Update button states
     tabButtons.forEach(btn => {
