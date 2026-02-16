@@ -7,15 +7,23 @@ const avatarDefault = "assets/joshua.png";
 const avatarBallroom = "assets/joshua_ballroom.png";
 const avatarRandom = "assets/joshua_random.png";
 const avatarContact = "assets/joshua_contact.png";
+const avatarPublications = "assets/joshua_publications.png";
 
 const avatarMap = {
   ballroom: avatarBallroom,
   now: avatarRandom,
   contact: avatarContact,
+  publications: avatarPublications,
 };
 
 // Preload all avatar images so tab switches are instant
-[avatarDefault, avatarBallroom, avatarRandom, avatarContact].forEach((src) => {
+[
+  avatarDefault,
+  avatarBallroom,
+  avatarRandom,
+  avatarContact,
+  avatarPublications,
+].forEach((src) => {
   const img = new Image();
   img.src = src;
 });
@@ -24,10 +32,7 @@ function switchTab(tabName) {
   // Swap avatar image and position
   avatar.src = avatarMap[tabName] || avatarDefault;
   avatar.className =
-    "avatar" +
-    (tabName !== "about" && tabName !== "publications"
-      ? ` avatar-${tabName}`
-      : "");
+    "avatar" + (tabName !== "about" ? ` avatar-${tabName}` : "");
 
   // Update button states
   tabButtons.forEach((btn) => {
