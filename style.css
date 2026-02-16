@@ -429,6 +429,13 @@ h1 {
   gap: 0.75rem;
 }
 
+.pub-more {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 2rem;
+}
+
 /* ==========================================================================
    Content: Dated Entry
    ========================================================================== */
@@ -617,8 +624,8 @@ h1 {
   }
 
   .lang-toggle {
-    width: 38px;
-    height: 38px;
+    width: 46px;
+    height: 46px;
     bottom: 16px;
     right: 16px;
   }
@@ -632,14 +639,14 @@ h1 {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--bg-card);
   cursor: pointer;
   z-index: 100;
-  padding: 8px;
+  padding: 12px;
   box-shadow:
     0 2px 8px var(--shadow),
     0 1px 2px var(--shadow);
@@ -659,26 +666,14 @@ h1 {
   transform: scale(0.95);
 }
 
-.lang-toggle.active {
-  box-shadow:
-    0 2px 8px var(--shadow),
-    0 1px 2px var(--shadow);
-}
-
 .lang-toggle svg {
   width: 100%;
   height: 100%;
   border-radius: 4px;
+  filter: grayscale(1) opacity(0.4);
+  transition: filter 0.3s ease;
 }
 
-.lang-toggle .flag-us {
-  display: none;
-}
-
-.lang-toggle.active .flag-ch {
-  display: none;
-}
-
-.lang-toggle.active .flag-us {
-  display: block;
+.lang-toggle.active svg {
+  filter: none;
 }
