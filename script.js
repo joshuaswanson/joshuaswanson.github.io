@@ -6,14 +6,16 @@ const avatar = document.querySelector(".avatar");
 const avatarDefault = "assets/joshua.png";
 const avatarBallroom = "assets/joshua_ballroom.png";
 const avatarRandom = "assets/joshua_random.png";
+const avatarContact = "assets/joshua_contact.png";
 
 const avatarMap = {
   ballroom: avatarBallroom,
   now: avatarRandom,
+  contact: avatarContact,
 };
 
 // Preload all avatar images so tab switches are instant
-[avatarDefault, avatarBallroom, avatarRandom].forEach((src) => {
+[avatarDefault, avatarBallroom, avatarRandom, avatarContact].forEach((src) => {
   const img = new Image();
   img.src = src;
 });
@@ -23,7 +25,7 @@ function switchTab(tabName) {
   avatar.src = avatarMap[tabName] || avatarDefault;
   avatar.className =
     "avatar" +
-    (tabName !== "about" && tabName !== "publications" && tabName !== "contact"
+    (tabName !== "about" && tabName !== "publications"
       ? ` avatar-${tabName}`
       : "");
 
