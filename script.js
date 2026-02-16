@@ -23,7 +23,7 @@ function switchTab(tabName) {
   avatar.src = avatarMap[tabName] || avatarDefault;
   avatar.className =
     "avatar" +
-    (tabName !== "about" && tabName !== "publications"
+    (tabName !== "about" && tabName !== "publications" && tabName !== "contact"
       ? ` avatar-${tabName}`
       : "");
 
@@ -626,7 +626,7 @@ document.querySelectorAll(".mood-dot").forEach(initMoodDot);
 // ==========================================================================
 
 const chTranslations = {
-  "tab-about": "Über mi",
+  "tab-about": "Hei",
   "tab-publications": "Publikatione",
   "tab-ballroom": "Tanze",
   "tab-now": "Allerhand",
@@ -670,6 +670,14 @@ const chTranslations = {
     'Ich ha mini Turnierlizenz vom <a href="https://www.dancesport.ch" target="_blank" rel="noopener">Schwiizer Tanzsport Verband</a> übercho.',
   "ballroom-etds":
     'Ich bi 3. worde im Latin Masters am 70. <a href="https://en.wikipedia.org/wiki/European_Tournament_for_Dancing_Students" target="_blank" rel="noopener">ETDS</a> (European Tournament for Dancing Students) z\'Monheim am Rhein.',
+  "tab-contact": "Kontakt",
+  "contact-heading": "Meld di!",
+  "contact-intro": "Ich biisse nur manchmal.",
+  "contact-socials": "Find mi im Internet:",
+  "contact-email":
+    "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
+  "contact-standing":
+    'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
   "pub-heading": "Publikatione",
   "pub-intro": "S'komplette Wärk.",
   "pub-more": "Meh chunnt bald...",
