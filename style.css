@@ -185,6 +185,13 @@ h1 {
   bottom: calc(100% - 33px);
 }
 
+.avatar.avatar-publications {
+  width: auto;
+  height: 425px;
+  bottom: calc(100% - 31px);
+  transform: translateX(calc(-50% - 10px));
+}
+
 .text {
   padding: 48px 56px 56px;
 }
@@ -592,6 +599,12 @@ h1 {
     bottom: calc(100% - 25px);
   }
 
+  .avatar.avatar-publications {
+    width: auto;
+    height: 298px;
+    bottom: calc(100% - 24px);
+  }
+
   .text {
     padding: 36px 32px 44px;
   }
@@ -649,6 +662,12 @@ h1 {
   .avatar.avatar-contact {
     width: 150px;
     bottom: calc(100% - 19px);
+  }
+
+  .avatar.avatar-publications {
+    width: auto;
+    height: 224px;
+    bottom: calc(100% - 18px);
   }
 
   .text {
