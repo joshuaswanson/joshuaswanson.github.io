@@ -180,6 +180,11 @@ h1 {
   bottom: calc(100% - 32px);
 }
 
+.avatar.avatar-contact {
+  width: 280px;
+  bottom: calc(100% - 33px);
+}
+
 .text {
   padding: 48px 56px 56px;
 }
@@ -582,6 +587,11 @@ h1 {
     bottom: calc(100% - 24px);
   }
 
+  .avatar.avatar-contact {
+    width: 200px;
+    bottom: calc(100% - 25px);
+  }
+
   .text {
     padding: 36px 32px 44px;
   }
@@ -634,6 +644,11 @@ h1 {
   .avatar.avatar-now {
     width: 150px;
     bottom: calc(100% - 18px);
+  }
+
+  .avatar.avatar-contact {
+    width: 150px;
+    bottom: calc(100% - 19px);
   }
 
   .text {
