@@ -187,7 +187,7 @@ h1 {
 
 .avatar.avatar-publications {
   width: auto;
-  height: 425px;
+  height: 445px;
   bottom: calc(100% - 31px);
   transform: translateX(calc(-50% - 10px));
 }
