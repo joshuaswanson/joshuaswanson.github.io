@@ -12,6 +12,12 @@ const avatarMap = {
   now: avatarRandom,
 };
 
+// Preload all avatar images so tab switches are instant
+[avatarDefault, avatarBallroom, avatarRandom].forEach((src) => {
+  const img = new Image();
+  img.src = src;
+});
+
 function switchTab(tabName) {
   // Swap avatar image and position
   avatar.src = avatarMap[tabName] || avatarDefault;
@@ -628,6 +634,7 @@ const chTranslations = {
   "about-intro": "Ich bi de Joshua Swanson.",
   "about-bio":
     'Ich mach grad min Master i Informatik a de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management. Vorher hani Mathematik und Informatik a de <a href="https://www.washington.edu">University of Washington</a> z\'Seattle studiert.',
+  "about-origin": "Ich chum ursprünglich us de USA.",
   "about-footnote":
     "Website zletscht aktualisiert: Februar 2026.<br>Designed vo: Joshua Swanson",
   "now-heading": "Allerhand",
@@ -665,6 +672,7 @@ const chTranslations = {
     'Ich bi 3. worde im Latin Masters am 70. <a href="https://en.wikipedia.org/wiki/European_Tournament_for_Dancing_Students" target="_blank" rel="noopener">ETDS</a> (European Tournament for Dancing Students) z\'Monheim am Rhein.',
   "pub-heading": "Publikatione",
   "pub-intro": "S'komplette Wärk.",
+  "pub-more": "Meh chunnt bald...",
 };
 
 const originals = {};
