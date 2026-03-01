@@ -439,6 +439,10 @@ h1 {
     border-color 0.3s ease;
 }
 
+.publication + .publication {
+  margin-top: 2rem;
+}
+
 .publication-title {
   font-size: 1.1rem;
   font-weight: 600;
