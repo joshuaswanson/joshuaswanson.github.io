@@ -11,7 +11,7 @@ const avatarPublications = "assets/joshua_publications.png";
 
 const avatarMap = {
   ballroom: avatarBallroom,
-  now: avatarRandom,
+  random: avatarRandom,
   contact: avatarContact,
   publications: avatarPublications,
 };
@@ -636,7 +636,7 @@ const chTranslations = {
   "tab-about": "Hei",
   "tab-publications": "Publikatione",
   "tab-ballroom": "Tanze",
-  "tab-now": "Allerhand",
+  "tab-random": "Allerhand",
   "about-heading": "Hoi zäme!",
   "about-intro": "Ich bi de Joshua Swanson.",
   "about-bio":
@@ -644,12 +644,12 @@ const chTranslations = {
   "about-origin": "Ich chum ursprünglich us de USA.",
   "about-footnote":
     "Website zletscht aktualisiert: Februar 2026.<br>Designed vo: Joshua Swanson",
-  "now-heading": "Allerhand",
-  "now-intro":
-    "Es paar Sache woni intressant, lustig, oder wärt zum Teile find.",
-  "now-monitor":
+  "random-heading": "Allerhand",
+  "random-intro":
+    "Chliini Tools, Experiment, und Näbeprojekt woni zum Spass bau.",
+  "random-monitor":
     'Wänn ich de ganz Tag a minere Masterarbeit schaffe, dänki immer wieder wie geil es wär, en grössere Bildschirm z\'ha als nur min MacBook. Normalerwiis hani es IDE, es Terminal, Overleaf, Spotify, und es Dutzed anderi Sache gliichziitig offe. Ich ha Glück gha und en Samsung SyncMaster SA850 uf de Strass z\'Züri gratis gfunde. Aber wo ich denn agfange ha, mich nach emene richtige Upgrade umzluege, hät mich d\'Azahl vo Specs wo me muess vergliiche echli überforderet -- Uflösig, PPI, Siitverhältnis, Diagonali, Panel-Typ -- also hani gmacht was jede vernünftigi Person mache würd und es <a href="https://joshuaswanson.github.io/monitor-comparison/" target="_blank" rel="noopener">interaktivs Monitor-Vergliichstool</a> baut. Es zeigt Monitore uf emene Scatter-Chart mit konfigurierbare Achse und me cha nach jedere Eigenschaft filtere.',
-  "now-mood":
+  "random-mood":
     "Ich ha de Mood Meter neulich uf Instagram gseh und ha ne mega lustig gfunde. Ich ha ne da i HTML/CSS nachbaut. Es hät öppis komisch Bestätigends, wänn me gnau cha zeige wo me grad druf isch.",
   "mood-title": "DE STIMMIGSMESSER",
   "mood-high-energy": "VOLL<br>POWER",

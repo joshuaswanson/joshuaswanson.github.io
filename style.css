@@ -175,7 +175,7 @@ h1 {
   transform: translateX(calc(-50% + 30px)) rotate(0.5deg);
 }
 
-.avatar.avatar-now {
+.avatar.avatar-random {
   width: 286px;
   bottom: calc(100% - 32px);
 }
@@ -619,7 +619,7 @@ h1 {
     bottom: calc(100% - 25px);
   }
 
-  .avatar.avatar-now {
+  .avatar.avatar-random {
     width: 200px;
     bottom: calc(100% - 24px);
   }
@@ -684,7 +684,7 @@ h1 {
     bottom: calc(100% - 19px);
   }
 
-  .avatar.avatar-now {
+  .avatar.avatar-random {
     width: 150px;
     bottom: calc(100% - 18px);
   }
