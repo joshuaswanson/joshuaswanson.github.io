@@ -472,7 +472,9 @@ h1 {
 }
 
 .publication-media {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
