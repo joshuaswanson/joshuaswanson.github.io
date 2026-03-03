@@ -673,7 +673,7 @@ const chTranslations = {
     'Ich bi 3. worde im Latin Masters am 70. <a href="https://en.wikipedia.org/wiki/European_Tournament_for_Dancing_Students" target="_blank" rel="noopener">ETDS</a> (European Tournament for Dancing Students) z\'Monheim am Rhein.',
   "tab-contact": "Kontakt",
   "contact-heading": "Meld di!",
-  "contact-intro": "Ich biisse nur manchmal.",
+  "contact-intro": "Bliib nöd fremd.",
   "contact-socials": "Find mi im Internet:",
   "contact-email":
     "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
