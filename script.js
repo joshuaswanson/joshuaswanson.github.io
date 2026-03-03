@@ -720,7 +720,7 @@ function applyLanguage(lang) {
     lang === "ch" ? "Switch to English" : "Switch to Swiss German",
   );
 
-  updateTabNavBg(tabNav);
+  updateTabNavBg(tabNav, false);
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
