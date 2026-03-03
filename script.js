@@ -5,28 +5,22 @@ const tabButtons = tabNav.querySelectorAll(".tab-btn");
 const avatar = document.querySelector(".avatar");
 const avatarDefault = "assets/joshua.png";
 const avatarBallroom = "assets/joshua_ballroom.png";
-const avatarRandom = "assets/joshua_random.png";
 const avatarContact = "assets/joshua_contact.png";
 const avatarPublications = "assets/joshua_publications.png";
 
 const avatarMap = {
   ballroom: avatarBallroom,
-  random: avatarRandom,
   contact: avatarContact,
   publications: avatarPublications,
 };
 
 // Preload all avatar images so tab switches are instant
-[
-  avatarDefault,
-  avatarBallroom,
-  avatarRandom,
-  avatarContact,
-  avatarPublications,
-].forEach((src) => {
-  const img = new Image();
-  img.src = src;
-});
+[avatarDefault, avatarBallroom, avatarContact, avatarPublications].forEach(
+  (src) => {
+    const img = new Image();
+    img.src = src;
+  },
+);
 
 function switchTab(tabName) {
   // Swap avatar image and position

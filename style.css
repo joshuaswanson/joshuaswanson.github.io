@@ -175,11 +175,6 @@ h1 {
   transform: translateX(calc(-50% + 30px)) rotate(0.5deg);
 }
 
-.avatar.avatar-random {
-  width: 286px;
-  bottom: calc(100% - 32px);
-}
-
 .avatar.avatar-contact {
   width: 280px;
   bottom: calc(100% - 33px);
@@ -621,11 +616,6 @@ h1 {
     bottom: calc(100% - 25px);
   }
 
-  .avatar.avatar-random {
-    width: 200px;
-    bottom: calc(100% - 24px);
-  }
-
   .avatar.avatar-contact {
     width: 200px;
     bottom: calc(100% - 25px);
@@ -684,11 +674,6 @@ h1 {
   .avatar.avatar-ballroom {
     width: 160px;
     bottom: calc(100% - 19px);
-  }
-
-  .avatar.avatar-random {
-    width: 150px;
-    bottom: calc(100% - 18px);
   }
 
   .avatar.avatar-contact {
