@@ -167,6 +167,9 @@ h1 {
   transform: translateX(-50%);
   bottom: calc(100% - 32px);
   z-index: 11;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .avatar.avatar-ballroom {
