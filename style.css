@@ -469,30 +469,33 @@ h1 {
   gap: 0.75rem;
 }
 
-.publication-links + .publication-media {
+.publication-links + .publication-media-group {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border);
 }
 
-.publication-media + .publication-media {
-  margin-top: 0.5rem;
-}
-
-.publication-media {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 0.5rem;
+.publication-media-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 0.75rem;
   font-size: 0.85rem;
 }
 
-.publication-media .media-label {
+.publication-media-group .media-label {
   color: var(--text-secondary);
   font-weight: 500;
+  white-space: nowrap;
+  align-self: baseline;
 }
 
-.publication-media a {
+.publication-media-group .media-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+}
+
+.publication-media-group a {
   color: var(--text-secondary);
   text-decoration: underline;
   text-decoration-color: var(--border);
