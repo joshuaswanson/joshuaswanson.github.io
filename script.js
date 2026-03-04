@@ -704,32 +704,6 @@ function applyLanguage(lang) {
     }
   });
 
-  // Swap language tags on coverage links based on UI language
-  const langTags = {
-    en: "EN",
-    de: "DE",
-    fr: "FR",
-    it: "IT",
-    tr: "TR",
-    ru: "RU",
-  };
-  document.querySelectorAll("[data-lang]").forEach((el) => {
-    if (!el._origText) el._origText = el.textContent;
-    const articleLang = el.dataset.lang;
-    if (lang === "ch") {
-      // In Swiss German mode: remove DE tags, add EN tags to English sources
-      if (articleLang === "de") {
-        el.textContent = el._origText.replace(/ \(DE\)/, "");
-      } else if (articleLang === "en") {
-        el.textContent = el._origText + " (EN)";
-      } else {
-        el.textContent = el._origText;
-      }
-    } else {
-      el.textContent = el._origText;
-    }
-  });
-
   currentLang = lang;
   localStorage.setItem("lang", lang);
 
