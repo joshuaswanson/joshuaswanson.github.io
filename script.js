@@ -679,6 +679,8 @@ const chTranslations = {
     "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
   "contact-standing":
     'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
+  "deanon-featured": "Bekannt us:",
+  "deanon-discussed": "Diskutiert uf:",
   "pub-heading": "Publikatione",
   "pub-intro": "S'komplette Wärk.",
   "pub-more": "Meh chunnt bald...",
