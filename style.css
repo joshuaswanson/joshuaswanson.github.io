@@ -469,10 +469,14 @@ h1 {
   gap: 0.75rem;
 }
 
-.publication-media:first-of-type {
+.publication-links + .publication-media {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border);
+}
+
+.publication-media + .publication-media {
+  margin-top: 0.5rem;
 }
 
 .publication-media {
