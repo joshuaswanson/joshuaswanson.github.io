@@ -663,8 +663,8 @@ h1 {
   .tab-nav {
     position: fixed;
     bottom: 1px;
-    left: 21px;
-    right: 21px;
+    left: 31px;
+    right: 31px;
     display: block;
     padding: 0;
     padding-bottom: env(safe-area-inset-bottom);
