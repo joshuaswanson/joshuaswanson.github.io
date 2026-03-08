@@ -662,7 +662,7 @@ h1 {
 
   .tab-nav {
     position: fixed;
-    bottom: 0;
+    bottom: 1px;
     left: 21px;
     right: 21px;
     display: block;
