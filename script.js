@@ -634,7 +634,7 @@ const chTranslations = {
   "about-heading": "Hoi zäme!",
   "about-intro": "Ich bi de Joshua Swanson.",
   "about-bio":
-    'Ich mach grad min Master i Informatik a de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management. Vorher hani Mathematik und Informatik a de <a href="https://www.washington.edu">University of Washington</a> z\'Seattle studiert.',
+    'Ich mach grad min Master i Informatik a de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management. Ich han en BA i Mathematik und en BSc i Informatik vo de <a href="https://www.washington.edu">University of Washington</a>.',
   "about-origin": "Ich chum ursprünglich us de USA.",
   "about-footnote":
     "Website zletscht aktualisiert: Februar 2026.<br>Designed vo: Joshua Swanson",
