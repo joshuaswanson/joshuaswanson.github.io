@@ -46,7 +46,11 @@ function switchTab(tabName) {
     }
   });
 
-  updateTabNavBg(tabNav);
+  if (window.innerWidth <= 768 && typeof carousel !== "undefined") {
+    carousel.updateCarouselPosition(true);
+  } else {
+    updateTabNavBg(tabNav);
+  }
 }
 
 // Update tab nav sliding background
@@ -156,6 +160,7 @@ function makeTabNavDraggable(nav, onSelect) {
   }
 
   function onDragStart(e) {
+    if (window.innerWidth <= 768) return;
     isDragging = true;
     hasMoved = false;
     currentScaleX = 1;
@@ -366,17 +371,380 @@ function resetTabButtonColors(nav) {
   });
 }
 
+// Mobile carousel tab navigation
+function initMobileCarousel(nav, onSelect) {
+  const inner = nav.querySelector(".switcher-inner");
+  const buttons = Array.from(nav.querySelectorAll(".tab-btn"));
+  const n = buttons.length;
+  const isMobile = () => window.innerWidth <= 768;
+
+  // Create a track element (white pill stays, only track moves)
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+
+  // Clone buttons before and after for infinite loop
+  const clonesBefore = buttons.map((btn) => {
+    const c = btn.cloneNode(true);
+    c.classList.remove("active");
+    c.classList.add("clone");
+    return c;
+  });
+  const clonesAfter = buttons.map((btn) => {
+    const c = btn.cloneNode(true);
+    c.classList.remove("active");
+    c.classList.add("clone");
+    return c;
+  });
+
+  // Build track: [clonesBefore] [real buttons] [clonesAfter]
+  clonesBefore.forEach((c) => track.appendChild(c));
+  buttons.forEach((btn) => track.appendChild(btn));
+  clonesAfter.forEach((c) => track.appendChild(c));
+  inner.appendChild(track);
+
+  // All items in the track (for visual proximity calculations)
+  const allItems = [...clonesBefore, ...buttons, ...clonesAfter];
+
+  // Centered red pill
+  const mobileBg = document.createElement("div");
+  mobileBg.className = "mobile-bg";
+  inner.appendChild(mobileBg);
+
+  let trackOffset = 0;
+  let isDragging = false;
+  let hasMoved = false;
+  let startX = 0;
+  let dragStartOffset = 0;
+  let velocity = 0;
+  let lastX = 0;
+  let lastTime = 0;
+
+  const padding = 5;
+
+  function getActiveIndex() {
+    return buttons.findIndex((b) => b.classList.contains("active"));
+  }
+
+  // Center of the visible area (relative to track coordinate space)
+  function getVisibleCenter() {
+    return inner.offsetWidth / 2 - padding - trackOffset;
+  }
+
+  // Width of one full set of buttons
+  function getSetWidth() {
+    let w = 0;
+    buttons.forEach((btn) => (w += btn.offsetWidth));
+    return w;
+  }
+
+  // Get the offset where clonesBefore ends / real buttons start
+  function getRealStartOffset() {
+    let w = 0;
+    clonesBefore.forEach((c) => (w += c.offsetWidth));
+    return w;
+  }
+
+  function positionBg(btn) {
+    mobileBg.style.width = `${btn.offsetWidth}px`;
+  }
+
+  // Find closest item (real or clone) to the visible center
+  function getClosestToCenter() {
+    const visCenter = getVisibleCenter();
+    let closestIdx = 0;
+    let closestDist = Infinity;
+    allItems.forEach((item, i) => {
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(itemCenter - visCenter);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIdx = i;
+      }
+    });
+    return closestIdx;
+  }
+
+  // Convert any allItems index to the corresponding real button index
+  function toRealIndex(idx) {
+    return ((idx % n) + n) % n;
+  }
+
+  // Wrap trackOffset so we stay near the real (middle) set
+  function wrapOffset() {
+    const setWidth = getSetWidth();
+    const realStart = getRealStartOffset();
+    const visCenter = getVisibleCenter();
+
+    // If visible center is in clonesBefore region, jump forward by one set
+    if (visCenter < realStart) {
+      trackOffset -= setWidth;
+      dragStartOffset -= setWidth;
+    }
+    // If visible center is in clonesAfter region
+    else if (visCenter >= realStart + setWidth) {
+      trackOffset += setWidth;
+      dragStartOffset += setWidth;
+    }
+  }
+
+  function updateCarouselPosition(animate = true) {
+    if (!isMobile()) return;
+    const activeIdx = getActiveIndex();
+    const btn = buttons[activeIdx];
+    const btnCenter = btn.offsetLeft + btn.offsetWidth / 2;
+    const innerCenter = inner.offsetWidth / 2 - padding;
+    trackOffset = innerCenter - btnCenter;
+
+    if (animate) {
+      void track.offsetHeight;
+      void mobileBg.offsetWidth;
+      track.style.transition = "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)";
+      mobileBg.style.transition = "width 0.35s cubic-bezier(0.4, 0, 0.2, 1)";
+    } else {
+      track.style.transition = "none";
+      mobileBg.style.transition = "none";
+    }
+    track.style.transform = `translateX(${trackOffset}px)`;
+    positionBg(btn);
+
+    // Update opacity and colors for all items
+    const visCenter = getVisibleCenter();
+    allItems.forEach((item) => {
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(itemCenter - visCenter);
+      item.style.opacity = "1";
+      // Only real active button gets white
+      if (item === btn) {
+        item.style.color = "white";
+      } else {
+        item.style.color = "";
+      }
+    });
+    // Also color the clone at the same position if it's centered
+    const closestAll = getClosestToCenter();
+    if (allItems[closestAll].classList.contains("clone")) {
+      allItems[closestAll].style.color = "white";
+    }
+  }
+
+  function snapToNearest() {
+    const closestAll = getClosestToCenter();
+    const realIdx = toRealIndex(closestAll);
+
+    // Jump to real set instantly (no animation), then animate to exact position
+    track.style.transition = "none";
+    const setWidth = getSetWidth();
+    const realStart = getRealStartOffset();
+    const visCenter = getVisibleCenter();
+    if (visCenter < realStart || visCenter >= realStart + setWidth) {
+      // Jump offset to real set
+      if (visCenter < realStart) {
+        trackOffset -= setWidth;
+      } else {
+        trackOffset += setWidth;
+      }
+      track.style.transform = `translateX(${trackOffset}px)`;
+      void track.offsetHeight; // Force reflow
+    }
+
+    onSelect(buttons[realIdx]);
+    updateCarouselPosition(true);
+  }
+
+  function onStart(e) {
+    if (!isMobile()) return;
+    isDragging = true;
+    hasMoved = false;
+    track.style.transition = "none";
+    mobileBg.style.transition = "none";
+    startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
+    dragStartOffset = trackOffset;
+    lastX = startX;
+    lastTime = performance.now();
+    velocity = 0;
+    e.preventDefault();
+  }
+
+  function onMove(e) {
+    if (!isDragging || !isMobile()) return;
+    const currentX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
+    const delta = currentX - startX;
+    if (Math.abs(delta) > 3) hasMoved = true;
+
+    const now = performance.now();
+    const dt = now - lastTime;
+    if (dt > 0) {
+      velocity = (currentX - lastX) / dt;
+      lastX = currentX;
+      lastTime = now;
+    }
+
+    trackOffset = dragStartOffset + delta;
+
+    // Wrap for infinite loop
+    wrapOffset();
+
+    track.style.transform = `translateX(${trackOffset}px)`;
+
+    // Find closest item to center
+    const visCenter = getVisibleCenter();
+    const closestAll = getClosestToCenter();
+    const closestItem = allItems[closestAll];
+
+    // Update opacity and colors
+    allItems.forEach((item, i) => {
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(itemCenter - visCenter);
+      item.style.opacity = "1";
+      item.style.color = i === closestAll ? "white" : "";
+    });
+
+    // Smoothly transition bg width during drag
+    mobileBg.style.transition = "width 0.15s ease";
+    mobileBg.style.width = `${closestItem.offsetWidth}px`;
+  }
+
+  function onEnd(e) {
+    if (!isDragging || !isMobile()) return;
+    isDragging = false;
+
+    if (!hasMoved) {
+      // Tap — find which item was tapped
+      const clientX =
+        e.type === "mouseup" ? e.clientX : e.changedTouches[0].clientX;
+      const trackRect = track.getBoundingClientRect();
+      const x = clientX - trackRect.left;
+      for (let i = 0; i < allItems.length; i++) {
+        const item = allItems[i];
+        if (x >= item.offsetLeft && x <= item.offsetLeft + item.offsetWidth) {
+          const realIdx = i % n;
+          onSelect(buttons[realIdx]);
+          // Animate to the tapped item (could be a clone)
+          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+          const innerCenter = inner.offsetWidth / 2 - padding;
+          trackOffset = innerCenter - itemCenter;
+          void track.offsetHeight;
+          track.style.transition =
+            "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)";
+          mobileBg.style.transition =
+            "width 0.35s cubic-bezier(0.4, 0, 0.2, 1)";
+          track.style.transform = `translateX(${trackOffset}px)`;
+          positionBg(buttons[realIdx]);
+          // Update visuals for final position
+          const visCenter = innerCenter - trackOffset;
+          allItems.forEach((it, j) => {
+            const c = it.offsetLeft + it.offsetWidth / 2;
+            const dist = Math.abs(c - visCenter);
+            it.style.opacity = "1";
+            it.style.color = j === i ? "white" : "";
+          });
+          // After animation, silently jump to real set
+          setTimeout(() => {
+            track.style.transition = "none";
+            const btn = buttons[realIdx];
+            const btnCenter = btn.offsetLeft + btn.offsetWidth / 2;
+            trackOffset = innerCenter - btnCenter;
+            track.style.transform = `translateX(${trackOffset}px)`;
+            updateCarouselPosition(false);
+          }, 370);
+          return;
+        }
+      }
+    }
+
+    // Apply velocity for momentum
+    if (Math.abs(velocity) > 0.3) {
+      trackOffset += velocity * 120;
+    }
+
+    snapToNearest();
+  }
+
+  inner.addEventListener("mousedown", onStart);
+  document.addEventListener("mousemove", onMove);
+  document.addEventListener("mouseup", onEnd);
+  inner.addEventListener("touchstart", onStart, { passive: false });
+  document.addEventListener("touchmove", onMove, { passive: true });
+  document.addEventListener("touchend", onEnd);
+
+  function activateMobile() {
+    // Move buttons into track with clones
+    if (!track.parentElement) {
+      // Rebuild track
+      while (track.firstChild) track.removeChild(track.firstChild);
+      clonesBefore.forEach((c) => track.appendChild(c));
+      buttons.forEach((btn) => track.appendChild(btn));
+      clonesAfter.forEach((c) => track.appendChild(c));
+      inner.appendChild(track);
+    }
+    mobileBg.style.display = "";
+  }
+
+  function deactivateDesktop() {
+    // Move real buttons back into inner directly (remove track and clones)
+    if (track.parentElement) {
+      const bg = inner.querySelector(".switcher-bg");
+      buttons.forEach((btn) => {
+        btn.style.opacity = "";
+        btn.style.color = "";
+        inner.insertBefore(btn, bg);
+      });
+      track.remove();
+    }
+    mobileBg.style.display = "none";
+  }
+
+  return { updateCarouselPosition, activateMobile, deactivateDesktop };
+}
+
+// Move nav in/out of card depending on screen size
+// (position:fixed breaks inside card due to animation/backdrop-filter)
+const cardEl = tabNav.parentElement;
+const bodyEl = document.body;
+let wasMobile = window.innerWidth <= 768;
+
+function moveNavForMobile() {
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile && tabNav.parentElement === cardEl) {
+    bodyEl.appendChild(tabNav);
+  } else if (!isMobile && tabNav.parentElement !== cardEl) {
+    cardEl.insertBefore(tabNav, cardEl.querySelector(".text"));
+  }
+}
+
+moveNavForMobile();
+
 // Initialize tab nav
+const carousel = initMobileCarousel(tabNav, (btn) => {
+  switchTab(btn.dataset.tab);
+});
+
+if (window.innerWidth <= 768) {
+  carousel.updateCarouselPosition(false);
+} else {
+  carousel.deactivateDesktop();
+}
 updateTabNavBg(tabNav, false);
 
-// Make tab nav draggable
+// Make tab nav draggable (desktop only)
 makeTabNavDraggable(tabNav, (btn) => {
   switchTab(btn.dataset.tab);
 });
 
 // Update backgrounds on resize
 window.addEventListener("resize", () => {
-  updateTabNavBg(tabNav, false);
+  const isMobile = window.innerWidth <= 768;
+  moveNavForMobile();
+  if (isMobile) {
+    carousel.activateMobile();
+    carousel.updateCarouselPosition(false);
+  } else {
+    if (wasMobile) {
+      carousel.deactivateDesktop();
+    }
+    updateTabNavBg(tabNav, false);
+  }
+  wasMobile = isMobile;
 });
 
 // Parallax effect for hero image
@@ -636,6 +1004,7 @@ const chTranslations = {
   "about-bio":
     'Ich mach grad min Master i Informatik a de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management. Ich han en BA i Mathematik und en BSc i Informatik vo de <a href="https://www.washington.edu">University of Washington</a>.',
   "about-origin": "Ich chum ursprünglich us de USA.",
+  "about-socials": "Find mi im Internet:",
   "about-footnote":
     "Website zletscht aktualisiert: Februar 2026.<br>Designed vo: Joshua Swanson",
   "random-heading": "Allerhand",
