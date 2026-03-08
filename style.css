@@ -610,37 +610,41 @@ h1 {
 
 @media (max-width: 768px) {
   .hero {
-    height: 50vh;
-    min-height: 300px;
+    height: 35vh;
+    min-height: 200px;
+  }
+
+  .hero::after {
+    display: none;
   }
 
   .card {
-    margin: -100px 16px 0;
+    margin: 28px 16px 0;
     border-radius: 20px;
   }
 
   .avatar {
     width: 240px;
-    bottom: calc(100% - 28px);
+    bottom: calc(100% + 1px);
     max-height: 45vh;
   }
 
   .avatar.avatar-ballroom {
     width: 250px;
-    bottom: calc(100% - 29px);
+    bottom: calc(100%);
     max-height: 45vh;
   }
 
   .avatar.avatar-contact {
     width: 240px;
-    bottom: calc(100% - 29px);
+    bottom: calc(100% + 2px);
     max-height: 45vh;
   }
 
   .avatar.avatar-publications {
     width: auto;
     height: 350px;
-    bottom: calc(100% - 28px);
+    bottom: calc(100% + 2px);
     max-height: 45vh;
   }
 
@@ -652,23 +656,104 @@ h1 {
     font-size: 1.75rem;
   }
 
+  .card {
+    margin-bottom: 80px;
+  }
+
   .tab-nav {
-    padding: 28px 16px 0;
+    position: fixed;
+    bottom: 28px;
+    left: 40px;
+    right: 40px;
+    display: block;
+    padding: 0;
+    z-index: 200;
   }
 
   .tab-nav .switcher-inner {
-    border-radius: 25px;
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-radius: 9999px;
+    overflow: hidden;
+    padding: 5px;
+    gap: 0;
+    justify-content: flex-start;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    cursor: grab;
+  }
+
+  .tab-nav .switcher-inner::before,
+  .tab-nav .switcher-inner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 9999px;
+  }
+
+  .tab-nav .switcher-inner::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  .tab-nav .switcher-inner::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
+
+  .tab-nav .switcher-inner:active {
+    cursor: grabbing;
+  }
+
+  .tab-nav .carousel-track {
+    display: flex;
+    gap: 0;
+    position: relative;
+    z-index: 3;
   }
 
   .tab-nav .switcher-bg {
-    border-radius: 20px;
+    display: none;
+  }
+
+  .tab-nav .switcher-inner .mobile-bg {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(100% - 10px);
+    background: var(--accent);
+    border-radius: 9999px;
+    box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .tab-btn {
-    height: 40px;
-    padding: 0 14px;
-    font-size: 0.85rem;
-    border-radius: 20px;
+    position: relative;
+    z-index: 3;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 20px;
+    font-size: 0.95rem;
+    border-radius: 9999px;
+    flex: none;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .lang-toggle {
+    display: none;
   }
 }
 
@@ -710,76 +795,6 @@ h1 {
 
   .text {
     padding: 28px 24px 36px;
-  }
-
-  .tab-nav {
-    padding: 16px 12px 0;
-  }
-
-  .tab-btn {
-    padding: 0 12px;
-    font-size: 0.8rem;
-  }
-
-  .lang-toggle {
-    width: 46px;
-    height: 46px;
-    bottom: 16px;
-    right: 16px;
-  }
-}
-
-/* ==========================================================================
-   Components: Social Sidebar
-   ========================================================================== */
-
-.social-sidebar {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 14px;
-  padding: 6px;
-  box-shadow:
-    0 2px 8px var(--shadow),
-    0 1px 2px var(--shadow);
-}
-
-.social-sidebar a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  color: var(--text-primary);
-  filter: grayscale(1) opacity(0.4);
-  transition:
-    filter 0.3s ease,
-    transform 0.2s ease;
-}
-
-.social-sidebar a:hover {
-  filter: none;
-  color: var(--text-secondary);
-  transform: scale(1.1);
-  text-decoration: none;
-}
-
-.social-sidebar svg {
-  width: 22px;
-  height: 22px;
-}
-
-@media (max-width: 768px) {
-  .social-sidebar {
-    display: none;
   }
 }
 
