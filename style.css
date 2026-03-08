@@ -662,11 +662,12 @@ h1 {
 
   .tab-nav {
     position: fixed;
-    bottom: 28px;
-    left: 40px;
-    right: 40px;
+    bottom: 21px;
+    left: 21px;
+    right: 21px;
     display: block;
     padding: 0;
+    padding-bottom: env(safe-area-inset-bottom);
     z-index: 200;
   }
 
@@ -676,7 +677,7 @@ h1 {
     width: 100%;
     border-radius: 9999px;
     overflow: hidden;
-    padding: 5px;
+    padding: 2px;
     gap: 0;
     justify-content: flex-start;
     background: var(--bg-card);
@@ -724,12 +725,12 @@ h1 {
 
   .tab-nav .switcher-inner .mobile-bg {
     position: absolute;
-    top: 5px;
+    top: 2px;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    height: calc(100% - 10px);
+    height: calc(100% - 4px);
     background: var(--accent);
     border-radius: 9999px;
     box-shadow: 0 2px 8px -2px rgba(218, 41, 28, 0.5);
@@ -741,10 +742,12 @@ h1 {
   .tab-btn {
     position: relative;
     z-index: 3;
-    height: 44px;
-    line-height: 44px;
-    padding: 0 20px;
-    font-size: 0.95rem;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     border-radius: 9999px;
     flex: none;
     transition:

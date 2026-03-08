@@ -419,7 +419,7 @@ function initMobileCarousel(nav, onSelect) {
   let lastX = 0;
   let lastTime = 0;
 
-  const padding = 5;
+  const padding = 2;
 
   function getActiveIndex() {
     return buttons.findIndex((b) => b.classList.contains("active"));
