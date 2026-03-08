@@ -620,24 +620,28 @@ h1 {
   }
 
   .avatar {
-    width: 200px;
-    bottom: calc(100% - 24px);
+    width: 240px;
+    bottom: calc(100% - 28px);
+    max-height: 45vh;
   }
 
   .avatar.avatar-ballroom {
-    width: 210px;
-    bottom: calc(100% - 25px);
+    width: 250px;
+    bottom: calc(100% - 29px);
+    max-height: 45vh;
   }
 
   .avatar.avatar-contact {
-    width: 200px;
-    bottom: calc(100% - 25px);
+    width: 240px;
+    bottom: calc(100% - 29px);
+    max-height: 45vh;
   }
 
   .avatar.avatar-publications {
     width: auto;
-    height: 298px;
-    bottom: calc(100% - 24px);
+    height: 350px;
+    bottom: calc(100% - 28px);
+    max-height: 45vh;
   }
 
   .text {
@@ -680,24 +684,28 @@ h1 {
   }
 
   .avatar {
-    width: 150px;
-    bottom: calc(100% - 18px);
+    width: 200px;
+    bottom: calc(100% - 22px);
+    max-height: 40vh;
   }
 
   .avatar.avatar-ballroom {
-    width: 160px;
-    bottom: calc(100% - 19px);
+    width: 210px;
+    bottom: calc(100% - 23px);
+    max-height: 40vh;
   }
 
   .avatar.avatar-contact {
-    width: 150px;
-    bottom: calc(100% - 19px);
+    width: 200px;
+    bottom: calc(100% - 23px);
+    max-height: 40vh;
   }
 
   .avatar.avatar-publications {
     width: auto;
-    height: 224px;
-    bottom: calc(100% - 18px);
+    height: 280px;
+    bottom: calc(100% - 22px);
+    max-height: 40vh;
   }
 
   .text {
@@ -718,6 +726,58 @@ h1 {
     height: 46px;
     bottom: 16px;
     right: 16px;
+  }
+}
+
+/* ==========================================================================
+   Components: Social Sidebar
+   ========================================================================== */
+
+.social-sidebar {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow:
+    0 2px 8px var(--shadow),
+    0 1px 2px var(--shadow);
+}
+
+.social-sidebar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social-sidebar a:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+.social-sidebar svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .social-sidebar {
+    display: none;
   }
 }
 
