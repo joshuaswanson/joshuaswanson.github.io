@@ -652,12 +652,39 @@ function initMobileCarousel(nav, onSelect) {
       }
     }
 
-    // Apply velocity for momentum
+    // Momentum: decelerate naturally, then snap when stopped
     if (Math.abs(velocity) > 0.3) {
-      trackOffset += velocity * 120;
-    }
+      const friction = 0.95;
+      let momentumVel = velocity * 1000; // convert to px/s
 
-    snapToNearest();
+      function momentumFrame() {
+        momentumVel *= friction;
+        trackOffset += momentumVel / 60; // assuming ~60fps
+
+        wrapOffset();
+        track.style.transition = "none";
+        track.style.transform = `translateX(${trackOffset}px)`;
+
+        // Update visuals during coast
+        const visCenter = getVisibleCenter();
+        const closestAll = getClosestToCenter();
+        allItems.forEach((item, i) => {
+          item.style.opacity = "1";
+          item.style.color = i === closestAll ? "white" : "";
+        });
+        mobileBg.style.transition = "width 0.15s ease";
+        mobileBg.style.width = `${allItems[closestAll].offsetWidth}px`;
+
+        if (Math.abs(momentumVel) > 5) {
+          requestAnimationFrame(momentumFrame);
+        } else {
+          snapToNearest();
+        }
+      }
+      requestAnimationFrame(momentumFrame);
+    } else {
+      snapToNearest();
+    }
   }
 
   inner.addEventListener("mousedown", onStart);
