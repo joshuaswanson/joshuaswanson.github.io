@@ -664,7 +664,7 @@ h1 {
 
   .tab-nav {
     position: fixed;
-    bottom: env(safe-area-inset-bottom, 20px);
+    bottom: 0px;
     left: 37px;
     right: 37px;
     display: block;
@@ -758,6 +758,12 @@ h1 {
 
   .lang-toggle {
     display: none;
+  }
+}
+
+@media (max-width: 768px) and (hover: hover) and (pointer: fine) {
+  .tab-nav {
+    bottom: 20px;
   }
 }
 
