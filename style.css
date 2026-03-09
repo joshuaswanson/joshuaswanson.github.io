@@ -664,7 +664,7 @@ h1 {
 
   .tab-nav {
     position: fixed;
-    bottom: 0px;
+    bottom: 20px;
     left: 37px;
     right: 37px;
     display: block;
@@ -761,9 +761,11 @@ h1 {
   }
 }
 
-@media (max-width: 768px) and (hover: hover) and (pointer: fine) {
-  .tab-nav {
-    bottom: 20px;
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .tab-nav {
+      bottom: 0px;
+    }
   }
 }
 
