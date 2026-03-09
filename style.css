@@ -764,7 +764,7 @@ h1 {
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 768px) {
     .tab-nav {
-      bottom: env(safe-area-inset-bottom, 0px);
+      bottom: 16px;
     }
   }
 }
