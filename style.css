@@ -664,7 +664,7 @@ h1 {
 
   .tab-nav {
     position: fixed;
-    bottom: max(20px, env(safe-area-inset-bottom, 0px));
+    bottom: env(safe-area-inset-bottom, 20px);
     left: 37px;
     right: 37px;
     display: block;
