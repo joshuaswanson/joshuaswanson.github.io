@@ -670,7 +670,6 @@ h1 {
     display: block;
     padding: 0;
     z-index: 200;
-    filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.08));
   }
 
   .tab-nav .switcher-inner {
@@ -684,6 +683,7 @@ h1 {
     justify-content: flex-start;
     background: var(--bg-card);
     backdrop-filter: blur(20px);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
     cursor: grab;
   }
 
