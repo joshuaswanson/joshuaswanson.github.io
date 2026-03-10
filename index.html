@@ -204,6 +204,48 @@
 
             <!-- Dated Entry -->
             <article class="dated-entry">
+              <header class="entry-date">10 March 2026</header>
+              <p data-i18n="random-latex-translator">
+                A friend of mine is doing his maths masters and nearly all the
+                research in his area is in French. He asked around if anyone
+                knew a good tool for translating PDFs with LaTeX into English.
+                Turns out the options are surprisingly bad. Google Translate
+                completely mangles the math notation,
+                <a
+                  href="https://www.theverge.com/ai-artificial-intelligence/882891/ai-pdf-parsing-failure"
+                  target="_blank"
+                  rel="noopener"
+                  >AIs still struggle to read PDFs properly</a
+                >, and the most popular open source tool for this on GitHub
+                doesn't even take PDFs directly. You need the original LaTeX
+                source, which you usually don't have, so you're stuck paying for
+                <a href="https://mathpix.com/" target="_blank" rel="noopener"
+                  >Mathpix</a
+                >
+                to convert your PDF to LaTeX first, then running a command line
+                tool, then compiling the output back to PDF. My friend doesn't
+                know how to clone a repo or use the command line. And honestly,
+                he shouldn't have to. What does work pretty well is
+                screenshotting rendered LaTeX and feeding it to ChatGPT (or your
+                LLM of choice), which can generally reproduce the LaTeX and
+                translate it, but that's extremely cumbersome and inefficient
+                for an entire document. Why is there no simple, easy-to-use
+                online tool for this? I was genuinely surprised there was a gap
+                here at all, so I just went and built a
+                <a
+                  href="https://joshuaswanson.github.io/latex-pdf-translator/"
+                  target="_blank"
+                  rel="noopener"
+                  >LaTeX PDF Translator</a
+                >. Upload a PDF, pick a language, get a translated version where
+                all the equations stay perfectly intact. Fair warning: it's slow
+                because it's making sequential Google Translate API calls, and
+                it's running on a free Render server. But hey, it's free. It's
+                also a bit buggy for now, but the more PDFs people send me the
+                more I can work on fixing it.
+              </p>
+            </article>
+            <article class="dated-entry">
               <header class="entry-date">15 February 2026</header>
               <p data-i18n="random-monitor">
                 As I work on my master thesis all day, I've started thinking
