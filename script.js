@@ -1127,10 +1127,10 @@ if (currentLang === "ch") {
 // "and X more" toggle for media links
 document.querySelectorAll(".media-show-more").forEach((toggle) => {
   const moreLinks = toggle.previousElementSibling;
+  const count = moreLinks.querySelectorAll("a").length;
+  toggle.textContent = `and ${count} more`;
   toggle.addEventListener("click", () => {
     moreLinks.hidden = !moreLinks.hidden;
-    toggle.textContent = moreLinks.hidden
-      ? `and ${moreLinks.querySelectorAll("a").length} more`
-      : "show less";
+    toggle.textContent = moreLinks.hidden ? `and ${count} more` : "show less";
   });
 });
