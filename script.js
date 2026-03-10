@@ -1123,3 +1123,14 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
 if (currentLang === "ch") {
   applyLanguage("ch");
 }
+
+// "and X more" toggle for media links
+document.querySelectorAll(".media-show-more").forEach((toggle) => {
+  const moreLinks = toggle.previousElementSibling;
+  toggle.addEventListener("click", () => {
+    moreLinks.hidden = !moreLinks.hidden;
+    toggle.textContent = moreLinks.hidden
+      ? `and ${moreLinks.querySelectorAll("a").length} more`
+      : "show less";
+  });
+});

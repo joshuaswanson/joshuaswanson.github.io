@@ -509,6 +509,19 @@ h1 {
   color: var(--text-primary);
 }
 
+.media-more-links {
+  display: contents;
+}
+
+.media-more-links[hidden] {
+  display: none;
+}
+
+.media-show-more {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 .pub-more {
   text-align: center;
   color: var(--text-secondary);
