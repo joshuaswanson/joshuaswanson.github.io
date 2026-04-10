@@ -1,0 +1,30 @@
+# Joshua Swanson
+
+## About
+Joshua Swanson is a computer science masters student at ETH Zurich, Switzerland. His major is in Machine Intelligence with a minor in Data Management. He holds a BA in Mathematics and a BSc in Computer Science from the University of Washington. He is originally from the USA.
+
+## Research
+His research focuses on AI security and privacy, specifically studying how AI can be misused for malicious purposes, including deanonymization, OSINT, and surveillance.
+
+## Publications
+
+### Large-Scale Online Deanonymization with LLMs (2026)
+Authors: Simon Lermen, Daniel Paleka, Joshua Swanson, Michael Aerni, Nicholas Carlini, Florian Tramer
+Published at the ICLR 2026 Workshop on Agents in the Wild.
+This paper demonstrates that large language models can identify pseudonymous online users at scale with high precision (up to 90%) and at low cost ($1-4 per target). The research was featured in The New York Times, The Guardian, Bloomberg, The Independent, El Pais, The Verge, Ars Technica, Al Jazeera, and many other international outlets.
+Paper: https://arxiv.org/abs/2602.16800
+
+### Modal Aphasia (2025)
+Authors: Joshua Swanson, Fabian Paischer, Florian Tramer
+This paper investigates whether unified multimodal language models can describe images from memory.
+Paper: https://arxiv.org/abs/2504.19394
+
+## Links
+- Website: https://joshuaswanson.github.io
+- GitHub: https://github.com/joshuaswanson
+- Google Scholar: https://scholar.google.com/citations?user=jiecQyEAAAAJ
+- LinkedIn: https://www.linkedin.com/in/joshuaswanson1/
+
+## Projects
+- LaTeX PDF Translator: https://joshuaswanson.github.io/latex-pdf-translator/
+- Monitor Comparison Tool: https://joshuaswanson.github.io/monitor-comparison/
