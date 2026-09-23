@@ -95,7 +95,7 @@ h3 {
   padding: 1.5rem var(--gutter) 3rem;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 0 3rem;
 }
@@ -111,22 +111,10 @@ h3 {
   line-height: 1.05;
 }
 
-.masthead-role {
-  margin-top: 0.7rem;
-  font-size: 1.0625rem;
-  color: var(--text-secondary);
-}
-
-.masthead-affiliation {
-  margin-top: 0.1rem;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
 .portrait {
   flex: none;
-  width: 8.25rem;
-  height: 10rem;
+  width: 7rem;
+  height: 8.5rem;
   overflow: hidden;
   background: var(--bg-subtle);
   border: 1px solid var(--border);
