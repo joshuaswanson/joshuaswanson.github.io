@@ -367,8 +367,19 @@ h3 {
 }
 
 .project-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   font-size: 1rem;
   margin-bottom: 0.3rem;
+}
+
+.project-icon {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.12em;
+  color: var(--text-muted);
 }
 
 .project-description {
