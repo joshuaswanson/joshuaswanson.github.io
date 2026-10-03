@@ -3,7 +3,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.m
 
 const SIZE_X = 900;
 const SIZE_Z = 900;
-const SEGMENTS = 300;
+const SEGMENTS = 420;
 const PEAK = 230;
 
 function hash(x, y) {
@@ -46,7 +46,12 @@ function ridged(x, y, octaves) {
 function heightAt(x, z) {
   const u = x / 300;
   const v = z / 300;
-  let h = ridged(u + 4.2, v - 1.7, 7);
+  let h = ridged(u + 4.2, v - 1.7, 10);
+
+  // erosion detail: gullies and broken rock, too fine for the ridge octaves
+  h += (valueNoise(x / 11 + 17, z / 11 - 23) - 0.5) * 0.055;
+  h += (valueNoise(x / 4.2 - 8, z / 4.2 + 14) - 0.5) * 0.022;
+  h += (valueNoise(x / 1.7 + 61, z / 1.7 - 44) - 0.5) * 0.009;
 
   // keep the near foreground low so the camera sits in a valley looking out
   const nearness = Math.min(1, Math.max(0, (z + 60) / 320));
@@ -111,20 +116,30 @@ export function createAlps(container, palette) {
     const h = pos.getY(i) / PEAK;
     const steep = 1 - normal.getY(i);
 
-    tmp.copy(rockLow).lerp(rockHigh, clamp01(h * 1.8));
+    // mottling so bare rock reads as rock rather than a flat fill
+    const fine = valueNoise(x / 5.5 + 31, z / 5.5 - 19);
+    const broad = valueNoise(x / 46 - 5, z / 46 + 12);
+    const strata = valueNoise(x / 13 + 71, pos.getY(i) / 7 - 3);
+
+    tmp.copy(rockLow).lerp(rockHigh, clamp01(h * 1.8 + (broad - 0.5) * 0.5));
+    tmp.multiplyScalar(0.8 + fine * 0.3 + strata * 0.12);
 
     // alpine pasture: only low down and only where it is not a cliff
-    const pasture = clamp01((0.3 - steep * 0.85 - h) * 7);
+    const pasture = clamp01((0.3 - steep * 0.85 - h + (broad - 0.5) * 0.08) * 7);
     if (pasture > 0) {
-      const patch = valueNoise(x / 34 + 11, z / 34 - 6);
+      const patch = clamp01(valueNoise(x / 34 + 11, z / 34 - 6) * 0.75 + fine * 0.35);
       grass.copy(meadow).lerp(meadowSun, patch);
+      grass.multiplyScalar(0.86 + fine * 0.22);
       tmp.lerp(grass, pasture);
     }
 
-    const snowline = 0.21 + steep * 0.74;
-    const cover = clamp01((h - snowline) * 7.5);
+    // a wobbling snowline, and wind-scoured patches on the steeper faces
+    const snowline = 0.21 + steep * 0.74 + (broad - 0.5) * 0.09;
+    let cover = clamp01((h - snowline) * 7.5);
     if (cover > 0) {
+      cover *= clamp01(1 - steep * 0.5 * (1 - fine));
       cap.copy(snowShade).lerp(snow, clamp01(1 - steep * 1.3));
+      cap.multiplyScalar(0.93 + fine * 0.1);
       tmp.lerp(cap, cover);
     }
 

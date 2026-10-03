@@ -461,58 +461,40 @@ blockquote {
 
 /* ==========================================================================
    Swiss Mode
+   International Typographic Style: Helvetica, a hard grid, black rules, red.
    ========================================================================== */
 
 body.swiss {
-  --accent: #d22b1f;
-  --accent-hover: #a81b11;
-  --accent-soft: rgba(210, 43, 31, 0.4);
-  --border: #e0dcd6;
-  --border-strong: #b9b3aa;
+  --accent: #d8232a;
+  --accent-hover: #a8151b;
+  --accent-soft: rgba(216, 35, 42, 0.45);
+  --ink: #16160f;
+  --paper: #f2f0e9;
+  --rule: #16160f;
+  --text-primary: var(--ink);
+  --text-secondary: #46463c;
+  --text-muted: #6f6f63;
+  --border: #c9c6ba;
+  --border-strong: #16160f;
   --serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --measure: 64rem;
+  background: var(--paper);
+  color: var(--text-secondary);
 }
 
-body.swiss .masthead-name,
-body.swiss .section-heading {
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+body.swiss a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
-body.swiss .masthead-identity::before {
-  content: "Gr\0000FC ezi mitenand";
-  display: block;
-  margin-bottom: 0.45rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+/* --- hero --------------------------------------------------------------- */
 
-body.swiss .social-links a,
-body.swiss .pub-link,
-body.swiss .project-links a {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-body.swiss .project-icon {
-  color: var(--accent);
-}
-
-/* ==========================================================================
-   Swiss Mode: the landscape
-   ========================================================================== */
-
-.alps-scape {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+.ch-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 34rem;
   overflow: hidden;
-  pointer-events: none;
   background: linear-gradient(
     to bottom,
     #0d2746 0%,
@@ -526,7 +508,7 @@ body.swiss .project-icon {
   );
 }
 
-.alps-scape.is-night {
+.ch-hero.is-night {
   background: linear-gradient(
     to bottom,
     #03060e 0%,
@@ -537,6 +519,90 @@ body.swiss .project-icon {
     #2d4568 84%,
     #3a5274 100%
   );
+}
+
+.ch-hero-inner {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 9vh;
+  color: #fff;
+  text-shadow: 0 2px 40px rgba(6, 14, 28, 0.55);
+}
+
+.ch-eyebrow {
+  margin: 0 0 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.ch-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 2.4rem;
+  height: 3px;
+  margin-right: 0.9rem;
+  vertical-align: 0.22em;
+  background: var(--accent);
+}
+
+.ch-hero-name {
+  margin: 0;
+  font-size: clamp(2.9rem, 10.5vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.ch-hero-sub {
+  margin: 1.6rem 0 0;
+  max-width: 34ch;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.ch-scroll {
+  position: absolute;
+  right: max(var(--gutter), calc((100% - var(--measure)) / 2 + var(--gutter)));
+  bottom: 9vh;
+  z-index: 3;
+  width: 1px;
+  height: 5.5rem;
+  background: rgba(255, 255, 255, 0.45);
+  overflow: hidden;
+}
+
+.ch-scroll span {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 40%;
+  background: var(--accent);
+  animation: chScroll 2.6s ease-in-out infinite;
+}
+
+@keyframes chScroll {
+  0% {
+    transform: translateY(-110%);
+  }
+  60%,
+  100% {
+    transform: translateY(260%);
+  }
+}
+
+.alps-scape {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .alps-canvas {
@@ -567,7 +633,7 @@ body.swiss .project-icon {
 
 @keyframes starTwinkle {
   from {
-    opacity: 0.25;
+    opacity: 0.2;
   }
   to {
     opacity: 1;
@@ -577,11 +643,11 @@ body.swiss .project-icon {
 .alps-aurora {
   position: absolute;
   left: -30%;
+  top: -6%;
   width: 160%;
-  height: 46%;
-  top: -4%;
+  height: 48%;
   opacity: 0;
-  filter: blur(42px);
+  filter: blur(46px);
   mix-blend-mode: screen;
   transition: opacity 2s ease;
 }
@@ -623,18 +689,17 @@ body.swiss .project-icon {
   }
 }
 
-/* Weather */
 .swiss-weather {
-  position: fixed;
+  position: absolute;
   inset: 0;
+  z-index: 2;
   overflow: hidden;
   pointer-events: none;
-  z-index: 290;
 }
 
 .swiss-snow {
   position: absolute;
-  top: -6vh;
+  top: -8%;
   border-radius: 50%;
   background: #fff;
   animation-name: swissFall;
@@ -644,20 +709,19 @@ body.swiss .project-icon {
 
 @keyframes swissFall {
   to {
-    transform: translateY(125vh);
+    transform: translateY(115vh);
   }
 }
 
-/* Mondaine railway clock, because the trains are on time */
 .swiss-clock {
-  position: fixed;
-  right: 26px;
-  bottom: 26px;
-  width: 78px;
-  height: 78px;
-  z-index: 295;
+  position: absolute;
+  right: max(var(--gutter), calc((100% - var(--measure)) / 2 + var(--gutter)));
+  top: 8vh;
+  z-index: 3;
+  width: 74px;
+  height: 74px;
   pointer-events: none;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.28));
+  filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.35));
 }
 
 .swiss-clock svg {
@@ -666,36 +730,200 @@ body.swiss .project-icon {
   height: 100%;
 }
 
-/* Content floats over the landscape */
+/* --- the page below the hero -------------------------------------------- */
+
 body.swiss .masthead {
-  background: none;
-  border-bottom: none;
+  border-bottom: 4px solid var(--rule);
+  background: var(--paper);
 }
 
-body.swiss .masthead-inner,
-body.swiss main#wrapper,
-body.swiss .site-footer {
-  position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(14px) saturate(1.1);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1);
-  box-shadow: 0 0 70px rgba(16, 32, 56, 0.22);
+body.swiss .masthead-name,
+body.swiss .masthead-identity::before {
+  display: none;
 }
 
 body.swiss .masthead-inner {
-  padding-top: 2.75rem;
+  max-width: var(--measure);
+  padding: 2.6rem var(--gutter);
+  align-items: center;
+  gap: 0 3rem;
+}
+
+body.swiss .portrait {
+  width: 6.5rem;
+  height: 8rem;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+}
+
+body.swiss .masthead .social-links {
+  margin-top: 0;
+  gap: 0;
+}
+
+body.swiss .social-links a,
+body.swiss .pub-link,
+body.swiss .project-links a {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  margin: 0 -2px -2px 0;
+  padding: 0.5rem 0.9rem;
+  background: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+body.swiss .social-links a:hover,
+body.swiss .pub-link:hover,
+body.swiss .project-links a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+body.swiss #wrapper {
+  max-width: var(--measure);
+  counter-reset: chapter;
+}
+
+body.swiss .section {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 0 3.5rem;
+  padding: 4rem 0;
+  border-top: 2px solid var(--rule);
+  counter-increment: chapter;
+}
+
+body.swiss .section > * {
+  grid-column: 2;
+}
+
+body.swiss .section-heading {
+  grid-column: 1;
+  grid-row: 1 / span 99;
+  align-self: start;
+  position: sticky;
+  top: 2.5rem;
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+}
+
+body.swiss .section-heading::before {
+  content: counter(chapter, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.7rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+body.swiss .section.intro {
+  counter-increment: none;
+  grid-template-columns: 1fr;
+  border-top: none;
+  padding-top: 3.5rem;
+}
+
+body.swiss .section.intro > * {
+  grid-column: 1;
+}
+
+body.swiss .section.intro p {
+  max-width: 44ch;
+  font-size: clamp(1.1rem, 1.9vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+body.swiss .publication {
+  border-top: 1px solid var(--border);
+}
+
+body.swiss .publication-title,
+body.swiss .project-title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+body.swiss .publication-venue {
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+body.swiss .media-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+body.swiss .project-grid {
+  gap: 0 3rem;
+}
+
+body.swiss .project-card {
+  border-top: 1px solid var(--border);
+}
+
+body.swiss .project-icon {
+  color: var(--accent);
+}
+
+body.swiss blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 1.6rem;
+  font-size: 1.05rem;
+  color: var(--ink);
 }
 
 body.swiss .site-footer {
-  padding-bottom: 2.75rem;
+  max-width: var(--measure);
 }
 
-@media (max-width: 40rem) {
+body.swiss .site-footer-inner {
+  border-top: 4px solid var(--rule);
+}
+
+@media (max-width: 52rem) {
+  body.swiss .section {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  body.swiss .section > *,
+  body.swiss .section-heading {
+    grid-column: 1;
+  }
+
+  body.swiss .section-heading {
+    grid-row: auto;
+    position: static;
+    margin-bottom: 1.6rem;
+  }
+
+  body.swiss .section-heading::before {
+    display: inline-block;
+    margin: 0 0.6rem 0 0;
+  }
+
   .swiss-clock {
-    width: 56px;
-    height: 56px;
-    right: 16px;
-    bottom: 16px;
+    width: 52px;
+    height: 52px;
+    top: 5vh;
+  }
+
+  .ch-scroll {
+    display: none;
   }
 }
