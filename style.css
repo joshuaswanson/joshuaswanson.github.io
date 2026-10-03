@@ -12,6 +12,7 @@
   --border-strong: #c4c4bd;
   --accent: #1a4480;
   --accent-hover: #12315f;
+  --accent-soft: rgba(26, 68, 128, 0.35);
 
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -61,7 +62,7 @@ a {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: rgba(26, 68, 128, 0.35);
+  text-decoration-color: var(--accent-soft);
   text-underline-offset: 2px;
   transition:
     color 0.15s ease,
@@ -456,4 +457,332 @@ blockquote {
   * {
     transition: none !important;
   }
+}
+
+/* ==========================================================================
+   Swiss Mode
+   ========================================================================== */
+
+body.swiss {
+  --accent: #da291c;
+  --accent-hover: #a81b11;
+  --accent-soft: rgba(218, 41, 28, 0.4);
+  --border: #f1d6d3;
+  --border-strong: #da291c;
+  --serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><rect x="9" y="2" width="6" height="20" fill="%23da291c"/><rect x="2" y="9" width="20" height="6" fill="%23da291c"/></svg>')
+      12 12,
+    auto;
+}
+
+body.swiss a,
+body.swiss button {
+  cursor: pointer;
+}
+
+/* The whole page flies the flag: a red frame with the cross in the top band */
+body.swiss {
+  padding: 38px 9px 9px;
+}
+
+body.swiss::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  border-style: solid;
+  border-color: #da291c;
+  border-width: 38px 9px 9px;
+  pointer-events: none;
+  z-index: 300;
+}
+
+body.swiss::after {
+  content: "";
+  position: fixed;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  background-size:
+    6px 20px,
+    20px 6px;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 301;
+}
+
+/* International Typographic Style: Helvetica, bold, uppercase, on a grid */
+body.swiss .masthead-name,
+body.swiss .section-heading {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+body.swiss .section-heading::before {
+  content: "";
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-right: 0.4em;
+  vertical-align: baseline;
+  background: #da291c;
+  clip-path: polygon(
+    38% 0,
+    62% 0,
+    62% 38%,
+    100% 38%,
+    100% 62%,
+    62% 62%,
+    62% 100%,
+    38% 100%,
+    38% 62%,
+    0 62%,
+    0 38%,
+    38% 38%
+  );
+}
+
+body.swiss .masthead-identity::before {
+  content: "Gr\0000FC ezi mitenand";
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #da291c;
+}
+
+body.swiss main#wrapper {
+  background-image: linear-gradient(
+    to right,
+    rgba(218, 41, 28, 0.09) 1px,
+    transparent 1px
+  );
+  background-size: calc(100% / 8) 100%;
+}
+
+body.swiss .portrait {
+  border: 3px solid #da291c;
+  background: #fff;
+}
+
+body.swiss .project-icon {
+  color: #da291c;
+}
+
+body.swiss .social-links a,
+body.swiss .pub-link,
+body.swiss .project-links a {
+  border-color: #da291c;
+  color: #da291c;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+body.swiss .social-links a:hover,
+body.swiss .pub-link:hover,
+body.swiss .project-links a:hover {
+  background: #da291c;
+  color: #fff;
+}
+
+body.swiss .publication-authors strong {
+  color: #da291c;
+}
+
+/* Mondaine railway clock, because the trains are on time */
+.swiss-clock {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  width: 78px;
+  height: 78px;
+  z-index: 295;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
+}
+
+.swiss-clock svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 40rem) {
+  body.swiss {
+    padding: 30px 7px 7px;
+  }
+
+  body.swiss::before {
+    border-width: 30px 7px 7px;
+  }
+
+  body.swiss::after {
+    top: 7px;
+    width: 16px;
+    height: 16px;
+    background-size:
+      5px 16px,
+      16px 5px;
+  }
+
+  .swiss-clock {
+    width: 58px;
+    height: 58px;
+    right: 18px;
+    bottom: 18px;
+  }
+}
+
+/* ==========================================================================
+   Swiss Mode: the Alps
+   ========================================================================== */
+
+.alps-scape {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #0b1f3b;
+}
+
+.alps-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.alps-shimmer {
+  animation-name: alpsShimmer;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes alpsShimmer {
+  from {
+    transform: translateX(-14px);
+  }
+  to {
+    transform: translateX(14px);
+  }
+}
+
+.alps-mist {
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  filter: blur(10px);
+  animation: alpsDrift linear infinite alternate;
+}
+
+.alps-mist-1 {
+  bottom: 46vh;
+  height: 90px;
+  opacity: 0.75;
+  animation-duration: 54s;
+}
+
+.alps-mist-2 {
+  bottom: 28vh;
+  height: 120px;
+  opacity: 0.9;
+  animation-duration: 38s;
+  animation-direction: alternate-reverse;
+}
+
+.alps-mist-3 {
+  bottom: 8vh;
+  height: 150px;
+  opacity: 0.8;
+  animation-duration: 70s;
+}
+
+@keyframes alpsDrift {
+  from {
+    transform: translateX(-6%);
+  }
+  to {
+    transform: translateX(6%);
+  }
+}
+
+/* Weather: snow, with the occasional flag in it */
+.swiss-weather {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 290;
+}
+
+.swiss-snow {
+  position: absolute;
+  top: -6vh;
+  border-radius: 50%;
+  background: #fff;
+  animation-name: swissFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.swiss-flake {
+  position: absolute;
+  top: -8vh;
+  background-color: #da291c;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  background-size:
+    24% 60%,
+    60% 24%;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  animation-name: swissFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes swissFall {
+  to {
+    transform: translateY(125vh) rotate(420deg);
+  }
+}
+
+/* Content floats over the scape on frosted glass */
+body.swiss .masthead {
+  background: none;
+  border-bottom: none;
+}
+
+body.swiss .masthead-inner,
+body.swiss main#wrapper,
+body.swiss .site-footer {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(7px) saturate(1.1);
+  -webkit-backdrop-filter: blur(7px) saturate(1.1);
+}
+
+body.swiss .masthead-inner {
+  padding-top: 2.5rem;
+}
+
+body.swiss .site-footer {
+  padding-bottom: 2.5rem;
 }
