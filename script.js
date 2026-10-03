@@ -99,7 +99,7 @@ function isNightInZurich() {
 
 function buildAlps(night) {
   const scape = document.createElement("div");
-  scape.className = "alps-scape";
+  scape.className = "alps-scape" + (night ? " is-night" : "");
   scape.setAttribute("aria-hidden", "true");
 
   const stars = document.createElement("div");
@@ -123,40 +123,6 @@ function buildAlps(night) {
       '<div class="alps-aurora alps-aurora-2"></div>',
   );
   return scape;
-}
-
-// In Swiss mode the page opens on a full-bleed alpine hero and the rest of the
-// site is re-set on a typographic grid, so this is a different site, not a skin.
-function buildSwissHero(night, lang) {
-  const hero = document.createElement("section");
-  hero.className = "ch-hero" + (night ? " is-night" : "");
-
-  const inner = document.createElement("div");
-  inner.className = "ch-hero-inner";
-
-  const eyebrow = document.createElement("p");
-  eyebrow.className = "ch-eyebrow";
-  eyebrow.textContent =
-    lang === "ch" ? "Gr\u00FCezi mitenand" : "Welcome to Switzerland";
-
-  const name = document.createElement("h1");
-  name.className = "ch-hero-name";
-  name.textContent = "Joshua Swanson";
-
-  const sub = document.createElement("p");
-  sub.className = "ch-hero-sub";
-  sub.textContent =
-    lang === "ch"
-      ? "Forschig i KI-Sicherheit und Privatsph\u00E4ri, us Z\u00FCri."
-      : "AI security and privacy research, from Z\u00FCrich.";
-
-  inner.append(eyebrow, name, sub);
-  hero.append(inner);
-  hero.insertAdjacentHTML(
-    "beforeend",
-    '<div class="ch-scroll" aria-hidden="true"><span></span></div>',
-  );
-  return hero;
 }
 
 function buildSwissWeather() {
@@ -224,7 +190,7 @@ function tickSwissClock(clock) {
 
 function applySwissTheme(on) {
   document.body.classList.toggle("swiss", on);
-  document.body.classList.toggle("is-ch", on && currentLang === "ch");
+  document.body.classList.toggle("is-en", on && currentLang !== "ch");
 
   const favicon = document.querySelector('link[rel="icon"]');
   if (on && !favicon.dataset.original) {
@@ -242,16 +208,14 @@ function applySwissTheme(on) {
     alpsScene = null;
   }
   document
-    .querySelectorAll(".ch-hero, .alps-scape, .swiss-weather, .swiss-clock")
+    .querySelectorAll(".alps-scape, .swiss-weather, .swiss-clock")
     .forEach((el) => el.remove());
 
   if (!on) return;
 
   const night = isNightInZurich();
-  const hero = buildSwissHero(night, currentLang);
   const scape = buildAlps(night);
-  hero.prepend(scape);
-  document.body.prepend(hero);
+  document.body.prepend(scape);
 
   import("./alps.js")
     .then(({ createAlps }) => {
@@ -263,11 +227,11 @@ function applySwissTheme(on) {
     });
 
   if (!reduceMotion.matches) {
-    hero.appendChild(buildSwissWeather());
+    document.body.appendChild(buildSwissWeather());
   }
 
   const clock = buildSwissClock();
-  hero.appendChild(clock);
+  document.body.appendChild(clock);
 
   const run = () => {
     tickSwissClock(clock);

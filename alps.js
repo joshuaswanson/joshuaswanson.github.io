@@ -1,6 +1,8 @@
 // Procedural alpine range for Swiss mode. Loaded on demand.
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js";
 
+const clamp01 = (n) => Math.min(1, Math.max(0, n));
+
 const SIZE_X = 900;
 const SIZE_Z = 900;
 const SEGMENTS = 420;
@@ -25,8 +27,7 @@ function valueNoise(x, y) {
   return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
 }
 
-// Ridged multifractal: squares the inverted absolute noise so crests stay sharp,
-// which is what separates alpine ridgelines from rolling hills.
+// Ridged multifractal: squares the inverted absolute noise so crests stay sharp.
 function ridged(x, y, octaves) {
   let sum = 0;
   let amp = 0.5;
@@ -43,22 +44,45 @@ function ridged(x, y, octaves) {
   return sum;
 }
 
+function fbm(x, y, octaves) {
+  let sum = 0;
+  let amp = 0.5;
+  let freq = 1;
+  for (let i = 0; i < octaves; i++) {
+    sum += valueNoise(x * freq, y * freq) * amp;
+    freq *= 2.03;
+    amp *= 0.5;
+  }
+  return sum;
+}
+
+// The Alps are broad glaciated massifs, not needles: a smooth body carries the
+// bulk, crests only form where that body is already high, and the top of the
+// range is compressed into snowfields instead of being allowed to spike.
 function heightAt(x, z) {
-  const u = x / 300;
-  const v = z / 300;
-  let h = ridged(u + 4.2, v - 1.7, 10);
+  const u = x / 430;
+  const v = z / 430;
 
-  // erosion detail: gullies and broken rock, too fine for the ridge octaves
-  h += (valueNoise(x / 11 + 17, z / 11 - 23) - 0.5) * 0.055;
-  h += (valueNoise(x / 4.2 - 8, z / 4.2 + 14) - 0.5) * 0.022;
-  h += (valueNoise(x / 1.7 + 61, z / 1.7 - 44) - 0.5) * 0.009;
+  const body = fbm(u + 2.1, v - 0.8, 5);
+  const massif = Math.pow(clamp01(body * 1.35), 1.5);
+  const crest = ridged(u * 1.55 + 4.2, v * 1.55 - 1.7, 6);
 
-  // keep the near foreground low so the camera sits in a valley looking out
-  const nearness = Math.min(1, Math.max(0, (z + 60) / 320));
+  let h = massif * 0.74 + crest * 0.46 * massif;
+
+  // glacier basins and summit plateaus
+  h -= 0.3 * Math.pow(Math.max(0, h - 0.5), 1.4);
+
+  // erosion, eased off on the high snowfields where it would read as noise
+  const rough = 1 - clamp01((h - 0.42) * 1.5);
+  h += (valueNoise(x / 16 + 17, z / 16 - 23) - 0.5) * 0.05 * rough;
+  h += (valueNoise(x / 6 - 8, z / 6 + 14) - 0.5) * 0.02 * rough;
+
+  // keep the near foreground low so the camera sits in a valley
+  const nearness = clamp01((z + 60) / 320);
   h *= 0.1 + 0.9 * Math.pow(1 - nearness, 1.6);
 
   // and lift the far side into a dominant wall of summits
-  const far = Math.min(1, Math.max(0, (-z - 20) / 360));
+  const far = clamp01((-z - 20) / 360);
   h *= 0.4 + 1.05 * far;
 
   return h * PEAK;
@@ -84,8 +108,6 @@ export function createAlps(container, palette) {
     1,
     3000,
   );
-  camera.position.set(0, 52, 300);
-  camera.lookAt(0, 128, -300);
 
   const geometry = new THREE.PlaneGeometry(SIZE_X, SIZE_Z, SEGMENTS, SEGMENTS);
   geometry.rotateX(-Math.PI / 2);
@@ -108,7 +130,6 @@ export function createAlps(container, palette) {
   const tmp = new THREE.Color();
   const grass = new THREE.Color();
   const cap = new THREE.Color();
-  const clamp01 = (n) => Math.min(1, Math.max(0, n));
 
   for (let i = 0; i < pos.count; i++) {
     const x = pos.getX(i);
@@ -173,9 +194,39 @@ export function createAlps(container, palette) {
     ),
   );
 
+  // The page is a flight through the range: scrolling moves the camera from a
+  // wide establishing shot down into the valley.
+  const PATH = [
+    { pos: [0, 142, 408], look: [4, 110, -320] },
+    { pos: [54, 104, 205], look: [-18, 96, -330] },
+    { pos: [-26, 58, 10], look: [14, 104, -380] },
+    { pos: [-62, 38, -140], look: [40, 118, -430] },
+  ];
+
+  const current = { pos: [...PATH[0].pos], look: [...PATH[0].look] };
   let frame = null;
-  let scrollY = window.scrollY;
+  let target = 0;
   const start = performance.now();
+
+  function readProgress() {
+    const span = document.documentElement.scrollHeight - window.innerHeight;
+    target = span > 0 ? Math.min(1, Math.max(0, window.scrollY / span)) : 0;
+  }
+
+  let eased = 0;
+
+  function sample(p) {
+    const span = (PATH.length - 1) * p;
+    const i = Math.min(PATH.length - 2, Math.floor(span));
+    const t = span - i;
+    const smooth = t * t * (3 - 2 * t);
+    const a = PATH[i];
+    const b = PATH[i + 1];
+    return {
+      pos: a.pos.map((v, k) => v + (b.pos[k] - v) * smooth),
+      look: a.look.map((v, k) => v + (b.look[k] - v) * smooth),
+    };
+  }
 
   function resize() {
     const w = container.clientWidth;
@@ -185,29 +236,35 @@ export function createAlps(container, palette) {
     camera.updateProjectionMatrix();
   }
 
-  function onScroll() {
-    scrollY = window.scrollY;
-  }
-
   function render() {
     const t = (performance.now() - start) / 1000;
-    // a slow drift plus a gentle lift as the page scrolls
-    camera.position.x = Math.sin(t * 0.035) * 26;
-    camera.position.y = 52 + Math.sin(t * 0.021) * 4 + scrollY * 0.014;
-    camera.lookAt(Math.sin(t * 0.035) * 10, 128, -300);
+    eased += (target - eased) * 0.055;
+    const frameAt = sample(eased);
+
+    // a slow breathing drift so the shot is never completely static
+    const sway = Math.sin(t * 0.05) * 9;
+    for (let k = 0; k < 3; k++) {
+      current.pos[k] += (frameAt.pos[k] - current.pos[k]) * 0.1;
+      current.look[k] += (frameAt.look[k] - current.look[k]) * 0.1;
+    }
+
+    camera.position.set(current.pos[0] + sway, current.pos[1], current.pos[2]);
+    camera.lookAt(current.look[0] + sway * 0.4, current.look[1], current.look[2]);
     renderer.render(scene, camera);
     frame = requestAnimationFrame(render);
   }
 
   window.addEventListener("resize", resize, { passive: true });
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", readProgress, { passive: true });
+  readProgress();
+  eased = target;
   render();
 
   return {
     dispose() {
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", resize);
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", readProgress);
       geometry.dispose();
       terrain.material.dispose();
       renderer.dispose();
