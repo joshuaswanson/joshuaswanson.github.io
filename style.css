@@ -373,11 +373,88 @@ h3 {
 
 /* Project wordmarks, reproduced from each project's own site */
 
-.wm-chess {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #312e2b;
+/* Cursed Chess, the logo the site turns into once the curse lands.
+   Outline and glitch offsets are in em so they scale with the small size. */
+
+.wm-cursed {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3em;
+  font-family: "Bungee", "Rubik", system-ui, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  transform: skew(-9deg);
+  user-select: none;
+}
+
+.wm-cursed-word,
+.wm-cursed-chess {
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0.055em 0 0 #1b1033) drop-shadow(-0.055em 0 0 #1b1033)
+    drop-shadow(0 0.055em 0 #1b1033) drop-shadow(0 -0.055em 0 #1b1033)
+    drop-shadow(0.07em 0.07em 0 #1b1033);
+}
+
+.wm-cursed-word {
+  position: relative;
+  color: transparent;
+  background: linear-gradient(
+    180deg,
+    #ff7ac2,
+    #ff2e88 42%,
+    #b52bff 72%,
+    #6a1fd6
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.wm-cursed-word::before,
+.wm-cursed-word::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  clip-path: inset(0 0 100% 0);
+  animation: wmCursedGlitch 4.5s steps(1) infinite;
+}
+
+.wm-cursed-word::before {
+  color: #21e6ff;
+  --tear: -0.06em;
+}
+
+.wm-cursed-word::after {
+  color: #ff2e88;
+  --tear: 0.06em;
+  animation-delay: 0.05s;
+}
+
+.wm-cursed-chess {
+  color: #fff4e0;
+}
+
+@keyframes wmCursedGlitch {
+  0%,
+  90%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+    translate: 0 0;
+  }
+  91% {
+    clip-path: inset(15% 0 58% 0);
+    translate: var(--tear) 0;
+  }
+  93% {
+    clip-path: inset(62% 0 8% 0);
+    translate: calc(var(--tear) * -1.5) 0;
+  }
+  95% {
+    clip-path: inset(38% 0 40% 0);
+    translate: calc(var(--tear) * 2) 0;
+  }
 }
 
 .wm-latex {
@@ -486,5 +563,10 @@ blockquote {
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+  }
+
+  .wm-cursed-word::before,
+  .wm-cursed-word::after {
+    animation: none;
   }
 }
