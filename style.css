@@ -373,6 +373,32 @@ h3 {
 
 /* Project wordmarks, reproduced from each project's own site */
 
+/* Swiss German guide: flag over a Palatino-family title, as on the guide */
+
+.wm-sg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.wm-sg-flag {
+  display: block;
+  flex: none;
+}
+
+.wm-sg-title {
+  font-family:
+    "Iowan Old Style", "Palatino Nova", Palatino, "Palatino Linotype", Georgia,
+    serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0e0e10;
+}
+
 /* Monitor Comparison Tool: each "o" in the title is a chart dot.
    The source logo is light-on-dark, so the text colour is inverted here. */
 
