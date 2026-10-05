@@ -373,6 +373,34 @@ h3 {
 
 /* Project wordmarks, reproduced from each project's own site */
 
+/* Monitor Comparison Tool: each "o" in the title is a chart dot.
+   The source logo is light-on-dark, so the text colour is inverted here. */
+
+.wm-mct {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.wm-mct-owner {
+  font-weight: 400;
+  color: #7a7a8e;
+}
+
+.wm-mct-dot {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin: 0 0.05em;
+  border-radius: 50%;
+  background: var(--dot);
+  box-shadow: 0 0 0.45em color-mix(in srgb, var(--dot) 55%, transparent);
+}
+
 /* Cursed Chess, the logo the site turns into once the curse lands.
    Outline and glitch offsets are in em so they scale with the small size. */
 
