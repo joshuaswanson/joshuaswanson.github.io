@@ -373,6 +373,56 @@ h3 {
 
 /* Project wordmarks, reproduced from each project's own site */
 
+/* Zurich housing tool: house mark, and the umlaut over the u is drawn with
+   the two scraper source colours. */
+
+.wm-zht {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: #171a1e;
+  margin-bottom: 0.6rem;
+}
+
+.wm-zht-mark {
+  width: 1.12em;
+  height: 1.12em;
+  flex: none;
+}
+
+.wm-zht-u {
+  position: relative;
+  display: inline-block;
+}
+
+.wm-zht-u i {
+  position: absolute;
+  top: 0.07em;
+  width: 0.17em;
+  height: 0.17em;
+  border-radius: 50%;
+}
+
+.wm-zht-u i:first-child {
+  left: 0.1em;
+  background: #c2600f;
+}
+
+.wm-zht-u i:last-child {
+  right: 0.1em;
+  background: #0b7f86;
+}
+
+.wm-zht-rest {
+  margin-left: 0.22em;
+  color: #636b74;
+}
+
 /* Swiss German guide: flag over a Palatino-family title, as on the guide */
 
 .wm-sg {

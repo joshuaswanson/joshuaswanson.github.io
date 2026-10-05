@@ -30,6 +30,8 @@ const chTranslations = {
     "Finder-Stil GUI für SSH-Server. Spalte-Browser, integrierts Terminal, Drag-and-Drop Dateiübertragig.",
   "project-swissgerman-desc":
     "En praktische Guide zu Züridütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
+  "project-zurichhousing-desc":
+    "Durchsuecht di grosse Schwiizer Wohnigs-Plattforme, filtered und kartiert d'Resultat, und schriibt für jedi Aazeig e Bewerbig.",
   "project-watchbar-desc":
     "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
 };
