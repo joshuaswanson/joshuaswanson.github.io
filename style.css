@@ -377,10 +377,13 @@ h3 {
    The source logo is light-on-dark, so the text colour is inverted here. */
 
 .wm-mct {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   font-family: "DM Sans", system-ui, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.05;
   letter-spacing: -0.035em;
   color: var(--text-primary);
   margin-bottom: 0.6rem;
