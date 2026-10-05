@@ -378,12 +378,15 @@ h3 {
 
 .wm-cursed {
   display: flex;
-  align-items: baseline;
-  gap: 0.3em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.04em;
   font-family: "Bungee", "Rubik", system-ui, sans-serif;
-  font-size: 1.15rem;
+  font-size: 2rem;
   line-height: 1;
+  margin-bottom: 0.6rem;
   transform: skew(-9deg);
+  transform-origin: left center;
   user-select: none;
 }
 
@@ -458,8 +461,9 @@ h3 {
 }
 
 .wm-latex {
-  /* serif at regular weight reads lighter than the Inter 600 titles beside it */
-  font-size: 1.1rem;
+  font-size: 1.75rem;
+  line-height: 1.05;
+  margin-bottom: 0.6rem;
   font-family:
     "CMU Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
   font-weight: 400;
@@ -468,6 +472,7 @@ h3 {
 }
 
 .wm-latex em {
+  display: block;
   font-style: italic;
   color: #b4432c;
 }

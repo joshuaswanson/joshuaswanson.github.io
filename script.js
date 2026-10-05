@@ -17,8 +17,7 @@ const chTranslations = {
     "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
   "deanon-featured": "Bekannt us:",
   "deanon-discussed": "Diskutiert uf:",
-  "project-cursedchess-desc":
-    "Es chaotischs Schach-Variant mit Spielmodi wo alli 45 Sekunde wächsled: Portäl, Nebel vom Chrieg, Battle Royale, Minefäld, Schwerchraft, und meh.",
+  "project-cursedchess-desc": "So hesch no nie Schach gspilt.",
   "project-ios-desc":
     "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
   "project-latex-desc":
