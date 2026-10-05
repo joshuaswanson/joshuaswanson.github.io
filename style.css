@@ -367,19 +367,50 @@ h3 {
 }
 
 .project-title {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
   font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
-.project-icon {
-  flex: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin-top: 0.12em;
-  color: var(--text-secondary);
+/* Project wordmarks, reproduced from each project's own site */
+
+.wm-chess {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #312e2b;
+}
+
+.wm-latex {
+  /* serif at regular weight reads lighter than the Inter 600 titles beside it */
+  font-size: 1.1rem;
+  font-family:
+    "CMU Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: #1c1b1a;
+}
+
+.wm-latex em {
+  font-style: italic;
+  color: #b4432c;
+}
+
+.wm-latex .latex {
+  white-space: nowrap;
+}
+
+.wm-latex .latex-a {
+  font-size: 0.72em;
+  vertical-align: 0.22em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+
+.wm-latex .latex-e {
+  position: relative;
+  top: 0.22em;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
 }
 
 .project-description {
