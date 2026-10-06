@@ -144,6 +144,12 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 .lang-toggle {
   display: block;
   border: none;
@@ -163,6 +169,16 @@ h3 {
   display: block;
   width: 1.125rem;
   height: 1.125rem;
+}
+
+.lang-toggle .flag-de {
+  filter: grayscale(1) opacity(0.45);
+  transition: filter 0.2s ease;
+}
+
+.lang-toggle:hover .flag-de,
+.lang-toggle.active .flag-de {
+  filter: none;
 }
 
 /* ==========================================================================

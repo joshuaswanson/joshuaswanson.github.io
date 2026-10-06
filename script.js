@@ -1,79 +1,116 @@
 // ==========================================================================
-// Swiss German (Züridütsch) language toggle
+// Language switching: Züridütsch and standard German, each a toggle back to
+// English. The quote is left in English in every language; it is a quotation.
 // ==========================================================================
 
-const chTranslations = {
-  "about-bio":
-    'Ich han en MSc i Informatik vo de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management, und en BA i Mathematik und en BSc i Informatik vo de <a href="https://www.washington.edu">University of Washington</a>.',
-  "about-research":
-    'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/news-and-events/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
-  "pub-heading": "Publikatione",
-  "projects-heading": "Projäkt",
-  "projects-intro": "Chliini Tools, Spiel und Näbeprojekt woni zum Spass bau.",
-  "contact-heading": "Kontakt",
-  "contact-standing":
-    'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
-  "contact-email":
-    "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
-  "deanon-featured": "Bekannt us:",
-  "deanon-discussed": "Diskutiert uf:",
-  "project-cursedchess-desc": "Magsch Schach? Dänn wirsch das hasse!",
-  "project-ios-desc":
-    "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
-  "project-latex-desc":
-    "Übersetz nöd-änglischi LaTeX-gsetzti PDFs uf Änglisch und behaltet debii d'mathematischi Notation.",
-  "project-monitor-desc":
-    "Interaktivs Scatter-Plot zum Vergliiche vo Monitor-Spezifikatione wie PPI, Bildschirmflächi und Priis.",
-  "project-slidestovideo-desc":
-    "Macht us emene Foliesatz es vertontes Video mit AI Voice Cloning. PDF ufelade, Skript schriibe, Stimm-Sample lifere, und chum es Präsentationsvideo überchoo.",
-  "project-sshgui-desc":
-    "Finder-Stil GUI für SSH-Server. Spalte-Browser, integrierts Terminal, Drag-and-Drop Dateiübertragig.",
-  "project-swissgerman-desc":
-    "En praktische Guide zu Züridütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
-  "project-zurichhousing-desc":
-    "Durchsuecht di grosse Schwiizer Wohnigs-Plattforme, filtered und kartiert d'Resultat, und schriibt für jedi Aazeig e Bewerbig.",
-  "project-watchbar-desc":
-    "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
+const translations = {
+  ch: {
+    "about-bio":
+      'Ich han en MSc i Informatik vo de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management, und en BA i Mathematik und en BSc i Informatik vo de <a href="https://www.washington.edu">University of Washington</a>.',
+    "about-research":
+      'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/news-and-events/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
+    "pub-heading": "Publikatione",
+    "projects-heading": "Projäkt",
+    "projects-intro":
+      "Chliini Tools, Spiel und Näbeprojekt woni zum Spass bau.",
+    "contact-heading": "Kontakt",
+    "contact-standing":
+      'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
+    "contact-email":
+      "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
+    "deanon-featured": "Bekannt us:",
+    "deanon-discussed": "Diskutiert uf:",
+    "project-cursedchess-desc": "Magsch Schach? Dänn wirsch das hasse!",
+    "project-ios-desc":
+      "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
+    "project-latex-desc":
+      "Übersetz nöd-änglischi LaTeX-gsetzti PDFs uf Änglisch und behaltet debii d'mathematischi Notation.",
+    "project-monitor-desc":
+      "Interaktivs Scatter-Plot zum Vergliiche vo Monitor-Spezifikatione wie PPI, Bildschirmflächi und Priis.",
+    "project-slidestovideo-desc":
+      "Macht us emene Foliesatz es vertontes Video mit AI Voice Cloning. PDF ufelade, Skript schriibe, Stimm-Sample lifere, und chum es Präsentationsvideo überchoo.",
+    "project-sshgui-desc":
+      "Finder-Stil GUI für SSH-Server. Spalte-Browser, integrierts Terminal, Drag-and-Drop Dateiübertragig.",
+    "project-swissgerman-desc":
+      "En praktische Guide zu Züridütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
+    "project-zurichhousing-desc":
+      "Durchsuecht di grosse Schwiizer Wohnigs-Plattforme, filtered und kartiert d'Resultat, und schriibt für jedi Aazeig e Bewerbig.",
+    "project-watchbar-desc":
+      "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
+  },
+
+  de: {
+    "about-bio":
+      'Ich habe einen MSc in Informatik von der <a href="https://ethz.ch/en.html">ETH Zürich</a> mit Schwerpunkt Machine Intelligence und Nebenfach Data Management sowie einen BA in Mathematik und einen BSc in Informatik von der <a href="https://www.washington.edu">University of Washington</a>.',
+    "about-research":
+      'Meine Forschungsinteressen liegen in KI-Sicherheit und Privatsphäre. Mein neuestes <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasstes Paper</a> wurde von der <a href="https://inf.ethz.ch/news-and-events/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Zürich</a> hervorgehoben und erschien in der <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, im <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, bei <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a> und weiteren Medien.',
+    "pub-heading": "Publikationen",
+    "deanon-featured": "Bekannt aus:",
+    "deanon-discussed": "Diskutiert auf:",
+    "projects-heading": "Projekte",
+    "projects-intro":
+      "Kleine Tools, Spiele und Nebenprojekte, die ich zum Spass baue.",
+    "project-cursedchess-desc": "Magst du Schach? Dann wirst du das hassen!",
+    "project-ios-desc":
+      "Live-Prozessmonitor für ein per USB angeschlossenes iPhone oder iPad. Wie der macOS Activity Monitor, aber für iOS.",
+    "project-latex-desc":
+      "Übersetze nicht-englische, in LaTeX gesetzte PDFs ins Englische und behalte dabei die mathematische Notation bei.",
+    "project-monitor-desc":
+      "Interaktives Streudiagramm zum Vergleichen von Monitorspezifikationen wie PPI, Bildschirmfläche und Preis.",
+    "project-slidestovideo-desc":
+      "Macht aus einem Foliensatz ein vertontes Video mit AI Voice Cloning. PDF hochladen, Skript schreiben, Stimmprobe liefern, Präsentationsvideo erhalten.",
+    "project-sshgui-desc":
+      "Desktop-GUI im Finder-Stil für SSH-Server. Spaltenbrowser, integriertes Terminal, Drag-and-Drop-Dateiübertragung.",
+    "project-swissgerman-desc":
+      "Ein praktischer Leitfaden zu Züritüütsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
+    "project-watchbar-desc":
+      "macOS-Menüleisten-App zum Verwalten deiner YouTube-Watch-Later-Playlist.",
+    "project-zurichhousing-desc":
+      "Durchsucht die grossen Schweizer Wohnungsplattformen, filtert und kartiert die Ergebnisse und verfasst für jedes Inserat eine Bewerbung.",
+    "contact-heading": "Kontakt",
+    "contact-standing":
+      'Ich schliesse mich der <a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a> an:',
+    "contact-email":
+      "Meine E-Mail folgt dem Standard-ETH-Format: erster Buchstabe des Vornamens + Nachname at ethz.ch.",
+  },
 };
+
+const HTML_LANG = { ch: "gsw", de: "de", en: "en" };
 
 const originals = {};
 let currentLang = localStorage.getItem("lang") || "en";
 
 function applyLanguage(lang) {
+  const dict = translations[lang] || {};
+
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.dataset.i18n;
-    if (lang === "ch") {
-      if (!(key in originals)) {
-        originals[key] = el.innerHTML;
-      }
-      if (chTranslations[key]) {
-        el.innerHTML = chTranslations[key];
-      }
-    } else {
-      if (key in originals) {
-        el.innerHTML = originals[key];
-      }
+    if (!(key in originals)) {
+      originals[key] = el.innerHTML;
     }
+    el.innerHTML = dict[key] || originals[key];
   });
 
   currentLang = lang;
   localStorage.setItem("lang", lang);
+  document.documentElement.lang = HTML_LANG[lang] || "en";
 
-  const toggle = document.getElementById("lang-toggle");
-  toggle.classList.toggle("active", lang === "ch");
-  toggle.setAttribute(
-    "aria-label",
-    lang === "ch" ? "Switch to English" : "Switch to Swiss German",
-  );
+  document.querySelectorAll(".lang-toggle").forEach((btn) => {
+    const on = btn.dataset.lang === lang;
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  });
 }
 
-document.getElementById("lang-toggle").addEventListener("click", () => {
-  applyLanguage(currentLang === "ch" ? "en" : "ch");
+document.querySelectorAll(".lang-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    applyLanguage(currentLang === btn.dataset.lang ? "en" : btn.dataset.lang);
+  });
 });
 
 // Apply saved language on load
-if (currentLang === "ch") {
-  applyLanguage("ch");
+if (currentLang !== "en") {
+  applyLanguage(currentLang);
 }
 
 // "and X more" toggle for media links
