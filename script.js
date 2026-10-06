@@ -21,7 +21,7 @@ const chTranslations = {
   "project-ios-desc":
     "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
   "project-latex-desc":
-    "Übersetzt nöd-änglischi LaTeX-gsetzti PDFs uf Änglisch und behaltet debii d'mathematischi Notation.",
+    "Übersetz nöd-änglischi LaTeX-gsetzti PDFs uf Änglisch und behaltet debii d'mathematischi Notation.",
   "project-monitor-desc":
     "Interaktivs Scatter-Plot zum Vergliiche vo Monitor-Spezifikatione wie PPI, Bildschirmflächi und Priis.",
   "project-slidestovideo-desc":
