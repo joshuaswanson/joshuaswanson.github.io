@@ -381,6 +381,20 @@ h3 {
 
 /* Project wordmarks, reproduced from each project's own site */
 
+/* iOS Activity Monitor: the README wordmark, broken onto two lines so the
+   lockup is not twice the width of the column */
+
+.wm-iam-title {
+  margin-bottom: 0.6rem;
+}
+
+.wm-iam {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  height: auto;
+}
+
 /* WatchBar: the logo ships as one SVG with its lettering already outlined */
 
 .wm-wb-title {
