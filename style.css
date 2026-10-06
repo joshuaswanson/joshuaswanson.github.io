@@ -173,6 +173,13 @@ h3 {
   filter: none;
 }
 
+/* the two rectangular flags share a width; the Swiss one is square */
+.lang-toggle .flag-us,
+.lang-toggle .flag-de {
+  width: 2rem;
+  height: auto;
+}
+
 /* ==========================================================================
    Page Sections
    ========================================================================== */
