@@ -9,7 +9,7 @@ const chTranslations = {
     'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/news-and-events/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
   "pub-heading": "Publikatione",
   "projects-heading": "Projäkt",
-  "projects-intro": "Chliini Tools und Näbeprojekt woni zum Spass bau.",
+  "projects-intro": "Chliini Tools, Spiel und Näbeprojekt woni zum Spass bau.",
   "contact-heading": "Kontakt",
   "contact-standing":
     'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
@@ -17,7 +17,7 @@ const chTranslations = {
     "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
   "deanon-featured": "Bekannt us:",
   "deanon-discussed": "Diskutiert uf:",
-  "project-cursedchess-desc": "So hesch no nie Schach gspilt.",
+  "project-cursedchess-desc": "Magsch Schach? Dänn wirsch das hasse!",
   "project-ios-desc":
     "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
   "project-latex-desc":
