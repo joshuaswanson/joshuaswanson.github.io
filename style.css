@@ -156,28 +156,20 @@ h3 {
   background: none;
   padding: 0;
   cursor: pointer;
-  color: var(--border);
-  transition: color 0.2s ease;
+  line-height: 0;
 }
 
-.lang-toggle:hover,
-.lang-toggle.active {
-  color: #da291c;
-}
-
+/* aligned by height, so each flag keeps its own proportions */
 .lang-toggle svg {
   display: block;
-  width: 1.125rem;
   height: 1.125rem;
-}
-
-.lang-toggle .flag-de {
+  width: auto;
   filter: grayscale(1) opacity(0.45);
   transition: filter 0.2s ease;
 }
 
-.lang-toggle:hover .flag-de,
-.lang-toggle.active .flag-de {
+.lang-toggle:hover svg,
+.lang-toggle.active svg {
   filter: none;
 }
 

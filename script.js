@@ -108,10 +108,8 @@ document.querySelectorAll(".lang-toggle").forEach((btn) => {
   });
 });
 
-// Apply saved language on load
-if (currentLang !== "en") {
-  applyLanguage(currentLang);
-}
+// Always run on load: English is a language too, and this lights its flag
+applyLanguage(currentLang);
 
 // "and X more" toggle for media links
 document.querySelectorAll(".media-show-more").forEach((toggle) => {
