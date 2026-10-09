@@ -115,9 +115,13 @@ applyLanguage(currentLang);
 // The project logos animate on a timer, only while the logo is on screen
 // ==========================================================================
 
-function playOccasionally(logo, runFor) {
+// Only one logo animates at a time, so they never fire together
+let busyUntil = 0;
+
+function playOccasionally(logo, runFor, offset) {
   const FIRST = [1800, 4000];
   const THEN = [11000, 22000];
+  const GAP = 900;
 
   let timer = null;
   let onScreen = false;
@@ -127,10 +131,17 @@ function playOccasionally(logo, runFor) {
     clearTimeout(timer);
     if (!onScreen) return;
     const [lo, hi] = seen ? THEN : FIRST;
-    timer = setTimeout(play, lo + Math.random() * (hi - lo));
+    const wait = lo + Math.random() * (hi - lo) + (seen ? 0 : offset);
+    timer = setTimeout(play, wait);
   }
 
   function play() {
+    const now = Date.now();
+    if (now < busyUntil) {
+      timer = setTimeout(play, busyUntil - now);
+      return;
+    }
+    busyUntil = now + runFor + GAP;
     seen = true;
     logo.classList.add("is-playing");
     setTimeout(() => logo.classList.remove("is-playing"), runFor);
@@ -151,15 +162,16 @@ function playOccasionally(logo, runFor) {
 }
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document
-    .querySelectorAll(".wm-zht")
-    .forEach((el) => playOccasionally(el, 800));
-  document
-    .querySelectorAll(".wm-mct")
-    .forEach((el) => playOccasionally(el, 1000));
-  document
-    .querySelectorAll(".wm-iam")
-    .forEach((el) => playOccasionally(el, 1700));
+  [
+    [".wm-zht", 800],
+    [".wm-mct", 1000],
+    [".wm-iam", 1700],
+    [".wm-ssh", 1800],
+  ].forEach(([selector, runFor], i) => {
+    document
+      .querySelectorAll(selector)
+      .forEach((el) => playOccasionally(el, runFor, i * 900));
+  });
 }
 
 // "and X more" toggle for media links
