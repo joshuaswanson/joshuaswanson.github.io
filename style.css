@@ -165,7 +165,7 @@ h3 {
   height: 1.125rem;
   width: auto;
   filter: grayscale(1) opacity(0.45);
-  transition: filter 0.2s ease;
+  transition: filter 0.07s ease-out;
 }
 
 .lang-toggle:hover svg,
