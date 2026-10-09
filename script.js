@@ -34,7 +34,7 @@ const translations = {
     "project-swissgerman-desc":
       "En praktische Guide zu Züridütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
     "project-zurichhousing-desc":
-      "Durchsuecht di grosse Schwiizer Wohnigs-Plattforme, filtered und kartiert d'Resultat, und schriibt für jedi Aazeig e Bewerbig.",
+      "Durchsuech di grosse Schwiizer Wohnigs-Plattforme, filter und kartier d'Resultat, und generier massewiis massgschnideti Bewerbige.",
     "project-watchbar-desc":
       "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
   },
@@ -66,7 +66,7 @@ const translations = {
     "project-watchbar-desc":
       "macOS-Menüleisten-App zum Verwalten deiner YouTube-Watch-Later-Playlist.",
     "project-zurichhousing-desc":
-      "Durchsucht die grossen Schweizer Wohnungsplattformen, filtert und kartiert die Ergebnisse und verfasst für jedes Inserat eine Bewerbung.",
+      "Durchsuche die grossen Schweizer Wohnungsplattformen, filtere und kartiere die Ergebnisse und generiere massenhaft massgeschneiderte Bewerbungen.",
     "contact-heading": "Kontakt",
     "contact-standing":
       'Ich schliesse mich der <a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a> an:',
