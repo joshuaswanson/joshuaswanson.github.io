@@ -561,6 +561,30 @@ h3 {
   box-shadow: 0 0 0.45em color-mix(in srgb, var(--dot) 55%, transparent);
 }
 
+.wm-mct.is-hopping .wm-mct-dot {
+  transform-origin: center bottom;
+  animation: mctHop 0.6s cubic-bezier(0.3, 0.7, 0.4, 1) both;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+@keyframes mctHop {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  18% {
+    transform: translateY(0) scale(1.18, 0.78);
+  }
+  48% {
+    transform: translateY(-0.42em) scale(0.92, 1.1);
+  }
+  78% {
+    transform: translateY(0) scale(1.14, 0.84);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
 /* Cursed Chess, the logo the site turns into once the curse lands.
    Outline and glitch offsets are in em so they scale with the small size. */
 

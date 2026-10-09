@@ -112,15 +112,11 @@ document.querySelectorAll(".lang-toggle").forEach((btn) => {
 applyLanguage(currentLang);
 
 // ==========================================================================
-// The housing tool logo hops occasionally, only while it is on screen
+// The project logos that animate on their own sites do it here on a timer,
+// only while the logo is on screen
 // ==========================================================================
 
-const housingLogo = document.querySelector(".wm-zht");
-
-if (
-  housingLogo &&
-  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
+function hopOccasionally(logo, runFor) {
   const FIRST = [1800, 4000];
   const THEN = [11000, 22000];
 
@@ -137,8 +133,8 @@ if (
 
   function hop() {
     seen = true;
-    housingLogo.classList.add("is-hopping");
-    setTimeout(() => housingLogo.classList.remove("is-hopping"), 800);
+    logo.classList.add("is-hopping");
+    setTimeout(() => logo.classList.remove("is-hopping"), runFor);
     schedule();
   }
 
@@ -152,7 +148,16 @@ if (
       }
     },
     { threshold: 0.6 },
-  ).observe(housingLogo);
+  ).observe(logo);
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document
+    .querySelectorAll(".wm-zht")
+    .forEach((el) => hopOccasionally(el, 800));
+  document
+    .querySelectorAll(".wm-mct")
+    .forEach((el) => hopOccasionally(el, 1000));
 }
 
 // "and X more" toggle for media links
