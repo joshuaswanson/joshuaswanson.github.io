@@ -8,7 +8,7 @@ const translations = {
     "about-bio":
       'Ich han en MSc i Informatik vo de <a href="https://ethz.ch/en.html">ETH Züri</a>, mit Schwerpunkt Machine Intelligence und Minor i Data Management, und en BA i Mathematik und en BSc i Informatik vo de <a href="https://www.washington.edu">University of Washington</a>.',
     "about-research":
-      'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/news-and-events/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
+      'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/de/news-und-veranstaltungen/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
     "pub-heading": "Publikatione",
     "projects-heading": "Projäkt",
     "projects-intro":
@@ -43,7 +43,7 @@ const translations = {
     "about-bio":
       'Ich habe einen MSc in Informatik von der <a href="https://ethz.ch/en.html">ETH Zürich</a> mit Schwerpunkt Machine Intelligence und Nebenfach Data Management sowie einen BA in Mathematik und einen BSc in Informatik von der <a href="https://www.washington.edu">University of Washington</a>.',
     "about-research":
-      'Meine Forschungsinteressen liegen in KI-Sicherheit und Privatsphäre. Mein neuestes <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasstes Paper</a> wurde von der <a href="https://inf.ethz.ch/news-and-events/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Zürich</a> hervorgehoben und erschien in der <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, im <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, bei <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a> und weiteren Medien.',
+      'Meine Forschungsinteressen liegen in KI-Sicherheit und Privatsphäre. Mein neuestes <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasstes Paper</a> wurde von der <a href="https://inf.ethz.ch/de/news-und-veranstaltungen/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Zürich</a> hervorgehoben und erschien in der <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, im <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, bei <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a> und weiteren Medien.',
     "pub-heading": "Publikationen",
     "deanon-featured": "Bekannt aus:",
     "deanon-discussed": "Diskutiert auf:",
@@ -78,6 +78,7 @@ const translations = {
 const HTML_LANG = { ch: "gsw", de: "de", en: "en" };
 
 const originals = {};
+const englishHrefs = new Map();
 let currentLang = localStorage.getItem("lang") || "en";
 
 function applyLanguage(lang) {
@@ -89,6 +90,14 @@ function applyLanguage(lang) {
       originals[key] = el.innerHTML;
     }
     el.innerHTML = dict[key] || originals[key];
+  });
+
+  document.querySelectorAll("[data-href-de]").forEach((link) => {
+    if (!englishHrefs.has(link)) {
+      englishHrefs.set(link, link.getAttribute("href"));
+    }
+    const href = lang === "en" ? englishHrefs.get(link) : link.dataset.hrefDe;
+    link.setAttribute("href", href);
   });
 
   currentLang = lang;
