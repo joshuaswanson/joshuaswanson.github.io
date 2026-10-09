@@ -17,6 +17,10 @@
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --measure: 60rem;
   --gutter: 2rem;
+
+  /* Both app icons are drawn on a rounded tile. Each wordmark is sized from
+     this so the two tiles come out the same. */
+  --app-tile: 3.25rem;
 }
 
 /* ==========================================================================
@@ -391,7 +395,8 @@ h3 {
 .wm-iam {
   display: block;
   width: 100%;
-  max-width: 15rem;
+  /* tile is 512 scaled by 0.23 of the 578.5 unit viewBox */
+  max-width: calc(var(--app-tile) * 578.5 / 117.76);
   height: auto;
 }
 
@@ -523,6 +528,60 @@ h3 {
   }
   100% {
     transform: none;
+  }
+}
+
+/* SSH GUI: the selection wipes in across the three browser columns, then the
+   terminal cursor blinks twice. */
+
+.wm-ssh-title {
+  margin-bottom: 0.6rem;
+}
+
+.wm-ssh {
+  display: block;
+  width: 100%;
+  /* tile is 248 of the 816 unit viewBox */
+  max-width: calc(var(--app-tile) * 816 / 248);
+  height: auto;
+}
+
+.wm-ssh.is-playing .wm-ssh-sel {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: sshSelect 0.45s cubic-bezier(0.3, 0.8, 0.4, 1) both;
+  animation-delay: calc(var(--i) * 180ms);
+}
+
+.wm-ssh.is-playing .wm-ssh-cursor {
+  animation-name: sshBlink;
+  animation-duration: 0.38s;
+  animation-delay: 0.88s;
+  animation-iteration-count: 2;
+  animation-fill-mode: both;
+}
+
+@keyframes sshSelect {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sshBlink {
+  0%,
+  24.99% {
+    opacity: 1;
+  }
+  25%,
+  74.99% {
+    opacity: 0;
+  }
+  75%,
+  100% {
+    opacity: 1;
   }
 }
 
