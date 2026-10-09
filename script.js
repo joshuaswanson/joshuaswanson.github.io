@@ -166,7 +166,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     [".wm-zht", 800],
     [".wm-mct", 1000],
     [".wm-iam", 1700],
-    [".wm-ssh", 1800],
+    [".wm-ssh", 1600],
   ].forEach(([selector, runFor], i) => {
     document
       .querySelectorAll(selector)

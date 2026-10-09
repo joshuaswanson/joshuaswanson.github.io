@@ -531,8 +531,9 @@ h3 {
   }
 }
 
-/* SSH GUI: the selection wipes in across the three browser columns, then the
-   terminal cursor blinks twice. */
+/* SSH GUI: the selection in each column moves to another row and back, one
+   column after the next. The dim layer carries every row, so a row the
+   selection leaves is still there underneath. */
 
 .wm-ssh-title {
   margin-bottom: 0.6rem;
@@ -546,40 +547,45 @@ h3 {
   height: auto;
 }
 
-.wm-ssh.is-playing .wm-ssh-sel {
-  transform-box: fill-box;
-  transform-origin: left center;
-  animation: sshSelect 0.45s cubic-bezier(0.3, 0.8, 0.4, 1) both;
-  animation-delay: calc(var(--i) * 180ms);
+.wm-ssh-alt {
+  opacity: 0;
 }
 
-.wm-ssh.is-playing .wm-ssh-cursor {
-  animation-name: sshBlink;
-  animation-duration: 0.38s;
-  animation-delay: 0.88s;
-  animation-iteration-count: 2;
-  animation-fill-mode: both;
+.wm-ssh.is-playing .wm-ssh-sel {
+  animation: sshDeselect 1.1s ease-in-out both;
+  animation-delay: calc(var(--i) * 200ms);
+}
+
+.wm-ssh.is-playing .wm-ssh-alt {
+  animation: sshSelect 1.1s ease-in-out both;
+  animation-delay: calc(var(--i) * 200ms);
 }
 
 @keyframes sshSelect {
-  from {
-    transform: scaleX(0);
+  0%,
+  8% {
+    opacity: 0;
   }
-  to {
-    transform: scaleX(1);
+  20%,
+  72% {
+    opacity: 1;
+  }
+  86%,
+  100% {
+    opacity: 0;
   }
 }
 
-@keyframes sshBlink {
+@keyframes sshDeselect {
   0%,
-  24.99% {
+  8% {
     opacity: 1;
   }
-  25%,
-  74.99% {
+  20%,
+  72% {
     opacity: 0;
   }
-  75%,
+  86%,
   100% {
     opacity: 1;
   }
