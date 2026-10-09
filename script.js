@@ -111,6 +111,50 @@ document.querySelectorAll(".lang-toggle").forEach((btn) => {
 // Always run on load: English is a language too, and this lights its flag
 applyLanguage(currentLang);
 
+// ==========================================================================
+// The housing tool logo hops occasionally, only while it is on screen
+// ==========================================================================
+
+const housingLogo = document.querySelector(".wm-zht");
+
+if (
+  housingLogo &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  const FIRST = [1800, 4000];
+  const THEN = [11000, 22000];
+
+  let timer = null;
+  let onScreen = false;
+  let seen = false;
+
+  function schedule() {
+    clearTimeout(timer);
+    if (!onScreen) return;
+    const [lo, hi] = seen ? THEN : FIRST;
+    timer = setTimeout(hop, lo + Math.random() * (hi - lo));
+  }
+
+  function hop() {
+    seen = true;
+    housingLogo.classList.add("is-hopping");
+    setTimeout(() => housingLogo.classList.remove("is-hopping"), 800);
+    schedule();
+  }
+
+  new IntersectionObserver(
+    (entries) => {
+      onScreen = entries[0].isIntersecting;
+      if (onScreen) {
+        schedule();
+      } else {
+        clearTimeout(timer);
+      }
+    },
+    { threshold: 0.6 },
+  ).observe(housingLogo);
+}
+
 // "and X more" toggle for media links
 document.querySelectorAll(".media-show-more").forEach((toggle) => {
   const moreLinks = toggle.previousElementSibling;
