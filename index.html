@@ -665,6 +665,10 @@
                         y2="0"
                       >
                         <stop offset="0" stop-color="#ffc27a" />
+                        <stop offset="0.3333" stop-color="#ff7a1a" />
+                        <stop offset="0.3333" stop-color="#ffc27a" />
+                        <stop offset="0.6667" stop-color="#ff7a1a" />
+                        <stop offset="0.6667" stop-color="#ffc27a" />
                         <stop offset="1" stop-color="#ff7a1a" />
                       </linearGradient>
                       <linearGradient id="iam-area" x1="0" y1="0" x2="0" y2="1">
@@ -720,18 +724,20 @@
                     />
 
                     <g clip-path="url(#iam-screen)">
-                      <path
-                        d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H347 V435 H165 Z"
-                        fill="url(#iam-area)"
-                      />
-                      <path
-                        d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H347"
-                        fill="none"
-                        stroke="url(#iam-trace)"
-                        stroke-width="15"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
+                      <g class="iam-graph">
+                        <path
+                          d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H383 L404 262 L427 322 L458 178 L484 296 H565 L586 262 L609 322 L640 178 L666 296 H711 V435 H165 Z"
+                          fill="url(#iam-area)"
+                        />
+                        <path
+                          d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H383 L404 262 L427 322 L458 178 L484 296 H565 L586 262 L609 322 L640 178 L666 296 H711"
+                          fill="none"
+                          stroke="url(#iam-trace)"
+                          stroke-width="15"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
                     </g>
                   </g>
                   <g transform="translate(-34.84 -56.7)">

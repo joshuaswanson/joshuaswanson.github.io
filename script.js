@@ -112,11 +112,10 @@ document.querySelectorAll(".lang-toggle").forEach((btn) => {
 applyLanguage(currentLang);
 
 // ==========================================================================
-// The project logos that animate on their own sites do it here on a timer,
-// only while the logo is on screen
+// The project logos animate on a timer, only while the logo is on screen
 // ==========================================================================
 
-function hopOccasionally(logo, runFor) {
+function playOccasionally(logo, runFor) {
   const FIRST = [1800, 4000];
   const THEN = [11000, 22000];
 
@@ -128,13 +127,13 @@ function hopOccasionally(logo, runFor) {
     clearTimeout(timer);
     if (!onScreen) return;
     const [lo, hi] = seen ? THEN : FIRST;
-    timer = setTimeout(hop, lo + Math.random() * (hi - lo));
+    timer = setTimeout(play, lo + Math.random() * (hi - lo));
   }
 
-  function hop() {
+  function play() {
     seen = true;
-    logo.classList.add("is-hopping");
-    setTimeout(() => logo.classList.remove("is-hopping"), runFor);
+    logo.classList.add("is-playing");
+    setTimeout(() => logo.classList.remove("is-playing"), runFor);
     schedule();
   }
 
@@ -154,10 +153,13 @@ function hopOccasionally(logo, runFor) {
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document
     .querySelectorAll(".wm-zht")
-    .forEach((el) => hopOccasionally(el, 800));
+    .forEach((el) => playOccasionally(el, 800));
   document
     .querySelectorAll(".wm-mct")
-    .forEach((el) => hopOccasionally(el, 1000));
+    .forEach((el) => playOccasionally(el, 1000));
+  document
+    .querySelectorAll(".wm-iam")
+    .forEach((el) => playOccasionally(el, 1700));
 }
 
 // "and X more" toggle for media links

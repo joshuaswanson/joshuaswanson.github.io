@@ -395,6 +395,23 @@ h3 {
   height: auto;
 }
 
+/* The chart on the phone screen runs like a live readout. The waveform is
+   three copies of one screen width, so scrolling by two lands on an identical
+   frame and the start and end states match the resting logo. */
+
+.wm-iam.is-playing .iam-graph {
+  animation: iamScroll 1.6s cubic-bezier(0.45, 0, 0.55, 1) both;
+}
+
+@keyframes iamScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-364px);
+  }
+}
+
 /* WatchBar: the logo ships as one SVG with its lettering already outlined */
 
 .wm-wb-title {
@@ -460,16 +477,16 @@ h3 {
 /* The housing tool plays this on hover on its own site; here it fires on a
    timer instead, so it reads as a small flourish rather than a reaction. */
 
-.wm-zht.is-hopping .wm-zht-mark {
+.wm-zht.is-playing .wm-zht-mark {
   transform-origin: 50% 100%;
   animation: zhtHop 0.6s ease-out;
 }
 
-.wm-zht.is-hopping .wm-zht-u i {
+.wm-zht.is-playing .wm-zht-u i {
   animation: zhtDotBounce 0.55s ease-out;
 }
 
-.wm-zht.is-hopping .wm-zht-u i:last-child {
+.wm-zht.is-playing .wm-zht-u i:last-child {
   animation-delay: 0.12s;
 }
 
@@ -561,7 +578,7 @@ h3 {
   box-shadow: 0 0 0.45em color-mix(in srgb, var(--dot) 55%, transparent);
 }
 
-.wm-mct.is-hopping .wm-mct-dot {
+.wm-mct.is-playing .wm-mct-dot {
   transform-origin: center bottom;
   animation: mctHop 0.6s cubic-bezier(0.3, 0.7, 0.4, 1) both;
   animation-delay: calc(var(--i) * 90ms);
