@@ -19,7 +19,7 @@ const translations = {
     "contact-standing":
       'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
     "contact-email":
-      "Mini E-Mail folgt em Standard-ETH-Format: erschte Buechstabe vom Vorname + Nachname at ethz.ch.",
+      "Mini E-Mail folgt em Standard-Max-Planck-Format: Vorname Punkt Nachname at tuebingen.mpg.de.",
     "deanon-featured": "Bekannt us:",
     "deanon-discussed": "Diskutiert uf:",
     "project-cursedchess-desc": "Magsch Schach? Dänn wirsch das hasse!",
@@ -75,7 +75,7 @@ const translations = {
     "contact-standing":
       'Ich schliesse mich der <a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a> an:',
     "contact-email":
-      "Meine E-Mail folgt dem Standard-ETH-Format: erster Buchstabe des Vornamens + Nachname at ethz.ch.",
+      "Meine E-Mail folgt dem Standard-Max-Planck-Format: Vorname Punkt Nachname at tuebingen.mpg.de.",
   },
 };
 
