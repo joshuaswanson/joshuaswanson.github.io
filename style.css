@@ -495,8 +495,7 @@ h3 {
 .wm-wb {
   display: block;
   width: 100%;
-  /* the round mark is 140 across of the 682 unit viewBox */
-  max-width: calc(var(--app-tile) * 682 / 140);
+  max-width: 9rem;
   height: auto;
 }
 
