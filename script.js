@@ -62,7 +62,7 @@ const translations = {
     "project-sshgui-desc":
       "Desktop-GUI im Finder-Stil für SSH-Server. Spaltenbrowser, integriertes Terminal, Drag-and-Drop-Dateiübertragung.",
     "project-swissgerman-desc":
-      "Ein praktischer Leitfaden zu Züritüütsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
+      "Ein praktischer Leitfaden zu Zürichdeutsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
     "project-watchbar-desc":
       "macOS-Menüleisten-App zum Verwalten deiner YouTube-Watch-Later-Playlist.",
     "project-zurichhousing-desc":
