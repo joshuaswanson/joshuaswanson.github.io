@@ -1,5 +1,5 @@
 // ==========================================================================
-// Language switching: Züridütsch and standard German, each a toggle back to
+// Language switching: Züritüütsch and standard German, each a toggle back to
 // English. The quote is left in English in every language; it is a quotation.
 // ==========================================================================
 
@@ -32,7 +32,7 @@ const translations = {
     "project-sshgui-desc":
       "Finder-Stil GUI für SSH-Server. Spalte-Browser, integrierts Terminal, Drag-and-Drop Dateiübertragig.",
     "project-swissgerman-desc":
-      "En praktische Guide zu Züridütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
+      "En praktische Guide zu Züritüütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
     "project-zurichhousing-desc":
       "Durchsuech di grosse Schwiizer Wohnigs-Plattforme, filter und kartier d'Resultat, und generier massewiis massgschnideti Bewerbige.",
     "project-watchbar-desc":
