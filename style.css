@@ -486,7 +486,7 @@ h3 {
   }
 }
 
-/* WatchBar: the logo ships as one SVG with its lettering already outlined */
+/* Watchbar: the logo ships as one SVG with its lettering already outlined */
 
 .wm-wb-title {
   margin-bottom: 0.6rem;
@@ -494,7 +494,9 @@ h3 {
 
 .wm-wb {
   display: block;
-  width: 12rem;
+  width: 100%;
+  /* the round mark is 140 across of the 682 unit viewBox */
+  max-width: calc(var(--app-tile) * 682 / 140);
   height: auto;
 }
 
