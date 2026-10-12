@@ -23,6 +23,47 @@
   --app-tile: 3.25rem;
 }
 
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-page: #15161a;
+  --bg-subtle: #1e1f24;
+  --text-primary: #ededeb;
+  --text-secondary: #b1b2b0;
+  --text-muted: #8b8c8a;
+  --border: #2c2d32;
+  --border-strong: #4a4b50;
+  --accent: #86b0f0;
+  --accent-hover: #a8c7f7;
+}
+
+/* Each wordmark keeps the colours of the project it belongs to. Only the ones
+   drawn in near-black need a value for the dark page. */
+
+html[data-theme="dark"] .wm-zht {
+  color: #eceef1;
+}
+
+html[data-theme="dark"] .wm-zht-rest {
+  color: #9aa3ad;
+}
+
+html[data-theme="dark"] .wm-sg-title {
+  color: #f2f2f0;
+}
+
+html[data-theme="dark"] .wm-latex {
+  color: #ece9e4;
+}
+
+html[data-theme="dark"] .wm-latex em {
+  color: #e0795f;
+}
+
 /* ==========================================================================
    Reset & Base
    ========================================================================== */
@@ -49,7 +90,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--bg-page);
 }
 
 :focus-visible {
@@ -65,7 +106,7 @@ a {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: rgba(26, 68, 128, 0.35);
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
   text-underline-offset: 2px;
   transition:
     color 0.15s ease,
@@ -144,17 +185,23 @@ h3 {
 }
 
 .site-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
   padding: 2.5rem 0 4rem;
   border-top: 1px solid var(--border);
 }
 
-.lang-switch {
+.lang-switch,
+.theme-switch {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
 
-.lang-toggle {
+.lang-toggle,
+.theme-toggle {
   display: block;
   border: none;
   background: none;
@@ -164,10 +211,14 @@ h3 {
 }
 
 /* aligned by height, so each flag keeps its own proportions */
-.lang-toggle svg {
+.lang-toggle svg,
+.theme-toggle svg {
   display: block;
   height: 1.125rem;
   width: auto;
+}
+
+.lang-toggle svg {
   filter: grayscale(1) opacity(0.45);
   transition: filter 0.07s ease-out;
 }
@@ -175,6 +226,24 @@ h3 {
 .lang-toggle:hover svg,
 .lang-toggle.active svg {
   filter: none;
+}
+
+.theme-toggle {
+  color: var(--text-muted);
+  opacity: 0.55;
+  transition:
+    color 0.07s ease-out,
+    opacity 0.07s ease-out;
+}
+
+.theme-toggle:hover {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+.theme-toggle.active {
+  color: var(--accent);
+  opacity: 1;
 }
 
 /* ==========================================================================

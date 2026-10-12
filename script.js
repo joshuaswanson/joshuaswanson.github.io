@@ -121,6 +121,35 @@ document.querySelectorAll(".lang-toggle").forEach((btn) => {
 applyLanguage(currentLang);
 
 // ==========================================================================
+// Theme: follow the system, or override it with light or dark
+// ==========================================================================
+
+const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+let themeChoice = localStorage.getItem("theme") || "system";
+
+function applyTheme(choice) {
+  themeChoice = choice;
+  localStorage.setItem("theme", choice);
+
+  const dark = choice === "dark" || (choice === "system" && systemDark.matches);
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+
+  document.querySelectorAll(".theme-toggle").forEach((btn) => {
+    const on = btn.dataset.theme === choice;
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+}
+
+document.querySelectorAll(".theme-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => applyTheme(btn.dataset.theme));
+});
+
+systemDark.addEventListener("change", () => applyTheme(themeChoice));
+
+applyTheme(themeChoice);
+
+// ==========================================================================
 // The project logos animate on a timer, only while the logo is on screen
 // ==========================================================================
 
