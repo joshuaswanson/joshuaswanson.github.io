@@ -768,16 +768,113 @@ h3 {
 
 .wm-cursed {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.wm-cursed-stack {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.04em;
   font-family: "Bungee", "Rubik", system-ui, sans-serif;
   font-size: 2rem;
   line-height: 1;
-  margin-bottom: 0.6rem;
   transform: skew(-9deg);
   transform-origin: left center;
   user-select: none;
+}
+
+/* Chessbot, the engine who decided chess was the problem, drawn as he is on
+   the game's own page */
+
+.wm-cursed-bot {
+  flex: none;
+  width: 4.05rem;
+  height: 4.05rem;
+  overflow: visible;
+}
+
+.wm-cursed-bot-body {
+  transform-origin: 100px 190px;
+}
+
+.wm-cursed-bot-antenna {
+  transform-origin: 100px 54px;
+}
+
+.wm-cursed-bot-shadow {
+  --shadow-opacity: 0.3;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: var(--shadow-opacity);
+}
+
+/* On a dark page his outline carries no contrast, so the antenna stalk takes
+   a light stroke and the shadow under him drops back to almost nothing */
+
+html[data-theme="dark"] .wm-cursed-bot-stalk {
+  stroke: #6f6a88;
+}
+
+html[data-theme="dark"] .wm-cursed-bot-shadow {
+  --shadow-opacity: 0.14;
+}
+
+.wm-cursed.is-playing .wm-cursed-bot-body {
+  animation: cursedBotHop 0.9s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+}
+
+.wm-cursed.is-playing .wm-cursed-bot-antenna {
+  animation: cursedBotAntenna 0.9s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+
+.wm-cursed.is-playing .wm-cursed-bot-shadow {
+  animation: cursedBotShadow 0.9s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+}
+
+@keyframes cursedBotHop {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  16% {
+    transform: translateY(3%) scale(1.1, 0.89);
+  }
+  46% {
+    transform: translateY(-17%) scale(0.95, 1.08);
+  }
+  74% {
+    transform: translateY(0) scale(1.07, 0.93);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+@keyframes cursedBotAntenna {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  34% {
+    transform: rotate(-15deg);
+  }
+  68% {
+    transform: rotate(9deg);
+  }
+}
+
+@keyframes cursedBotShadow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: var(--shadow-opacity);
+  }
+  46% {
+    transform: scale(0.72);
+    opacity: calc(var(--shadow-opacity) * 0.53);
+  }
 }
 
 .wm-cursed-word,

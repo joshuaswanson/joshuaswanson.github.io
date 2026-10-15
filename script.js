@@ -207,6 +207,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   [
     [".wm-zht", 800],
     [".wm-mct", 1000],
+    [".wm-cursed", 900],
     [".wm-iam", 3300],
     [".wm-ssh", 1600],
   ].forEach(([selector, runFor], i) => {
