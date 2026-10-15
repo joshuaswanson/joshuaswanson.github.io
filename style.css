@@ -470,19 +470,45 @@ h3 {
 }
 
 /* The chart on the phone screen runs like a live readout. The waveform is
-   three copies of one screen width, so scrolling by two lands on an identical
-   frame and the start and end states match the resting logo. */
+   four screen widths wide and the first and last carry the same trace, so
+   scrolling by three lands on the resting frame after two screens of other
+   activity have passed. The middle of the travel is at a constant rate, with
+   only the first and last fraction eased, so it reads as a feed. */
 
 .wm-iam.is-playing .iam-graph {
-  animation: iamScroll 1.6s cubic-bezier(0.45, 0, 0.55, 1) both;
+  animation: iamScroll 3.2s both;
 }
 
 @keyframes iamScroll {
-  from {
+  0% {
     transform: translateX(0);
+    animation-timing-function: ease-in;
   }
-  to {
-    transform: translateX(-364px);
+  10% {
+    transform: translateX(-30px);
+    animation-timing-function: linear;
+  }
+  90% {
+    transform: translateX(-516px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateX(-546px);
+  }
+}
+
+.wm-iam.is-playing .iam-trace {
+  animation: iamTraceGlow 3.2s ease-in-out both;
+}
+
+@keyframes iamTraceGlow {
+  0%,
+  100% {
+    filter: none;
+  }
+  22%,
+  78% {
+    filter: drop-shadow(0 0 14px rgba(255, 154, 60, 0.75));
   }
 }
 
