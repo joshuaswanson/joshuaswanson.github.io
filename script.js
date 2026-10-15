@@ -154,7 +154,8 @@ systemDark.addEventListener("change", () => applyTheme(themeChoice));
 applyTheme(themeChoice);
 
 // ==========================================================================
-// The project logos animate on a timer, only while the logo is on screen
+// The project logos animate on a timer while the logo is on screen, and on
+// hover of the card they belong to
 // ==========================================================================
 
 // Only one logo animates at a time, so they never fire together
@@ -166,6 +167,7 @@ function playOccasionally(logo, runFor, offset) {
   const GAP = 900;
 
   let timer = null;
+  let stop = null;
   let onScreen = false;
   let seen = false;
 
@@ -177,18 +179,32 @@ function playOccasionally(logo, runFor, offset) {
     timer = setTimeout(play, wait);
   }
 
+  function run() {
+    clearTimeout(stop);
+    busyUntil = Date.now() + runFor + GAP;
+    seen = true;
+    logo.classList.remove("is-playing");
+    // Reading layout flushes the removal, so a run already under way restarts
+    logo.getBoundingClientRect();
+    logo.classList.add("is-playing");
+    stop = setTimeout(() => logo.classList.remove("is-playing"), runFor);
+    schedule();
+  }
+
   function play() {
     const now = Date.now();
     if (now < busyUntil) {
       timer = setTimeout(play, busyUntil - now);
       return;
     }
-    busyUntil = now + runFor + GAP;
-    seen = true;
-    logo.classList.add("is-playing");
-    setTimeout(() => logo.classList.remove("is-playing"), runFor);
-    schedule();
+    run();
   }
+
+  const card = logo.closest(".project-card") || logo;
+  card.addEventListener("pointerenter", (e) => {
+    if (e.pointerType !== "mouse") return;
+    if (!logo.classList.contains("is-playing")) run();
+  });
 
   new IntersectionObserver(
     (entries) => {
