@@ -796,8 +796,8 @@ h3 {
   overflow: visible;
 }
 
-.wm-cursed-bot-body {
-  transform-origin: 100px 190px;
+.wm-cursed-bot-head {
+  transform-origin: 100px 170px;
 }
 
 .wm-cursed-bot-antenna {
@@ -806,9 +806,11 @@ h3 {
 
 .wm-cursed-bot-shadow {
   --shadow-opacity: 0.3;
-  transform-box: fill-box;
-  transform-origin: center;
   opacity: var(--shadow-opacity);
+}
+
+.wm-cursed-bot-look {
+  opacity: 0;
 }
 
 /* On a dark page his outline carries no contrast, so the antenna stalk takes
@@ -822,33 +824,82 @@ html[data-theme="dark"] .wm-cursed-bot-shadow {
   --shadow-opacity: 0.14;
 }
 
-.wm-cursed.is-playing .wm-cursed-bot-body {
-  animation: cursedBotHop 0.9s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+/* He looks about the way the game shows him looking, with his smug eyes
+   giving way to round pupils that travel to one side and then the other. His
+   head comes upright while he looks, as it does for those moods in the game. */
+
+.wm-cursed.is-playing .wm-cursed-bot-smug {
+  animation: cursedBotSmug 2.2s both;
+}
+
+.wm-cursed.is-playing .wm-cursed-bot-look {
+  animation: cursedBotLook 2.2s cubic-bezier(0.4, 0, 0.3, 1) both;
+}
+
+.wm-cursed.is-playing .wm-cursed-bot-head {
+  animation: cursedBotLookHead 2.2s cubic-bezier(0.3, 1.2, 0.5, 1) both;
 }
 
 .wm-cursed.is-playing .wm-cursed-bot-antenna {
-  animation: cursedBotAntenna 0.9s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  animation: cursedBotAntenna 2.2s cubic-bezier(0.3, 1.5, 0.5, 1) both;
 }
 
-.wm-cursed.is-playing .wm-cursed-bot-shadow {
-  animation: cursedBotShadow 0.9s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+@keyframes cursedBotSmug {
+  0%,
+  5% {
+    opacity: 1;
+  }
+  7%,
+  93% {
+    opacity: 0;
+  }
+  95%,
+  100% {
+    opacity: 1;
+  }
 }
 
-@keyframes cursedBotHop {
-  0% {
-    transform: translateY(0) scale(1, 1);
+@keyframes cursedBotLook {
+  0%,
+  5% {
+    opacity: 0;
+    transform: translateX(0);
   }
-  16% {
-    transform: translateY(3%) scale(1.1, 0.89);
+  7% {
+    opacity: 1;
+    transform: translateX(0);
   }
-  46% {
-    transform: translateY(-17%) scale(0.95, 1.08);
+  21%,
+  39% {
+    transform: translateX(-17px);
   }
-  74% {
-    transform: translateY(0) scale(1.07, 0.93);
+  55%,
+  73% {
+    transform: translateX(17px);
+  }
+  87%,
+  93% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  95%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cursedBotLookHead {
+  0%,
+  5% {
+    transform: rotate(6deg);
+  }
+  21%,
+  87% {
+    transform: rotate(0deg);
   }
   100% {
-    transform: translateY(0) scale(1, 1);
+    transform: rotate(6deg);
   }
 }
 
@@ -857,23 +908,14 @@ html[data-theme="dark"] .wm-cursed-bot-shadow {
   100% {
     transform: rotate(0deg);
   }
-  34% {
-    transform: rotate(-15deg);
+  24% {
+    transform: rotate(6deg);
   }
-  68% {
-    transform: rotate(9deg);
+  58% {
+    transform: rotate(-6deg);
   }
-}
-
-@keyframes cursedBotShadow {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: var(--shadow-opacity);
-  }
-  46% {
-    transform: scale(0.72);
-    opacity: calc(var(--shadow-opacity) * 0.53);
+  88% {
+    transform: rotate(2deg);
   }
 }
 
