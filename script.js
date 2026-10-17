@@ -22,7 +22,8 @@ const translations = {
       "Mini E-Mail hät s folgende Format: Vorname Punkt Nachname at tuebingen Punkt mpg Punkt Ländercode.",
     "deanon-featured": "Bekannt us:",
     "deanon-discussed": "Diskutiert uf:",
-    "project-cursedchess-desc": "Magsch Schach? Dänn wirsch das hasse!",
+    "project-cursedchess-desc":
+      "Was, wenn di erscht abtrünnigi KI en Schachbot wär?",
     "project-ios-desc":
       "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
@@ -54,7 +55,8 @@ const translations = {
     "projects-heading": "Projekte",
     "projects-intro":
       "Kleine Tools, Spiele und Nebenprojekte, die ich zum Spass baue.",
-    "project-cursedchess-desc": "Magst du Schach? Dann wirst du das hassen!",
+    "project-cursedchess-desc":
+      "Was, wenn die erste abtrünnige KI ein Schachbot wäre?",
     "project-ios-desc":
       "Live-Prozessmonitor für ein per USB angeschlossenes iPhone oder iPad. Wie der macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
