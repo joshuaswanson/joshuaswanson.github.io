@@ -23,7 +23,7 @@ const translations = {
     "deanon-featured": "Bekannt us:",
     "deanon-discussed": "Diskutiert uf:",
     "project-cursedchess-desc":
-      "Was, wenn di erscht abtrünnigi KI en Schachbot wär?",
+      "Was, wenn d erscht abtrünnigi KI en Schachbot wär?",
     "project-ios-desc":
       "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
