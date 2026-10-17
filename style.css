@@ -469,46 +469,48 @@ h3 {
   height: auto;
 }
 
-/* The chart on the phone screen runs like a live readout. The waveform is
-   four screen widths wide and the first and last carry the same trace, so
-   scrolling by three lands on the resting frame after two screens of other
-   activity have passed. The middle of the travel is at a constant rate, with
-   only the first and last fraction eased, so it reads as a feed. */
+/* The chart on the phone screen holds still and a beam runs along it, the way
+   a monitor draws its trace. Both beam layers are the trace path again, shown
+   through a short dash that travels with stroke-dashoffset. The trace is 453.3
+   units long, and the two dashes are offset by 62 so their leading ends stay
+   together, the blip riding the front of the sweep. */
 
-.wm-iam.is-playing .iam-graph {
-  animation: iamScroll 3.2s both;
+.iam-sweep,
+.iam-blip {
+  opacity: 0;
 }
 
-@keyframes iamScroll {
+.wm-iam.is-playing .iam-sweep {
+  opacity: 1;
+  stroke-dasharray: 70 2000;
+  filter: drop-shadow(0 0 13px rgba(255, 190, 110, 0.8));
+  animation: iamSweep 1.45s linear 2 both;
+}
+
+.wm-iam.is-playing .iam-blip {
+  opacity: 1;
+  stroke-dasharray: 8 2000;
+  filter: drop-shadow(0 0 18px rgba(255, 236, 200, 0.9));
+  animation: iamBlip 1.45s linear 2 both;
+}
+
+@keyframes iamSweep {
   0% {
-    transform: translateX(0);
-    animation-timing-function: ease-in;
+    stroke-dashoffset: 70;
   }
-  10% {
-    transform: translateX(-30px);
-    animation-timing-function: linear;
-  }
-  90% {
-    transform: translateX(-516px);
-    animation-timing-function: ease-out;
-  }
+  78%,
   100% {
-    transform: translateX(-546px);
+    stroke-dashoffset: -453.3;
   }
 }
 
-.wm-iam.is-playing .iam-trace {
-  animation: iamTraceGlow 3.2s ease-in-out both;
-}
-
-@keyframes iamTraceGlow {
-  0%,
-  100% {
-    filter: none;
+@keyframes iamBlip {
+  0% {
+    stroke-dashoffset: 8;
   }
-  22%,
-  78% {
-    filter: drop-shadow(0 0 14px rgba(255, 154, 60, 0.75));
+  78%,
+  100% {
+    stroke-dashoffset: -515.3;
   }
 }
 
