@@ -157,13 +157,14 @@ applyTheme(themeChoice);
 
 // ==========================================================================
 // The project logos animate on a timer while the logo is on screen, and on
-// hover of the card they belong to
+// hover of the card they belong to. A logo registered as looping runs for as
+// long as the pointer stays on its card
 // ==========================================================================
 
 // Only one logo animates at a time, so they never fire together
 let busyUntil = 0;
 
-function playOccasionally(logo, runFor, offset) {
+function playOccasionally(logo, runFor, offset, holdOnHover) {
   const FIRST = [1800, 4000];
   const THEN = [11000, 22000];
   const GAP = 900;
@@ -172,6 +173,7 @@ function playOccasionally(logo, runFor, offset) {
   let stop = null;
   let onScreen = false;
   let seen = false;
+  let held = false;
 
   function schedule() {
     clearTimeout(timer);
@@ -179,6 +181,34 @@ function playOccasionally(logo, runFor, offset) {
     const [lo, hi] = seen ? THEN : FIRST;
     const wait = lo + Math.random() * (hi - lo) + (seen ? 0 : offset);
     timer = setTimeout(play, wait);
+  }
+
+  // A logo that loops is only at its resting frame on a cycle boundary, so it
+  // waits for the next one before it stops
+  function cycleLeft() {
+    const loop = logo
+      .getAnimations({ subtree: true })
+      .find((a) => a.effect.getTiming().iterations === Infinity);
+    if (!loop || loop.currentTime == null) return 0;
+    const span = loop.effect.getTiming().duration;
+    return span - (loop.currentTime % span);
+  }
+
+  function end() {
+    clearTimeout(stop);
+    if (held) {
+      busyUntil = Date.now() + runFor + GAP;
+      stop = setTimeout(end, runFor);
+      return;
+    }
+    stop = setTimeout(
+      () => {
+        if (held) return;
+        logo.classList.remove("is-playing");
+        busyUntil = Date.now() + GAP;
+      },
+      holdOnHover ? cycleLeft() : 0,
+    );
   }
 
   function run() {
@@ -189,7 +219,7 @@ function playOccasionally(logo, runFor, offset) {
     // Reading layout flushes the removal, so a run already under way restarts
     logo.getBoundingClientRect();
     logo.classList.add("is-playing");
-    stop = setTimeout(() => logo.classList.remove("is-playing"), runFor);
+    stop = setTimeout(end, runFor);
     schedule();
   }
 
@@ -199,13 +229,24 @@ function playOccasionally(logo, runFor, offset) {
       timer = setTimeout(play, busyUntil - now);
       return;
     }
+    if (logo.classList.contains("is-playing")) {
+      schedule();
+      return;
+    }
     run();
   }
 
   const card = logo.closest(".project-card") || logo;
   card.addEventListener("pointerenter", (e) => {
     if (e.pointerType !== "mouse") return;
+    held = !!holdOnHover;
     if (!logo.classList.contains("is-playing")) run();
+    else if (held) end();
+  });
+  card.addEventListener("pointerleave", () => {
+    if (!held) return;
+    held = false;
+    end();
   });
 
   new IntersectionObserver(
@@ -226,12 +267,12 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     [".wm-zht", 800],
     [".wm-mct", 1000],
     [".wm-cursed", 2500],
-    [".wm-iam", 3000],
+    [".wm-iam", 2400, true],
     [".wm-ssh", 1600],
-  ].forEach(([selector, runFor], i) => {
+  ].forEach(([selector, runFor, hold], i) => {
     document
       .querySelectorAll(selector)
-      .forEach((el) => playOccasionally(el, runFor, i * 900));
+      .forEach((el) => playOccasionally(el, runFor, i * 900, hold));
   });
 }
 

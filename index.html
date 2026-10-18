@@ -884,6 +884,7 @@
                       <linearGradient
                         id="iam-trace"
                         gradientUnits="userSpaceOnUse"
+                        spreadMethod="reflect"
                         x1="165"
                         y1="0"
                         x2="347"
@@ -945,34 +946,27 @@
                     />
 
                     <g clip-path="url(#iam-screen)">
-                      <g class="iam-rest">
-                        <g id="iam-chart">
-                          <path
-                            d="M-20 296 H201 L222 262 L245 322 L276 178 L302 296 H347 V435 H-20 Z"
-                            fill="url(#iam-area)"
-                          />
-                          <path
-                            d="M-20 296 H201 L222 262 L245 322 L276 178 L302 296 H347"
-                            fill="none"
-                            stroke="url(#iam-trace)"
-                            stroke-width="15"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </g>
-                      </g>
-                      <g class="iam-draw">
-                        <g class="iam-slide">
-                          <use href="#iam-chart" />
-                        </g>
-                        <circle
-                          class="iam-pen"
-                          cx="347"
-                          cy="296"
-                          r="13"
-                          fill="#fff7ea"
+                      <g class="iam-slide">
+                        <path
+                          d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H392 L410 330 L436 206 L458 296 L480 266 L500 296 H565 L586 262 L609 322 L640 178 L666 296 H711 V435 H165 Z"
+                          fill="url(#iam-area)"
+                        />
+                        <path
+                          d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H392 L410 330 L436 206 L458 296 L480 266 L500 296 H565 L586 262 L609 322 L640 178 L666 296 H711"
+                          fill="none"
+                          stroke="url(#iam-trace)"
+                          stroke-width="15"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </g>
+                      <circle
+                        class="iam-pen"
+                        cx="347"
+                        cy="296"
+                        r="13"
+                        fill="#fff7ea"
+                      />
                     </g>
                   </g>
                   <g transform="translate(-34.84 -56.7)">

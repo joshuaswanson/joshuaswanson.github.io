@@ -472,99 +472,77 @@ h3 {
 /* The chart on the phone screen plots itself the way a monitor does. The pen
    holds at the right edge of the screen and only moves up and down while the
    chart slides left underneath it, so the line it leaves runs away to the
-   left. The chart carries a flat lead-in to the left of x 165 that fills the
-   screen before the first spike arrives, and the screen's own clip is what
-   makes the line appear at the pen. Each pen keyframe is a vertex of the path,
-   placed at the percentage of the 182 unit screen width where its x falls, so
-   the pen sits on the point the right edge is showing. The resting copy fades
-   on its paths' fill-opacity and stroke-opacity, which keeps the frame at 0%
-   pixel-identical to the resting frame. The slide reaches zero at 100%, which
-   is the resting frame again. */
-
-.iam-draw {
-  opacity: 0;
-}
+   left. The waveform repeats every 364 units, which is two screen widths, and
+   one cycle of the slide covers exactly that, so the chart at 100% stands
+   where it stood at 0% and the loop has no seam. Both ends of the cycle are
+   also the resting frame, which is how a run can start and finish without the
+   icon moving. Each pen keyframe is a vertex of the waveform, placed at the
+   percentage of the cycle where that vertex reaches the right edge. The stroke
+   gradient reflects so that it repeats over the same 364 units as the
+   waveform. */
 
 .iam-pen {
   opacity: 0;
+  transition: opacity 0.18s linear;
   filter: drop-shadow(0 0 17px rgba(255, 213, 150, 0.95));
 }
 
-.wm-iam.is-playing .iam-rest path {
-  animation: iamClear 1.6s linear both;
-}
-
-.wm-iam.is-playing .iam-draw {
-  animation: iamArrive 1.6s linear both;
-}
-
 .wm-iam.is-playing .iam-slide {
-  animation: iamSlide 1.6s linear both;
+  animation: iamSlide 3.2s linear infinite;
 }
 
 .wm-iam.is-playing .iam-pen {
-  animation: iamPen 1.6s linear both;
+  opacity: 1;
+  animation: iamPen 3.2s linear infinite;
 }
 
 @keyframes iamSlide {
   0% {
-    transform: translateX(182px);
-  }
-  100% {
     transform: translateX(0);
   }
-}
-
-@keyframes iamClear {
-  0% {
-    fill-opacity: 1;
-    stroke-opacity: 1;
-  }
-  8%,
   100% {
-    fill-opacity: 0;
-    stroke-opacity: 0;
-  }
-}
-
-@keyframes iamArrive {
-  0% {
-    opacity: 0;
-  }
-  8%,
-  100% {
-    opacity: 1;
+    transform: translateX(-364px);
   }
 }
 
 @keyframes iamPen {
   0% {
-    opacity: 0;
     transform: translateY(0);
   }
-  8% {
-    opacity: 1;
-  }
-  19.78% {
+  12.363% {
     transform: translateY(0);
   }
-  31.32% {
+  17.308% {
+    transform: translateY(34px);
+  }
+  24.451% {
+    transform: translateY(-90px);
+  }
+  30.495% {
+    transform: translateY(0);
+  }
+  36.538% {
+    transform: translateY(-30px);
+  }
+  42.033% {
+    transform: translateY(0);
+  }
+  59.89% {
+    transform: translateY(0);
+  }
+  65.659% {
     transform: translateY(-34px);
   }
-  43.96% {
+  71.978% {
     transform: translateY(26px);
   }
-  60.99% {
+  80.495% {
     transform: translateY(-118px);
   }
-  75.27% {
+  87.637% {
     transform: translateY(0);
   }
-  88% {
-    opacity: 1;
-  }
   100% {
-    opacity: 0;
     transform: translateY(0);
   }
 }
