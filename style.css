@@ -469,48 +469,87 @@ h3 {
   height: auto;
 }
 
-/* The chart on the phone screen holds still and a beam runs along it, the way
-   a monitor draws its trace. Both beam layers are the trace path again, shown
-   through a short dash that travels with stroke-dashoffset. The trace is 453.3
-   units long, and the two dashes are offset by 62 so their leading ends stay
-   together, the blip riding the front of the sweep. */
+/* The chart on the phone screen plots itself. A clip rect slides right so its
+   edge uncovers the chart from x 165 to x 347, the resting copy underneath
+   fades out as the first of it appears, and a pen glows at the uncovered end.
+   The pen keyframes are the path's own vertices, each at the percentage of the
+   182 unit screen width where its x falls, so the pen and the clip edge
+   advance together. The chart is complete at 100%, which is the resting
+   frame. */
 
-.iam-sweep,
-.iam-blip {
+.iam-draw {
   opacity: 0;
 }
 
-.wm-iam.is-playing .iam-sweep {
+.wm-iam.is-playing .iam-draw {
   opacity: 1;
-  stroke-dasharray: 70 2000;
-  filter: drop-shadow(0 0 13px rgba(255, 190, 110, 0.8));
-  animation: iamSweep 1.45s linear 2 both;
 }
 
-.wm-iam.is-playing .iam-blip {
-  opacity: 1;
-  stroke-dasharray: 8 2000;
-  filter: drop-shadow(0 0 18px rgba(255, 236, 200, 0.9));
-  animation: iamBlip 1.45s linear 2 both;
+.iam-pen {
+  opacity: 0;
+  filter: drop-shadow(0 0 17px rgba(255, 213, 150, 0.95));
 }
 
-@keyframes iamSweep {
+.wm-iam.is-playing .iam-wipe {
+  animation: iamWipe 1.6s linear both;
+}
+
+.wm-iam.is-playing .iam-rest {
+  animation: iamClear 1.6s linear both;
+}
+
+.wm-iam.is-playing .iam-pen {
+  animation: iamPen 1.6s linear both;
+}
+
+@keyframes iamWipe {
   0% {
-    stroke-dashoffset: 70;
+    transform: translateX(-182px);
   }
-  78%,
   100% {
-    stroke-dashoffset: -453.3;
+    transform: translateX(0);
   }
 }
 
-@keyframes iamBlip {
+@keyframes iamClear {
   0% {
-    stroke-dashoffset: 8;
+    opacity: 1;
   }
-  78%,
+  16%,
   100% {
-    stroke-dashoffset: -515.3;
+    opacity: 0;
+  }
+}
+
+@keyframes iamPen {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  5% {
+    opacity: 1;
+  }
+  19.78% {
+    transform: translate(36px, 0);
+  }
+  31.32% {
+    transform: translate(57px, -34px);
+  }
+  43.96% {
+    transform: translate(80px, 26px);
+  }
+  60.99% {
+    transform: translate(111px, -118px);
+  }
+  75.27% {
+    transform: translate(137px, 0);
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(182px, 0);
   }
 }
 
