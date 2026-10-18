@@ -496,6 +496,12 @@ h3 {
   animation: iamPen 3.2s linear infinite;
 }
 
+/* The pen lifts off while the chart glides to a halt */
+.wm-iam.is-settling .iam-pen {
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
 @keyframes iamSlide {
   0% {
     transform: translateX(0);

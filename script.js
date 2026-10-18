@@ -164,13 +164,16 @@ applyTheme(themeChoice);
 // Only one logo animates at a time, so they never fire together
 let busyUntil = 0;
 
-function playOccasionally(logo, runFor, offset, holdOnHover) {
+function playOccasionally(logo, runFor, offset, loops) {
   const FIRST = [1800, 4000];
   const THEN = [11000, 22000];
   const GAP = 900;
+  // How much of the cycle the glide to a halt covers
+  const TAIL = 250;
 
   let timer = null;
   let stop = null;
+  let frame = null;
   let onScreen = false;
   let seen = false;
   let held = false;
@@ -183,39 +186,93 @@ function playOccasionally(logo, runFor, offset, holdOnHover) {
     timer = setTimeout(play, wait);
   }
 
-  // A logo that loops is only at its resting frame on a cycle boundary, so it
-  // waits for the next one before it stops
-  function cycleLeft() {
-    const loop = logo
+  function cycles() {
+    return logo
       .getAnimations({ subtree: true })
-      .find((a) => a.effect.getTiming().iterations === Infinity);
-    if (!loop || loop.currentTime == null) return 0;
-    const span = loop.effect.getTiming().duration;
-    return span - (loop.currentTime % span);
+      .filter((a) => a.effect.getTiming().iterations === Infinity);
+  }
+
+  function cancel() {
+    clearTimeout(stop);
+    cancelAnimationFrame(frame);
+  }
+
+  function finish() {
+    logo.classList.remove("is-playing", "is-settling");
+    busyUntil = Date.now() + GAP;
+  }
+
+  // A cubic ease-out leaves at three times its average rate, so playing the
+  // tail over three times as much wall time keeps the speed the cycle was
+  // already running and reaches the boundary at a standstill
+  function glide(anims, to) {
+    logo.classList.add("is-settling");
+    anims.forEach((a) => a.pause());
+    const from = anims[0].currentTime;
+    const wall = (to - from) * 3;
+    const begin = performance.now();
+
+    function halt() {
+      cancel();
+      anims.forEach((a) => (a.currentTime = to));
+      finish();
+    }
+
+    function step(now) {
+      const u = (now - begin) / wall;
+      if (u >= 1) {
+        halt();
+        return;
+      }
+      const at = from + (to - from) * (1 - (1 - u) ** 3);
+      anims.forEach((a) => (a.currentTime = at));
+      frame = requestAnimationFrame(step);
+    }
+
+    if (wall < 48) {
+      halt();
+      return;
+    }
+    frame = requestAnimationFrame(step);
+    // Frames stop while the tab is in the background, where the glide has
+    // nothing to show, so a timer ends the run on its own
+    stop = setTimeout(halt, wall + 400);
+  }
+
+  // A cycle shows the resting frame only on a boundary, so a run ends by
+  // reaching the next one
+  function settle() {
+    const anims = cycles();
+    if (!anims.length) {
+      finish();
+      return;
+    }
+    const period = anims[0].effect.getTiming().duration;
+    const at = anims[0].currentTime;
+    let to = (Math.floor(at / period) + 1) * period;
+    if (to - at < TAIL) to += period;
+    busyUntil = Date.now() + (to - at) + 2 * TAIL + GAP;
+    stop = setTimeout(() => glide(anims, to), to - at - TAIL);
   }
 
   function end() {
-    clearTimeout(stop);
+    cancel();
     if (held) {
+      logo.classList.remove("is-settling");
+      cycles().forEach((a) => a.play());
       busyUntil = Date.now() + runFor + GAP;
       stop = setTimeout(end, runFor);
       return;
     }
-    stop = setTimeout(
-      () => {
-        if (held) return;
-        logo.classList.remove("is-playing");
-        busyUntil = Date.now() + GAP;
-      },
-      holdOnHover ? cycleLeft() : 0,
-    );
+    if (loops) settle();
+    else finish();
   }
 
   function run() {
-    clearTimeout(stop);
+    cancel();
     busyUntil = Date.now() + runFor + GAP;
     seen = true;
-    logo.classList.remove("is-playing");
+    logo.classList.remove("is-playing", "is-settling");
     // Reading layout flushes the removal, so a run already under way restarts
     logo.getBoundingClientRect();
     logo.classList.add("is-playing");
@@ -239,7 +296,7 @@ function playOccasionally(logo, runFor, offset, holdOnHover) {
   const card = logo.closest(".project-card") || logo;
   card.addEventListener("pointerenter", (e) => {
     if (e.pointerType !== "mouse") return;
-    held = !!holdOnHover;
+    held = !!loops;
     if (!logo.classList.contains("is-playing")) run();
     else if (held) end();
   });
@@ -269,10 +326,10 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     [".wm-cursed", 2500],
     [".wm-iam", 2400, true],
     [".wm-ssh", 1600],
-  ].forEach(([selector, runFor, hold], i) => {
+  ].forEach(([selector, runFor, loops], i) => {
     document
       .querySelectorAll(selector)
-      .forEach((el) => playOccasionally(el, runFor, i * 900, hold));
+      .forEach((el) => playOccasionally(el, runFor, i * 900, loops));
   });
 }
 
