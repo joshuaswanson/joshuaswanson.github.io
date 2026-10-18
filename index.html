@@ -883,9 +883,10 @@
                       </linearGradient>
                       <linearGradient
                         id="iam-trace"
-                        x1="0"
+                        gradientUnits="userSpaceOnUse"
+                        x1="165"
                         y1="0"
-                        x2="1"
+                        x2="347"
                         y2="0"
                       >
                         <stop offset="0" stop-color="#ffc27a" />
@@ -905,15 +906,6 @@
                       </linearGradient>
                       <clipPath id="iam-screen">
                         <rect x="165" y="77" width="182" height="358" rx="36" />
-                      </clipPath>
-                      <clipPath id="iam-reveal">
-                        <rect
-                          class="iam-wipe"
-                          x="165"
-                          y="77"
-                          width="182"
-                          height="358"
-                        />
                       </clipPath>
                     </defs>
 
@@ -956,11 +948,11 @@
                       <g class="iam-rest">
                         <g id="iam-chart">
                           <path
-                            d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H347 V435 H165 Z"
+                            d="M-20 296 H201 L222 262 L245 322 L276 178 L302 296 H347 V435 H-20 Z"
                             fill="url(#iam-area)"
                           />
                           <path
-                            d="M165 296 H201 L222 262 L245 322 L276 178 L302 296 H347"
+                            d="M-20 296 H201 L222 262 L245 322 L276 178 L302 296 H347"
                             fill="none"
                             stroke="url(#iam-trace)"
                             stroke-width="15"
@@ -970,12 +962,12 @@
                         </g>
                       </g>
                       <g class="iam-draw">
-                        <g clip-path="url(#iam-reveal)">
+                        <g class="iam-slide">
                           <use href="#iam-chart" />
                         </g>
                         <circle
                           class="iam-pen"
-                          cx="165"
+                          cx="347"
                           cy="296"
                           r="13"
                           fill="#fff7ea"
