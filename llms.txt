@@ -28,3 +28,4 @@ Paper: https://arxiv.org/abs/2504.19394
 ## Projects
 - LaTeX PDF Translator: https://joshuaswanson.github.io/latex-pdf-translator/
 - Monitor Comparison Tool: https://joshuaswanson.github.io/monitor-comparison/
+- Wend Pro: https://joshuaswanson.github.io/wend-pro/
