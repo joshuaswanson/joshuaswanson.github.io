@@ -41,7 +41,7 @@ const translations = {
     "project-watchbar-desc":
       "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
     "project-wendpro-desc":
-      "Ändlosi Wortpfad-Rätsel im Stil vo Wend uf Änglisch, Französisch, Tüütsch und Züritüütsch, mit emene gmischte Sprachmodus und emene verfluechte Modus voller Portal.",
+      "Ändlosi Wortpfad-Rätsel im Stil vo Wend uf Änglisch, Französisch, Tüütsch und Züritüütsch, mit emene gmischte Sprachmodus.",
   },
 
   de: {
@@ -74,7 +74,7 @@ const translations = {
     "project-watchbar-desc":
       "macOS-Menüleisten-App zum Verwalten deiner YouTube-Watch-Later-Playlist.",
     "project-wendpro-desc":
-      "Endlose Wortpfad-Rätsel im Stil von Wend auf Englisch, Französisch, Deutsch und Züritüütsch, mit gemischtem Sprachmodus und einem verfluchten Modus voller Portale.",
+      "Endlose Wortpfad-Rätsel im Stil von Wend auf Englisch, Französisch, Deutsch und Züritüütsch, mit gemischtem Sprachmodus.",
     "project-zurichhousing-desc":
       "Durchsuche die grossen Schweizer Wohnungsplattformen, filtere und kartiere die Ergebnisse und generiere massenhaft massgeschneiderte Bewerbungen.",
     "contact-heading": "Kontakt",
