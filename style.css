@@ -64,6 +64,15 @@ html[data-theme="dark"] .wm-latex em {
   color: #e0795f;
 }
 
+html[data-theme="dark"] .wm-wend {
+  color: #ece6da;
+}
+
+html[data-theme="dark"] .wm-wend-pro {
+  background: #ece6da;
+  color: #12151c;
+}
+
 /* ==========================================================================
    Reset & Base
    ========================================================================== */
@@ -752,6 +761,87 @@ h3 {
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #0e0e10;
+}
+
+/* Wend Pro: the path in the tile is a word's trail through the board, and a
+   run traces it again from the first dot. */
+
+.wm-wend {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Fraunces", "Source Serif 4", Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #1b2230;
+  margin-bottom: 0.6rem;
+}
+
+.wm-wend-mark {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+.wm-wend-mark rect {
+  fill: #26324a;
+}
+
+.wm-wend-mark path {
+  fill: none;
+  stroke: #f6d47a;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+}
+
+.wm-wend-mark circle {
+  fill: #f6d47a;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.wm-wend-pro {
+  display: inline-block;
+  margin-left: 0.25em;
+  padding: 0.3em 0.42em 0.24em;
+  border-radius: 0.35em;
+  background: #1b2230;
+  color: #fff;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.36em;
+  letter-spacing: 0.14em;
+  vertical-align: 0.5em;
+}
+
+.wm-wend.is-playing .wm-wend-mark path {
+  animation: wendTrace 0.9s cubic-bezier(0.5, 0, 0.3, 1) both;
+}
+
+.wm-wend.is-playing .wm-wend-end {
+  animation: wendLand 1.1s ease-out both;
+}
+
+@keyframes wendTrace {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes wendLand {
+  0%,
+  75% {
+    transform: scale(0);
+  }
+  88% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Monitor Comparison Tool: each "o" in the title is a chart dot.

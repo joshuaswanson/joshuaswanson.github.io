@@ -40,6 +40,8 @@ const translations = {
       "Durchsuech di grosse Schwiizer Wohnigs-Plattforme, filter und kartier d'Resultat, und generier massewiis massgschnideti Bewerbige.",
     "project-watchbar-desc":
       "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
+    "project-wendpro-desc":
+      "Ändlosi Wortpfad-Rätsel im Stil vo Wend uf Änglisch, Französisch, Tüütsch und Züritüütsch, mit emene gmischte Sprachmodus und emene verfluechte Modus voller Portal.",
   },
 
   de: {
@@ -71,6 +73,8 @@ const translations = {
       "Ein praktischer Leitfaden zu Zürichdeutsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
     "project-watchbar-desc":
       "macOS-Menüleisten-App zum Verwalten deiner YouTube-Watch-Later-Playlist.",
+    "project-wendpro-desc":
+      "Endlose Wortpfad-Rätsel im Stil von Wend auf Englisch, Französisch, Deutsch und Züritüütsch, mit gemischtem Sprachmodus und einem verfluchten Modus voller Portale.",
     "project-zurichhousing-desc":
       "Durchsuche die grossen Schweizer Wohnungsplattformen, filtere und kartiere die Ergebnisse und generiere massenhaft massgeschneiderte Bewerbungen.",
     "contact-heading": "Kontakt",
@@ -326,6 +330,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     [".wm-cursed", 2500],
     [".wm-iam", 2400, true],
     [".wm-ssh", 1600],
+    [".wm-wend", 1200],
   ].forEach(([selector, runFor, loops], i) => {
     document
       .querySelectorAll(selector)
