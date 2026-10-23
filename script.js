@@ -14,8 +14,8 @@ const translations = {
     "pub-heading": "Publikatione",
     "projects-heading": "Projäkt",
     "games-heading": "Spiel",
-    "games-intro": "Browser-Spiel woni zum Spass bau.",
-    "projects-intro": "Chliini Tools und Näbeprojekt woni zum Spass bau.",
+    "games-intro": "Browser-Spiel woni zum Spass boue ha.",
+    "projects-intro": "Chliini Tools und Näbeprojekt woni bau.",
     "contact-heading": "Kontakt",
     "contact-standing":
       'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
@@ -57,8 +57,8 @@ const translations = {
     "deanon-discussed": "Diskutiert auf:",
     "projects-heading": "Projekte",
     "games-heading": "Spiele",
-    "games-intro": "Browser-Spiele, die ich zum Spass baue.",
-    "projects-intro": "Kleine Tools und Nebenprojekte, die ich zum Spass baue.",
+    "games-intro": "Browser-Spiele, die ich zum Spass gebaut habe.",
+    "projects-intro": "Kleine Tools und Nebenprojekte, die ich baue.",
     "project-battleship-desc":
       "Süsse Boote. Grosse Kanonen. Wähl zwei Aufsätze und rase ins Ziel!",
     "project-cursedchess-desc":
