@@ -24,7 +24,7 @@ const translations = {
     "deanon-featured": "Bekannt us:",
     "deanon-discussed": "Diskutiert uf:",
     "project-battleship-desc":
-      "Cartoonigs 3D-Bootsrenne mit Waffe und Gadgets. Sächs Boot fahred drei Runde um e tropischi Lagune, jedes mit zwei Uufsätz us elfe.",
+      "Härzigi Boot. Grossi Kanone. Wähl zwee Uufsätz und rase is Ziil!",
     "project-cursedchess-desc":
       "Was, wenn d erscht abtrünnigi KI en Schachbot wär?",
     "project-ios-desc":
@@ -60,7 +60,7 @@ const translations = {
     "games-intro": "Browser-Spiele, die ich zum Spass baue.",
     "projects-intro": "Kleine Tools und Nebenprojekte, die ich zum Spass baue.",
     "project-battleship-desc":
-      "Cartoonhaftes 3D-Bootsrennen mit Waffen und Gadgets. Sechs Boote fahren drei Runden um eine tropische Lagune, jedes mit zwei Aufsätzen aus elf.",
+      "Süsse Boote. Grosse Kanonen. Wähl zwei Aufsätze und rase ins Ziel!",
     "project-cursedchess-desc":
       "Was, wenn die erste abtrünnige KI ein Schachbot wäre?",
     "project-ios-desc":
