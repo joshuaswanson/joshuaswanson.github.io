@@ -454,6 +454,47 @@ h3 {
 
 /* Project wordmarks, reproduced from each project's own site */
 
+/* Battleship Bonanza: the game's title logo, its letters sitting on the same
+   arcs the game places them on */
+
+.wm-bb {
+  margin-bottom: 0.6rem;
+}
+
+.wm-bb-logo {
+  display: block;
+  width: 100%;
+  max-width: 10.5rem;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 2px 0 rgba(14, 42, 71, 0.35));
+}
+
+.wm-bb-top text,
+.wm-bb-word text {
+  font-family: "Saira Condensed", "Arial Narrow", sans-serif;
+  font-weight: 900;
+  stroke: #0e2a47;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.wm-bb-top text {
+  font-size: 96px;
+  fill: #fff;
+  stroke-width: 10px;
+}
+
+.wm-bb-word text {
+  font-size: 236px;
+  fill: url(#bb-gold);
+  stroke-width: 16px;
+}
+
+.wm-bb-shadow text {
+  fill: #ff4141;
+}
+
 /* iOS Activity Monitor: the README wordmark, broken onto two lines so the
    lockup is not twice the width of the column */
 

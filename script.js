@@ -13,8 +13,9 @@ const translations = {
       'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/de/news-und-veranstaltungen/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
     "pub-heading": "Publikatione",
     "projects-heading": "Projäkt",
-    "projects-intro":
-      "Chliini Tools, Spiel und Näbeprojekt woni zum Spass bau.",
+    "games-heading": "Spiel",
+    "games-intro": "Browser-Spiel woni zum Spass bau.",
+    "projects-intro": "Chliini Tools und Näbeprojekt woni zum Spass bau.",
     "contact-heading": "Kontakt",
     "contact-standing":
       'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
@@ -22,6 +23,8 @@ const translations = {
       "Mini E-Mail hät s folgende Format: Vorname Punkt Nachname at tuebingen Punkt mpg Punkt Ländercode.",
     "deanon-featured": "Bekannt us:",
     "deanon-discussed": "Diskutiert uf:",
+    "project-battleship-desc":
+      "Cartoonigs 3D-Bootsrenne mit Waffe und Gadgets. Sächs Boot fahred drei Runde um e tropischi Lagune, jedes mit zwei Uufsätz us elfe.",
     "project-cursedchess-desc":
       "Was, wenn d erscht abtrünnigi KI en Schachbot wär?",
     "project-ios-desc":
@@ -53,8 +56,11 @@ const translations = {
     "deanon-featured": "Bekannt aus:",
     "deanon-discussed": "Diskutiert auf:",
     "projects-heading": "Projekte",
-    "projects-intro":
-      "Kleine Tools, Spiele und Nebenprojekte, die ich zum Spass baue.",
+    "games-heading": "Spiele",
+    "games-intro": "Browser-Spiele, die ich zum Spass baue.",
+    "projects-intro": "Kleine Tools und Nebenprojekte, die ich zum Spass baue.",
+    "project-battleship-desc":
+      "Cartoonhaftes 3D-Bootsrennen mit Waffen und Gadgets. Sechs Boote fahren drei Runden um eine tropische Lagune, jedes mit zwei Aufsätzen aus elf.",
     "project-cursedchess-desc":
       "Was, wenn die erste abtrünnige KI ein Schachbot wäre?",
     "project-ios-desc":

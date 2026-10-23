@@ -105,6 +105,11 @@
       rel="stylesheet"
     />
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@900&amp;text=ABEHILNOPSTZ&amp;display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Resolved before first paint so the page never flashes the wrong theme -->
     <script>
       (function () {
@@ -593,13 +598,287 @@
         </article>
       </section>
 
-      <section class="section projects" id="projects">
-        <h2 class="section-heading" data-i18n="projects-heading">Projects</h2>
-        <p data-i18n="projects-intro">
-          Small tools, games, and side projects I build for fun.
-        </p>
+      <section class="section games" id="games">
+        <h2 class="section-heading" data-i18n="games-heading">Games</h2>
+        <p data-i18n="games-intro">Browser games I build for fun.</p>
 
         <div class="project-grid">
+          <article class="project-card">
+            <div class="project-body">
+              <h3 class="project-title wm-bb" aria-label="Battleship Bonanza">
+                <svg
+                  class="wm-bb-logo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1000 600"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="bb-gold" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#FFF38A"></stop>
+                      <stop offset="0.5" stop-color="#FFD23F"></stop>
+                      <stop offset="1" stop-color="#FF9A1F"></stop>
+                    </linearGradient>
+                    <radialGradient id="bb-burst">
+                      <stop offset="0" stop-color="#FFF6B0"></stop>
+                      <stop offset="0.6" stop-color="#FFD23F"></stop>
+                      <stop offset="1" stop-color="#FF8A1F"></stop>
+                    </radialGradient>
+                  </defs>
+                  <g transform="translate(500 300)">
+                    <g class="wm-bb-burst">
+                      <polygon
+                        points="0.0,-300.0 34.7,-219.3 92.7,-285.3 100.8,-197.8 176.3,-242.7 157.0,-157.0 242.7,-176.3 197.8,-100.8 285.3,-92.7 219.3,-34.7 300.0,0.0 219.3,34.7 285.3,92.7 197.8,100.8 242.7,176.3 157.0,157.0 176.3,242.7 100.8,197.8 92.7,285.3 34.7,219.3 0.0,300.0 -34.7,219.3 -92.7,285.3 -100.8,197.8 -176.3,242.7 -157.0,157.0 -242.7,176.3 -197.8,100.8 -285.3,92.7 -219.3,34.7 -300.0,0.0 -219.3,-34.7 -285.3,-92.7 -197.8,-100.8 -242.7,-176.3 -157.0,-157.0 -176.3,-242.7 -100.8,-197.8 -92.7,-285.3 -34.7,-219.3"
+                        fill="url(#bb-burst)"
+                        stroke="#0E2A47"
+                        stroke-width="10"
+                        stroke-linejoin="round"
+                      ></polygon>
+                    </g>
+                  </g>
+                  <g class="wm-bb-banner">
+                    <path
+                      d="M 205 186 Q 500 -12 795 186"
+                      fill="none"
+                      stroke="#0E2A47"
+                      stroke-width="112"
+                    ></path>
+                    <path
+                      d="M 205 186 Q 500 -12 795 186"
+                      fill="none"
+                      stroke="#FF4141"
+                      stroke-width="92"
+                    ></path>
+                    <g class="wm-bb-top">
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(262.4 151.2) rotate(-28.38) scale(1.326 1)"
+                      >
+                        B
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(320.4 123.7) rotate(-22.21) scale(1.326 1)"
+                      >
+                        A
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(377.6 104.0) rotate(-15.56) scale(1.326 1)"
+                      >
+                        T
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(431.5 92.3) rotate(-8.84) scale(1.326 1)"
+                      >
+                        T
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(483.3 87.3) rotate(-2.24) scale(1.326 1)"
+                      >
+                        L
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(534.9 88.4) rotate(4.54) scale(1.326 1)"
+                      >
+                        E
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(590.0 96.2) rotate(11.57) scale(1.326 1)"
+                      >
+                        S
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(649.5 112.4) rotate(18.72) scale(1.326 1)"
+                      >
+                        H
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(695.7 130.6) rotate(23.95) scale(1.326 1)"
+                      >
+                        I
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="33"
+                        transform="translate(738.1 151.5) rotate(28.48) scale(1.326 1)"
+                      >
+                        P
+                      </text>
+                    </g>
+                  </g>
+                  <g transform="translate(500 268)">
+                    <g class="wm-bb-boat">
+                      <path
+                        d="M -200 0 L 170 0 Q 215 -4 245 -52 Q 236 34 172 86 L -168 86 Q -196 86 -204 58 Z"
+                        transform="rotate(-9)"
+                        fill="#FF5A5F"
+                        stroke="#0E2A47"
+                        stroke-width="11"
+                        stroke-linejoin="round"
+                      ></path>
+                    </g>
+                  </g>
+
+                  <g class="wm-bb-main">
+                    <g
+                      class="wm-bb-word wm-bb-shadow"
+                      transform="translate(12 12)"
+                    >
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(185.6 450.8) rotate(26.71) scale(0.910 1)"
+                      >
+                        B
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(284.5 492.8) rotate(19.03) scale(0.910 1)"
+                      >
+                        O
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(391.9 520.6) rotate(9.87) scale(0.910 1)"
+                      >
+                        N
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(503.3 530.0) rotate(-0.30) scale(0.910 1)"
+                      >
+                        A
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(614.6 519.5) rotate(-10.46) scale(0.910 1)"
+                      >
+                        N
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(716.1 492.6) rotate(-19.14) scale(0.910 1)"
+                      >
+                        Z
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(812.0 452.0) rotate(-26.52) scale(0.910 1)"
+                      >
+                        A
+                      </text>
+                    </g>
+                    <g class="wm-bb-word">
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(185.6 450.8) rotate(26.71) scale(0.910 1)"
+                      >
+                        B
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(284.5 492.8) rotate(19.03) scale(0.910 1)"
+                      >
+                        O
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(391.9 520.6) rotate(9.87) scale(0.910 1)"
+                      >
+                        N
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(503.3 530.0) rotate(-0.30) scale(0.910 1)"
+                      >
+                        A
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(614.6 519.5) rotate(-10.46) scale(0.910 1)"
+                      >
+                        N
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(716.1 492.6) rotate(-19.14) scale(0.910 1)"
+                      >
+                        Z
+                      </text>
+                      <text
+                        text-anchor="middle"
+                        y="0"
+                        transform="translate(812.0 452.0) rotate(-26.52) scale(0.910 1)"
+                      >
+                        A
+                      </text>
+                    </g>
+                  </g>
+                </svg>
+              </h3>
+              <p
+                class="project-description"
+                data-i18n="project-battleship-desc"
+              >
+                Cartoony 3D boat racing with weapons and gadgets. Six boats race
+                three laps around a tropical lagoon, each carrying two
+                attachments picked from eleven.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://joshuaswanson.github.io/battleship-bonanza/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    ></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  Live
+                </a>
+              </div>
+            </div>
+          </article>
+
           <article class="project-card">
             <div class="project-body">
               <h3 class="project-title wm-cursed" aria-label="Cursed Chess">
@@ -854,7 +1133,16 @@
               </div>
             </div>
           </article>
+        </div>
+      </section>
 
+      <section class="section projects" id="projects">
+        <h2 class="section-heading" data-i18n="projects-heading">Projects</h2>
+        <p data-i18n="projects-intro">
+          Small tools and side projects I build for fun.
+        </p>
+
+        <div class="project-grid">
           <article class="project-card">
             <div class="project-body">
               <h3
