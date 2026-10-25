@@ -730,19 +730,6 @@ html[data-theme="dark"] .masthead-boat {
   }
 }
 
-/* Watchbar: the logo ships as one SVG with its lettering already outlined */
-
-.wm-wb-title {
-  margin-bottom: 0.6rem;
-}
-
-.wm-wb {
-  display: block;
-  width: 100%;
-  max-width: 9rem;
-  height: auto;
-}
-
 /* Zurich housing tool: house mark, and the umlaut over the u is drawn with
    the two scraper source colours. */
 

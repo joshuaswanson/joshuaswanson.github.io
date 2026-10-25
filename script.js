@@ -43,8 +43,6 @@ const translations = {
       "En praktische Guide zu Züritüütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
     "project-zurichhousing-desc":
       "Durchsuech di grosse Schwiizer Wohnigs-Plattforme, filter und kartier d'Resultat, und generier massewiis massgschnideti Bewerbige.",
-    "project-watchbar-desc":
-      "macOS-Menübalke-App zum Verwalte vo dinere YouTube-Watch-Later-Playlist.",
   },
 
   de: {
@@ -79,8 +77,6 @@ const translations = {
       "Desktop-GUI im Finder-Stil für SSH-Server. Spaltenbrowser, integriertes Terminal, Drag-and-Drop-Dateiübertragung.",
     "project-swissgerman-desc":
       "Ein praktischer Leitfaden zu Zürichdeutsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
-    "project-watchbar-desc":
-      "macOS-Menüleisten-App zum Verwalten deiner YouTube-Watch-Later-Playlist.",
     "project-zurichhousing-desc":
       "Durchsuche die grossen Schweizer Wohnungsplattformen, filtere und kartiere die Ergebnisse und generiere massenhaft massgeschneiderte Bewerbungen.",
     "contact-heading": "Kontakt",
