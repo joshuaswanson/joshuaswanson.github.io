@@ -24,6 +24,9 @@
 
   /* The portrait is a cutout, so the square behind it is drawn here. */
   --portrait-bg: #dfe5ee;
+
+  /* The nav sits on the photo, so it has its own ink. */
+  --nav-ink: #16283c;
 }
 
 html {
@@ -43,6 +46,7 @@ html[data-theme="dark"] {
   --accent: #86b0f0;
   --accent-hover: #a8c7f7;
   --portrait-bg: #272c36;
+  --nav-ink: #e9edf3;
 }
 
 /* Each wordmark keeps the colours of the project it belongs to. Only the ones
@@ -215,10 +219,13 @@ h3 {
   position: relative;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--text-primary);
-  opacity: 0.85;
+  color: var(--nav-ink);
+  opacity: 0.92;
   text-decoration: none;
-  text-shadow: 0 1px 10px color-mix(in srgb, var(--bg-page) 72%, transparent);
+  text-shadow:
+    0 0 10px color-mix(in srgb, var(--bg-page) 85%, transparent),
+    0 0 10px color-mix(in srgb, var(--bg-page) 85%, transparent),
+    0 0 26px color-mix(in srgb, var(--bg-page) 60%, transparent);
   transition: opacity 0.15s ease;
 }
 
@@ -271,6 +278,7 @@ html[data-theme="dark"] .masthead-boat {
 
 .masthead-greeting {
   grid-area: 1 / 2;
+  scroll-margin-top: 1.5rem;
   font-family: var(--serif);
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   font-weight: 600;
