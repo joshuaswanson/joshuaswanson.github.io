@@ -997,7 +997,6 @@ html[data-theme="dark"] .masthead-boat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
   margin-bottom: 0.6rem;
 }
 
@@ -1005,7 +1004,6 @@ html[data-theme="dark"] .masthead-boat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.04em;
   font-family: "Bungee", "Rubik", system-ui, sans-serif;
   font-size: 2.3rem;
   line-height: 1;
@@ -1018,9 +1016,12 @@ html[data-theme="dark"] .masthead-boat {
    the game's own page */
 
 .wm-cursed-bot {
+  position: relative;
+  z-index: 1;
   flex: none;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 4.6rem;
+  height: 4.6rem;
+  margin-bottom: -0.75rem;
   overflow: visible;
 }
 
@@ -1202,6 +1203,7 @@ html[data-theme="dark"] .wm-cursed-bot-shadow {
 }
 
 .wm-cursed-chess {
+  margin-top: -0.17em;
   color: #fff4e0;
 }
 
