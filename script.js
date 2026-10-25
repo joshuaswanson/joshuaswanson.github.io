@@ -29,8 +29,7 @@ const translations = {
       "Härzigi Boot. Grossi Kanone. Wähl zwee Uufsätz und rase is Ziil!",
     "project-cursedchess-desc":
       "Was, wenn d erscht abtrünnigi KI en Schachbot wär?",
-    "project-depths-desc":
-      "Wie vill Torpedowerfer chasch a es U-Boot schruube? Ganz schö vill, wie sich zeigt.",
+    "project-depths-desc": "Tauch ab, wenn du di trausch.",
     "project-ios-desc":
       "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
@@ -67,8 +66,7 @@ const translations = {
       "Süsse Boote. Grosse Kanonen. Wähl zwei Aufsätze und rase ins Ziel!",
     "project-cursedchess-desc":
       "Was, wenn die erste abtrünnige KI ein Schachbot wäre?",
-    "project-depths-desc":
-      "Wie viele Torpedowerfer kannst du an ein U-Boot schrauben? Eine Menge, wie sich herausstellt.",
+    "project-depths-desc": "Tauch ein, wenn du dich traust.",
     "project-ios-desc":
       "Live-Prozessmonitor für ein per USB angeschlossenes iPhone oder iPad. Wie der macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
