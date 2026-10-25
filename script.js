@@ -11,6 +11,8 @@ const translations = {
       'Vorhär han ich en MSc i Informatik vo de <a href="https://ethz.ch/en.html">ETH Züri</a> gmacht, mit Schwerpunkt Machine Intelligence und Minor i Data Management. Mis Bachelorstudium han ich a de <a href="https://www.washington.edu">University of Washington</a> gmacht, mit emene BA i Mathematik und emene BSc i Informatik.',
     "about-research":
       'Mini Forschigsintresse sind i KI-Sicherheit und Privatsphäri. Mis nöischte <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasste Paper</a> isch vo de <a href="https://inf.ethz.ch/de/news-und-veranstaltungen/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Züri</a> uufghoben worde und isch i de <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, em <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a>, und anderne vorcho.',
+    "about-heading": "Über mich",
+    tagline: "Forscher i KI-Sicherheit und Privatsphäri",
     "pub-heading": "Publikatione",
     "projects-heading": "Projäkt",
     "games-heading": "Spiel",
@@ -52,6 +54,8 @@ const translations = {
       'Zuvor habe ich einen MSc in Informatik an der <a href="https://ethz.ch/en.html">ETH Zürich</a> erworben, mit Schwerpunkt Machine Intelligence und Nebenfach Data Management. Mein Bachelorstudium habe ich an der <a href="https://www.washington.edu">University of Washington</a> absolviert, mit einem BA in Mathematik und einem BSc in Informatik.',
     "about-research":
       'Meine Forschungsinteressen liegen in KI-Sicherheit und Privatsphäre. Mein neuestes <a href="https://arxiv.org/abs/2602.16800" target="_blank" rel="noopener">mitverfasstes Paper</a> wurde von der <a href="https://inf.ethz.ch/de/news-und-veranstaltungen/spotlights/infk-news-channel/2026/05/the-more-you-post-the-easier-you-are-to-unmask.html" target="_blank" rel="noopener">ETH Zürich</a> hervorgehoben und erschien in der <a href="https://www.nytimes.com/2026/03/17/opinion/ai-economy-trump-future.html" target="_blank" rel="noopener">New York Times</a>, im <a href="https://www.theguardian.com/technology/2026/mar/08/ai-hackers-social-media-accounts-study" target="_blank" rel="noopener">Guardian</a>, bei <a href="https://www.bloomberg.com/opinion/articles/2026-03-12/anthropic-isn-t-exaggerating-about-an-ai-panopticon" target="_blank" rel="noopener">Bloomberg</a> und weiteren Medien.',
+    "about-heading": "Über mich",
+    tagline: "Forscher für KI-Sicherheit und Privatsphäre",
     "pub-heading": "Publikationen",
     "deanon-featured": "Bekannt aus:",
     "deanon-discussed": "Diskutiert auf:",
@@ -349,3 +353,43 @@ document.querySelectorAll(".media-show-more").forEach((toggle) => {
     toggle.textContent = moreLinks.hidden ? `and ${count} more` : "show less";
   });
 });
+
+// ==========================================================================
+// Masthead photo parallax
+// ==========================================================================
+
+const banner = document.querySelector(".masthead-banner");
+
+// The boat is part of the photo, so both layers take the same shift and stay
+// registered at every scroll position. The drift carries it up into the photo
+// as the page scrolls.
+const bannerLayers = document.querySelectorAll(
+  ".masthead-banner-photo, .masthead-boat",
+);
+
+if (
+  banner &&
+  bannerLayers.length &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  let queued = false;
+
+  const placePhoto = () => {
+    queued = false;
+    const travel = banner.offsetHeight * 0.15;
+    const shift = -Math.min(window.scrollY * 0.15, travel);
+    bannerLayers.forEach((layer) => {
+      layer.style.transform = `translate3d(0, ${shift}px, 0)`;
+    });
+  };
+
+  const queuePhoto = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(placePhoto);
+  };
+
+  window.addEventListener("scroll", queuePhoto, { passive: true });
+  window.addEventListener("resize", queuePhoto);
+  placePhoto();
+}

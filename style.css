@@ -21,6 +21,9 @@
   /* Both app icons are drawn on a rounded tile. Each wordmark is sized from
      this so the two tiles come out the same. */
   --app-tile: 3.25rem;
+
+  /* The portrait is a cutout, so the square behind it is drawn here. */
+  --portrait-bg: #dfe5ee;
 }
 
 html {
@@ -39,6 +42,7 @@ html[data-theme="dark"] {
   --border-strong: #4a4b50;
   --accent: #86b0f0;
   --accent-hover: #a8c7f7;
+  --portrait-bg: #272c36;
 }
 
 /* Each wordmark keeps the colours of the project it belongs to. Only the ones
@@ -77,6 +81,12 @@ html[data-theme="dark"] .wm-latex em {
 html {
   background: var(--bg-page);
   -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -131,45 +141,215 @@ h3 {
    ========================================================================== */
 
 .masthead {
+  --banner-h: clamp(19rem, 42vw, 31rem);
+  position: relative;
+}
+
+.masthead-banner {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: stretch;
+  height: var(--banner-h);
+  background-color: var(--bg-subtle);
   border-bottom: 1px solid var(--border);
+}
+
+.masthead-banner-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* The shade sits on its own layer above the photo, where an inset shadow can
+   reach it. It is anchored to the banner, so the photo drifts beneath it. */
+.masthead-banner-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 150px -150px 190px -90px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* The photo is 16% taller than the banner, which is the room the parallax
+   drifts up through and the room the boat hangs down into. 86.2069% is 1/1.16,
+   so whatever the window width, the same row of the photo lands on the
+   banner's bottom edge and the boat crosses it by the same amount. */
+.masthead-banner-photo,
+.masthead-boat {
+  position: absolute;
+  inset: 0 0 -16%;
+  background-position: 50% 86.2069%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* The boat is painted back into the photo it was cut from, on a layer the
+   banner does not clip, so it carries on past the bottom edge. */
+.masthead-boat {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.masthead-banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.85rem, 2vw, 1.15rem) var(--gutter)
+    clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.masthead-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem 1.25rem;
+}
+
+.masthead-nav a {
+  position: relative;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  opacity: 0.85;
+  text-decoration: none;
+  text-shadow: 0 1px 10px color-mix(in srgb, var(--bg-page) 72%, transparent);
+  transition: opacity 0.15s ease;
+}
+
+/* A drawn bar keeps the rule straight through the descenders. */
+.masthead-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.masthead-nav a:hover {
+  opacity: 1;
+}
+
+.masthead-nav a:hover::after {
+  opacity: 1;
+}
+
+html[data-theme="light"] .masthead-banner-photo {
+  background-image: url("assets/header-light.webp");
+}
+
+html[data-theme="dark"] .masthead-banner-photo {
+  background-image: url("assets/header-dark.webp");
+}
+
+html[data-theme="light"] .masthead-boat {
+  background-image: url("assets/boat-light.webp");
+}
+
+html[data-theme="dark"] .masthead-boat {
+  background-image: url("assets/boat-dark.webp");
 }
 
 .masthead-inner {
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 1.5rem var(--gutter) 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0 3rem;
+  padding: 2.5rem var(--gutter) 3rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0 1.75rem;
 }
 
-.masthead-identity {
-  flex: 1;
+.masthead-greeting {
+  grid-area: 1 / 2;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+
+.masthead-intro {
+  grid-area: 2 / 2;
+  padding-top: 1.05rem;
+}
+
+.masthead-intro p + p {
+  margin-top: 1.05rem;
+}
+
+.masthead-links {
+  grid-area: 3 / 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1.75rem;
+}
+
+.masthead-title {
+  margin-top: auto;
 }
 
 .masthead-name {
   font-family: var(--serif);
-  font-size: clamp(2.125rem, 5vw, 2.75rem);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
   letter-spacing: -0.015em;
   line-height: 1.05;
+  color: #fff;
+  text-shadow:
+    0 0 26px rgba(0, 0, 0, 1),
+    0 0 26px rgba(0, 0, 0, 1),
+    0 0 26px rgba(0, 0, 0, 0.95),
+    0 0 62px rgba(0, 0, 0, 1),
+    0 0 62px rgba(0, 0, 0, 1),
+    0 0 62px rgba(0, 0, 0, 0.9),
+    0 0 125px rgba(0, 0, 0, 0.9),
+    0 0 125px rgba(0, 0, 0, 0.9);
+}
+
+.masthead-tagline {
+  margin-top: 0.15rem;
+  font-family: var(--serif);
+  font-size: clamp(1.0625rem, 2.4vw, 1.3125rem);
+  color: #fff;
+  opacity: 0.9;
+  text-shadow:
+    0 0 22px rgba(0, 0, 0, 1),
+    0 0 22px rgba(0, 0, 0, 1),
+    0 0 22px rgba(0, 0, 0, 0.95),
+    0 0 54px rgba(0, 0, 0, 1),
+    0 0 54px rgba(0, 0, 0, 1),
+    0 0 54px rgba(0, 0, 0, 0.9),
+    0 0 110px rgba(0, 0, 0, 0.9),
+    0 0 110px rgba(0, 0, 0, 0.9);
 }
 
 .portrait {
-  flex: none;
-  width: 7rem;
-  height: 8.5rem;
+  grid-area: 1 / 1 / 4 / 2;
+  position: relative;
+  width: 12rem;
+  height: 12rem;
   overflow: hidden;
-  background: var(--bg-subtle);
+  background: var(--portrait-bg);
   border: 1px solid var(--border);
+  border-radius: 50%;
 }
 
 .portrait img {
   display: block;
   width: 100%;
-  transform: scale(1.7);
-  transform-origin: 50% 15%;
+  transform: scale(1.32);
+  transform-origin: 50% 12%;
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -259,11 +439,7 @@ h3 {
 .section {
   padding: 3rem 0;
   border-top: 1px solid var(--border);
-}
-
-.section.intro {
-  border-top: none;
-  padding-top: 2.5rem;
+  scroll-margin-top: 1.5rem;
 }
 
 .section-heading {
@@ -275,10 +451,6 @@ h3 {
 
 .section p {
   margin-top: 1.05rem;
-}
-
-.section.intro p:first-child {
-  margin-top: 0;
 }
 
 .section-heading + p {
@@ -330,15 +502,6 @@ h3 {
   flex: none;
   width: 0.875rem;
   height: 0.875rem;
-}
-
-.masthead .social-links {
-  width: 100%;
-  margin-top: 1.75rem;
-}
-
-.masthead .social-links + .social-links {
-  margin-top: 0.5rem;
 }
 
 /* ==========================================================================
@@ -1131,23 +1294,47 @@ blockquote {
   }
 }
 
+/* Below this width the centred crop pushes the boat's corner of the photo off
+   the right edge, so the crop slides toward it. */
+@media (max-width: 34rem) {
+  .masthead-banner-photo,
+  .masthead-boat {
+    background-position: 68% 86.2069%;
+  }
+}
+
 @media (max-width: 40rem) {
   :root {
     --gutter: 1.25rem;
   }
 
   .masthead-inner {
+    grid-template-columns: 1fr;
     gap: 0 1.5rem;
     padding-bottom: 2.25rem;
   }
 
-  .portrait {
-    width: 5.5rem;
-    height: 6.75rem;
+  .masthead-banner-inner {
+    padding-bottom: 1.1rem;
   }
 
-  .masthead .social-links {
-    margin-top: 1.25rem;
+  .masthead-greeting {
+    grid-area: 2 / 1;
+    padding-top: 1.25rem;
+  }
+
+  .masthead-intro {
+    grid-area: 3 / 1;
+  }
+
+  .masthead-links {
+    grid-area: 4 / 1;
+  }
+
+  .portrait {
+    grid-area: 1 / 1;
+    width: 8.5rem;
+    height: 8.5rem;
   }
 
   .section {
