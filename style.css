@@ -1021,7 +1021,7 @@ html[data-theme="dark"] .masthead-boat {
   flex: none;
   width: 4.6rem;
   height: 4.6rem;
-  margin-bottom: -0.75rem;
+  margin-bottom: -1.6rem;
   overflow: visible;
 }
 
@@ -1037,24 +1037,15 @@ html[data-theme="dark"] .masthead-boat {
   transform-origin: 100px 54px;
 }
 
-.wm-cursed-bot-shadow {
-  --shadow-opacity: 0.3;
-  opacity: var(--shadow-opacity);
-}
-
 .wm-cursed-bot-look {
   opacity: 0;
 }
 
 /* On a dark page his outline carries no contrast, so the antenna stalk takes
-   a light stroke and the shadow under him drops back to almost nothing */
+   a light stroke */
 
 html[data-theme="dark"] .wm-cursed-bot-stalk {
   stroke: #6f6a88;
-}
-
-html[data-theme="dark"] .wm-cursed-bot-shadow {
-  --shadow-opacity: 0.14;
 }
 
 /* He looks about the way the game shows him looking, with his smug eyes
