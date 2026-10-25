@@ -29,6 +29,8 @@ const translations = {
       "Härzigi Boot. Grossi Kanone. Wähl zwee Uufsätz und rase is Ziil!",
     "project-cursedchess-desc":
       "Was, wenn d erscht abtrünnigi KI en Schachbot wär?",
+    "project-depths-desc":
+      "Tauch i de Graben ab, überläb d'Wälle und schruub jedi Kanone, wod dir leischte chasch, a dis U-Boot.",
     "project-ios-desc":
       "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
@@ -65,6 +67,8 @@ const translations = {
       "Süsse Boote. Grosse Kanonen. Wähl zwei Aufsätze und rase ins Ziel!",
     "project-cursedchess-desc":
       "Was, wenn die erste abtrünnige KI ein Schachbot wäre?",
+    "project-depths-desc":
+      "Tauch in den Graben, überleb die Wellen und schraub jede Kanone, die du dir leisten kannst, an dein U-Boot.",
     "project-ios-desc":
       "Live-Prozessmonitor für ein per USB angeschlossenes iPhone oder iPad. Wie der macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":

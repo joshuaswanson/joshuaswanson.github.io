@@ -639,6 +639,20 @@ html[data-theme="dark"] .masthead-boat {
   height: auto;
 }
 
+/* Depths of Doom: the title logo the game shows, with the submarine and the
+   spray reaching past the lettering, so it runs wider than the other marks */
+
+.wm-dod {
+  margin-bottom: 0.6rem;
+}
+
+.wm-dod-logo {
+  display: block;
+  width: 100%;
+  max-width: 14rem;
+  height: auto;
+}
+
 /* iOS Activity Monitor: the README wordmark, broken onto two lines so the
    lockup is not twice the width of the column */
 
