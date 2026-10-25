@@ -1016,8 +1016,6 @@ html[data-theme="dark"] .masthead-boat {
    the game's own page */
 
 .wm-cursed-bot {
-  position: relative;
-  z-index: 1;
   flex: none;
   width: 4.6rem;
   height: 4.6rem;
