@@ -23,7 +23,8 @@ const translations = {
       'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
     "contact-email":
       "Mini E-Mail hät s folgende Format: Vorname Punkt Nachname at tuebingen Punkt mpg Punkt Ländercode.",
-    "deanon-featured": "Bekannt us:",
+    "deanon-coverage": "Bekannt us:",
+    "deanon-highlighted": "Vorgstellt vo:",
     "deanon-discussed": "Diskutiert uf:",
     "project-battleship-desc":
       "Härzigi Boot. Grossi Kanone. Wähl zwee Uufsätz und rase is Ziil!",
@@ -56,7 +57,8 @@ const translations = {
     "about-heading": "Über mich",
     tagline: "Forscher für KI-Sicherheit und Privatsphäre",
     "pub-heading": "Publikationen",
-    "deanon-featured": "Bekannt aus:",
+    "deanon-coverage": "Bekannt aus:",
+    "deanon-highlighted": "Hervorgehoben von:",
     "deanon-discussed": "Diskutiert auf:",
     "projects-heading": "Projekte",
     "games-heading": "Spiele",
