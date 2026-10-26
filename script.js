@@ -18,6 +18,9 @@ const translations = {
     "games-heading": "Spiel",
     "games-intro": "Browser-Spiel woni zum Spass boue ha.",
     "projects-intro": "Chliini Tools und Näbeprojekt.",
+    "surviving-heading": "Überläbe i de Schwiiz",
+    "surviving-intro":
+      "Sache, woni boue ha, während ich mich z'Züri zrächtgfunde ha.",
     "contact-heading": "Kontakt",
     "contact-standing":
       'Ich echo d\'<a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a>:',
@@ -64,6 +67,9 @@ const translations = {
     "games-heading": "Spiele",
     "games-intro": "Browser-Spiele, die ich zum Spass gebaut habe.",
     "projects-intro": "Kleine Tools und Nebenprojekte.",
+    "surviving-heading": "Überleben in der Schweiz",
+    "surviving-intro":
+      "Dinge, die ich gebaut habe, während ich mich in Zürich zurechtgefunden habe.",
     "project-battleship-desc":
       "Süsse Boote. Grosse Kanonen. Wähl zwei Aufsätze und rase ins Ziel!",
     "project-cursedchess-desc":
