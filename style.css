@@ -229,7 +229,9 @@ h3 {
   transition: opacity 0.15s ease;
 }
 
-/* A drawn bar keeps the rule straight through the descenders. */
+/* A drawn bar keeps the rule straight through the descenders. It gets its own
+   layer because fading it in otherwise re-rasterizes the glow on the link text
+   above it every frame. */
 .masthead-nav a::after {
   content: "";
   position: absolute;
@@ -240,6 +242,7 @@ h3 {
   background: currentColor;
   opacity: 0;
   transition: opacity 0.15s ease;
+  will-change: opacity;
 }
 
 .masthead-nav a:hover {
