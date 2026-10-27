@@ -337,6 +337,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   [
     [".wm-zht", 800],
     [".wm-mct", 1000],
+    [".wm-bb", 1800, true],
     [".wm-cursed", 2500],
     [".wm-iam", 2400, true],
     [".wm-ssh", 1600],

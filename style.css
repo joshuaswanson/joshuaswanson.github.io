@@ -1061,6 +1061,66 @@ html[data-theme="dark"] .masthead-boat {
   }
 }
 
+/* Battleship Bonanza, the title screen logo in the layers the game brings in
+   on its own. Every layer image covers the whole mark, so each origin is the
+   fraction of the frame holding the corner of the part the game turns about.
+   The boat is a still render on the title screen as well. */
+
+.wm-bb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+}
+
+.wm-bb img,
+.wm-bb-pop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wm-bb.is-playing .wm-bb-pop {
+  animation: bbPop 600ms cubic-bezier(0.2, 1.7, 0.4, 1) both;
+}
+
+/* A cycle of the spin covers one spike of the twenty, so the burst looks the
+   same at every cycle boundary and a run can end on one */
+
+.wm-bb.is-playing .wm-bb-burst {
+  animation: bbSpin 2s linear infinite;
+}
+
+.wm-bb.is-playing .wm-bb-top {
+  transform-origin: 50% 38.8%;
+  animation: bbRise 520ms 120ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+
+.wm-bb.is-playing .wm-bb-main {
+  transform-origin: 50.6% 31.2%;
+  animation: bbRise 520ms 260ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+
+@keyframes bbPop {
+  from {
+    transform: scale(0) rotate(-40deg);
+  }
+}
+
+@keyframes bbSpin {
+  to {
+    transform: rotate(18deg);
+  }
+}
+
+@keyframes bbRise {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
 /* Cursed Chess, the logo the site turns into once the curse lands.
    Outline and glitch offsets are in em so they scale with the small size. */
 
