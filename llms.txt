@@ -1,17 +1,17 @@
 # Joshua Swanson
 
 ## About
-Joshua Swanson holds an MSc in Computer Science from ETH Zurich, Switzerland, with a major in Machine Intelligence and a minor in Data Management. He also holds a BA in Mathematics and a BSc in Computer Science from the University of Washington.
+Joshua Swanson works at the Max Planck Institute for Intelligent Systems in the COMPASS group, under the supervision of Sahar Abdelnabi. He holds an MSc in Computer Science from ETH Zurich, Switzerland, with a major in Machine Intelligence and a minor in Data Management. He also holds a BA in Mathematics and a BSc in Computer Science from the University of Washington.
 
 ## Research
-His research focuses on AI security and privacy.
+His research focuses on AI security, privacy, and safety.
 
 ## Publications
 
 ### Large-Scale Online Deanonymization with LLMs (2026)
 Authors: Simon Lermen, Daniel Paleka, Joshua Swanson, Michael Aerni, Nicholas Carlini, Florian Tramer
 Published at USENIX Security 2026 and the ICLR 2026 Workshop on Agents in the Wild.
-This paper demonstrates that large language models can identify pseudonymous online users at scale with high precision (up to 90%) and at low cost ($1-4 per target). The research was featured in The New York Times, The Guardian, Bloomberg, The Independent, El Pais, The Verge, Ars Technica, Al Jazeera, and many other international outlets.
+This paper demonstrates that large language models can identify pseudonymous online users at scale with high precision (up to 90%) and at low cost ($1-4 per target). The work was highlighted by the ETH Zurich Department of Computer Science and the Zurich Information Security & Privacy Center, and featured in The New York Times, The Guardian, Bloomberg, The Independent, El Pais, The Verge, Ars Technica, Al Jazeera, and many other international outlets.
 Paper: https://arxiv.org/abs/2602.16800
 
 ### Modal Aphasia (2025)
@@ -25,7 +25,18 @@ Paper: https://arxiv.org/abs/2504.19394
 - Google Scholar: https://scholar.google.com/citations?user=jiecQyEAAAAJ
 - LinkedIn: https://www.linkedin.com/in/joshuaswanson1/
 
+## Games
+- Battleship Bonanza: cute boats, big guns, two attachments, race to the finish. https://joshuaswanson.github.io/battleship-bonanza/
+- Cursed Chess: what if the first rogue AI was a chess bot? https://joshuaswanson.github.io/cursed-chess/
+- Depths of Doom: dive a submarine into the trench and bolt on more guns. https://joshuaswanson.github.io/depths-of-doom/
+
 ## Projects
-- LaTeX PDF Translator: https://joshuaswanson.github.io/latex-pdf-translator/
-- Monitor Comparison Tool: https://joshuaswanson.github.io/monitor-comparison/
-- Wend Pro: https://joshuaswanson.github.io/wend-pro/
+- iOS Activity Monitor: live process monitor for a USB-tethered iPhone or iPad. https://github.com/joshuaswanson/ios-activity-monitor
+- LaTeX PDF Translator: translate non-English LaTeX-typeset PDFs to English while preserving mathematical notation. https://joshuaswanson.github.io/latex-pdf-translator/
+- Monitor Comparison Tool: interactive scatter plot for comparing monitor specs like PPI, screen area, and price. https://joshuaswanson.github.io/monitor-comparison/
+- Slides to Video: turn a slide deck into a narrated video with AI voice cloning. https://github.com/joshuaswanson/slides-to-video
+- SSH GUI: Finder-style desktop GUI for SSH servers, with a column browser, integrated terminal, and drag-and-drop file transfer. https://github.com/joshuaswanson/ssh-gui
+
+## Surviving Switzerland
+- The Ultimate Guide to Swiss German for English Speakers: a practical guide to the Zurich dialect. https://joshuaswanson.github.io/swiss-german/
+- Zurich Housing Tool: scrape the major Swiss housing platforms, filter and map the results, and generate tailored application messages. https://github.com/joshuaswanson/zurich-housing-tool
