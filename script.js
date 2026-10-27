@@ -170,35 +170,17 @@ systemDark.addEventListener("change", () => applyTheme(themeChoice));
 applyTheme(themeChoice);
 
 // ==========================================================================
-// The project logos animate on a timer while the logo is on screen, and on
-// hover of the card they belong to. A logo registered as looping runs for as
-// long as the pointer stays on its card
+// The project logos animate while the pointer rests on the card they belong
+// to. A logo registered as looping keeps running until the pointer leaves
 // ==========================================================================
 
-// Only one logo animates at a time, so they never fire together
-let busyUntil = 0;
-
-function playOccasionally(logo, runFor, offset, loops) {
-  const FIRST = [1800, 4000];
-  const THEN = [11000, 22000];
-  const GAP = 900;
+function playOnHover(logo, runFor, loops) {
   // How much of the cycle the glide to a halt covers
   const TAIL = 250;
 
-  let timer = null;
   let stop = null;
   let frame = null;
-  let onScreen = false;
-  let seen = false;
   let held = false;
-
-  function schedule() {
-    clearTimeout(timer);
-    if (!onScreen) return;
-    const [lo, hi] = seen ? THEN : FIRST;
-    const wait = lo + Math.random() * (hi - lo) + (seen ? 0 : offset);
-    timer = setTimeout(play, wait);
-  }
 
   function cycles() {
     return logo
@@ -213,7 +195,6 @@ function playOccasionally(logo, runFor, offset, loops) {
 
   function finish() {
     logo.classList.remove("is-playing", "is-settling");
-    busyUntil = Date.now() + GAP;
   }
 
   // A cubic ease-out leaves at three times its average rate, so playing the
@@ -265,7 +246,6 @@ function playOccasionally(logo, runFor, offset, loops) {
     const at = anims[0].currentTime;
     let to = (Math.floor(at / period) + 1) * period;
     if (to - at < TAIL) to += period;
-    busyUntil = Date.now() + (to - at) + 2 * TAIL + GAP;
     stop = setTimeout(() => glide(anims, to), to - at - TAIL);
   }
 
@@ -274,7 +254,6 @@ function playOccasionally(logo, runFor, offset, loops) {
     if (held) {
       logo.classList.remove("is-settling");
       cycles().forEach((a) => a.play());
-      busyUntil = Date.now() + runFor + GAP;
       stop = setTimeout(end, runFor);
       return;
     }
@@ -284,27 +263,11 @@ function playOccasionally(logo, runFor, offset, loops) {
 
   function run() {
     cancel();
-    busyUntil = Date.now() + runFor + GAP;
-    seen = true;
     logo.classList.remove("is-playing", "is-settling");
     // Reading layout flushes the removal, so a run already under way restarts
     logo.getBoundingClientRect();
     logo.classList.add("is-playing");
     stop = setTimeout(end, runFor);
-    schedule();
-  }
-
-  function play() {
-    const now = Date.now();
-    if (now < busyUntil) {
-      timer = setTimeout(play, busyUntil - now);
-      return;
-    }
-    if (logo.classList.contains("is-playing")) {
-      schedule();
-      return;
-    }
-    run();
   }
 
   const card = logo.closest(".project-card") || logo;
@@ -319,18 +282,6 @@ function playOccasionally(logo, runFor, offset, loops) {
     held = false;
     end();
   });
-
-  new IntersectionObserver(
-    (entries) => {
-      onScreen = entries[0].isIntersecting;
-      if (onScreen) {
-        schedule();
-      } else {
-        clearTimeout(timer);
-      }
-    },
-    { threshold: 0.6 },
-  ).observe(logo);
 }
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -341,10 +292,10 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     [".wm-cursed", 2500],
     [".wm-iam", 2400, true],
     [".wm-ssh", 1600],
-  ].forEach(([selector, runFor, loops], i) => {
+  ].forEach(([selector, runFor, loops]) => {
     document
       .querySelectorAll(selector)
-      .forEach((el) => playOccasionally(el, runFor, i * 900, loops));
+      .forEach((el) => playOnHover(el, runFor, loops));
   });
 }
 
