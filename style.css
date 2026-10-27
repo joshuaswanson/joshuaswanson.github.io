@@ -614,16 +614,88 @@ html[data-theme="dark"] .masthead-boat {
   height: auto;
 }
 
+/* The bay its own title screen races across: sky down to the horizon a quarter
+   of the way down, then sea pale with fog near it and deep at the bottom, under
+   the title screen's own vignette. */
 .tile-bb {
-  --tile: linear-gradient(155deg, #3cb3e0, #14628f);
+  --tile:
+    radial-gradient(
+      ellipse at 50% 40%,
+      transparent 30%,
+      rgba(14, 42, 71, 0.55) 100%
+    ),
+    linear-gradient(transparent 60%, rgba(14, 42, 71, 0.45)),
+    linear-gradient(
+      180deg,
+      #9fd7fb 0%,
+      #b3e5fd 12%,
+      #c4f1ff 24%,
+      #ade4f4 24.5%,
+      #92d7e8 32%,
+      #6dc8db 45%,
+      #27b7cd 75%,
+      #1fa6c4 100%
+    );
 }
 
+/* The deep space its own main menu sits in: the sky gradient and glow, the two
+   drifting nebulae, a vignette, and the halftone dots over everything. */
 .tile-cursed {
-  --tile: linear-gradient(155deg, #33205c, #150e26);
+  --tile:
+    radial-gradient(rgba(255, 255, 255, 0.055) 1.2px, transparent 1.6px) 0 0 /
+      9px 9px,
+    radial-gradient(
+      ellipse 75% 70% at 50% 45%,
+      transparent 55%,
+      rgba(0, 0, 0, 0.45) 100%
+    ),
+    radial-gradient(
+      ellipse 58% 52% at 14% 26%,
+      rgba(255, 79, 216, 0.55) 0%,
+      rgba(122, 43, 255, 0.47) 40%,
+      rgba(122, 43, 255, 0.17) 72%,
+      rgba(122, 43, 255, 0) 100%
+    ),
+    radial-gradient(
+      ellipse 54% 58% at 88% 96%,
+      rgba(33, 230, 255, 0.55) 0%,
+      rgba(36, 67, 255, 0.47) 38%,
+      rgba(36, 67, 255, 0.17) 70%,
+      rgba(36, 67, 255, 0) 100%
+    ),
+    radial-gradient(120% 80% at 50% 110%, #4a1170 0%, transparent 60%),
+    linear-gradient(180deg, #05031c 0%, #1b0b4f 65%, #4a1170 130%);
 }
 
+/* The mid water its own title screen floats in: the sea gradient the shader
+   resolves to, god rays leaning left, and the title screen's own vignette. */
 .tile-dod {
-  --tile: linear-gradient(155deg, #11577f, #05203a);
+  --tile:
+    radial-gradient(
+      ellipse at center,
+      rgba(4, 18, 31, 0.35),
+      rgba(4, 18, 31, 0.8)
+    ),
+    repeating-linear-gradient(
+      104deg,
+      rgba(223, 244, 255, 0) 0 16px,
+      rgba(223, 244, 255, 0.07) 16px 23px,
+      rgba(223, 244, 255, 0) 23px 42px
+    ),
+    linear-gradient(
+      180deg,
+      #60d7f0 0%,
+      #30b6e5 10%,
+      #0299da 20%,
+      #0291d0 30%,
+      #0181bd 40%,
+      #006ca6 50%,
+      #005c95 60%,
+      #00558b 70%,
+      #004a79 80%,
+      #003c63 90%,
+      #003050 100%
+    );
 }
 
 .game-card .project-body {
