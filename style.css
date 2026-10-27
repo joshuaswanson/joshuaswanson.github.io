@@ -591,6 +591,7 @@ html[data-theme="dark"] .masthead-boat {
   width: 100%;
   max-width: 13rem;
   height: auto;
+  margin-inline: auto;
 }
 
 /* Depths of Doom: the title logo the game shows, with the submarine and the
@@ -605,6 +606,7 @@ html[data-theme="dark"] .masthead-boat {
   width: 100%;
   max-width: 14rem;
   height: auto;
+  margin-inline: auto;
 }
 
 /* iOS Activity Monitor: the README wordmark, broken onto two lines so the
@@ -951,7 +953,6 @@ html[data-theme="dark"] .masthead-boat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
   margin-bottom: 0.6rem;
 }
 
