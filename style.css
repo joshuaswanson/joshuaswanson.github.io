@@ -588,37 +588,71 @@ html[data-theme="dark"] .masthead-boat {
   margin-bottom: 0.6rem;
 }
 
+/* Games sit on a tile: the wordmark on a colour taken from its own art, with
+   the name and the line about it in plain text underneath. The mark is sized
+   in container units so a drawn one scales with the tile like an image does. */
+
+.game-tile {
+  container-type: inline-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 8%;
+  border-radius: 0.9rem;
+  background: var(--tile);
+  overflow: hidden;
+  transition: transform 0.18s ease;
+}
+
+.game-tile:hover {
+  transform: translateY(-3px);
+}
+
+.game-art {
+  width: 100%;
+  height: auto;
+}
+
+.tile-bb {
+  --tile: linear-gradient(155deg, #3cb3e0, #14628f);
+}
+
+.tile-cursed {
+  --tile: linear-gradient(155deg, #33205c, #150e26);
+}
+
+.tile-dod {
+  --tile: linear-gradient(155deg, #11577f, #05203a);
+}
+
+.game-card .project-body {
+  grid-template-rows: auto auto 1fr;
+  padding-top: 1rem;
+}
+
+.game-name {
+  align-self: start;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.game-tile .wm-cursed {
+  margin-bottom: 0;
+}
+
+.game-tile .wm-cursed-stack {
+  font-size: 20cqw;
+}
+
+.game-tile .wm-cursed-bot {
+  width: 40cqw;
+  height: 40cqw;
+  margin-bottom: -12cqw;
+}
+
 /* Project wordmarks, reproduced from each project's own site */
-
-/* Battleship Bonanza: the title logo the game and its README show, exported
-   from the game at twice the width it renders here */
-
-.wm-bb {
-  margin-bottom: 0.6rem;
-}
-
-.wm-bb-logo {
-  display: block;
-  width: 100%;
-  max-width: 13rem;
-  height: auto;
-  margin-inline: auto;
-}
-
-/* Depths of Doom: the title logo the game shows, with the submarine and the
-   spray reaching past the lettering, so it runs wider than the other marks */
-
-.wm-dod {
-  margin-bottom: 0.6rem;
-}
-
-.wm-dod-logo {
-  display: block;
-  width: 100%;
-  max-width: 14rem;
-  height: auto;
-  margin-inline: auto;
-}
 
 /* iOS Activity Monitor: the README wordmark, broken onto two lines so the
    lockup is not twice the width of the column */
