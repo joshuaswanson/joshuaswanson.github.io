@@ -612,9 +612,9 @@ html[data-theme="dark"] .masthead-boat {
   height: auto;
 }
 
-/* The bay its own title screen races across: sky down to the horizon a quarter
-   of the way down, then sea pale with fog near it and deep at the bottom, under
-   the title screen's own vignette. */
+/* The bay its own title screen races across, drawn by the game's own sea
+   shader and sky dome off a camera 55 units up, under the title screen's own
+   vignette. */
 .tile-bb {
   padding: 4%;
   --tile:
@@ -624,17 +624,7 @@ html[data-theme="dark"] .masthead-boat {
       rgba(14, 42, 71, 0.55) 100%
     ),
     linear-gradient(transparent 60%, rgba(14, 42, 71, 0.45)),
-    linear-gradient(
-      180deg,
-      #9fd7fb 0%,
-      #b3e5fd 12%,
-      #c4f1ff 24%,
-      #ade4f4 24.5%,
-      #92d7e8 32%,
-      #6dc8db 45%,
-      #27b7cd 75%,
-      #1fa6c4 100%
-    );
+    url("assets/bb-sea.webp") center / cover no-repeat;
 }
 
 /* Its main menu itself: pink light from the top, teal from the lower left and
