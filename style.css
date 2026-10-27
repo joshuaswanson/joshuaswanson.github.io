@@ -1359,7 +1359,6 @@ blockquote {
   }
 
   .project-grid > .project-card:nth-child(3) {
-    border-top: 1px solid var(--border);
     padding-top: 1.5rem;
   }
 }
@@ -1421,7 +1420,6 @@ blockquote {
   }
 
   .project-grid > .project-card:nth-child(2) {
-    border-top: 1px solid var(--border);
     padding-top: 1.5rem;
   }
 }
