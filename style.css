@@ -24,9 +24,6 @@
 
   /* The portrait is a cutout, so the square behind it is drawn here. */
   --portrait-bg: #dfe5ee;
-
-  /* The nav sits on the photo, so it has its own ink. */
-  --nav-ink: #16283c;
 }
 
 html {
@@ -46,7 +43,6 @@ html[data-theme="dark"] {
   --accent: #86b0f0;
   --accent-hover: #a8c7f7;
   --portrait-bg: #272c36;
-  --nav-ink: #e9edf3;
 }
 
 /* Each wordmark keeps the colours of the project it belongs to. Only the ones
@@ -206,51 +202,6 @@ h3 {
   flex-direction: column;
   padding: clamp(0.85rem, 2vw, 1.15rem) var(--gutter)
     clamp(1.5rem, 3.5vw, 2.5rem);
-}
-
-.masthead-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.35rem 1.25rem;
-}
-
-.masthead-nav a {
-  position: relative;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--nav-ink);
-  opacity: 0.92;
-  text-decoration: none;
-  text-shadow:
-    0 0 10px color-mix(in srgb, var(--bg-page) 85%, transparent),
-    0 0 10px color-mix(in srgb, var(--bg-page) 85%, transparent),
-    0 0 26px color-mix(in srgb, var(--bg-page) 60%, transparent);
-  transition: opacity 0.15s ease;
-}
-
-/* A drawn bar keeps the rule straight through the descenders. It gets its own
-   layer because fading it in otherwise re-rasterizes the glow on the link text
-   above it every frame. */
-.masthead-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.45rem;
-  height: 2px;
-  background: currentColor;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  will-change: opacity;
-}
-
-.masthead-nav a:hover {
-  opacity: 1;
-}
-
-.masthead-nav a:hover::after {
-  opacity: 1;
 }
 
 html[data-theme="light"] .masthead-banner-photo {
