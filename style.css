@@ -1233,11 +1233,11 @@ html[data-theme="dark"] .wm-cursed-bot-stalk {
   }
   26%,
   40% {
-    transform: translateX(-11px) translateY(94px) scaleY(1) translateY(-94px);
+    transform: translateX(-8px) translateY(94px) scaleY(1) translateY(-94px);
   }
   58%,
   72% {
-    transform: translateX(11px) translateY(94px) scaleY(1) translateY(-94px);
+    transform: translateX(8px) translateY(94px) scaleY(1) translateY(-94px);
   }
   84% {
     transform: translateY(94px) scaleY(1) translateY(-94px);
