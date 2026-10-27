@@ -603,11 +603,6 @@ html[data-theme="dark"] .masthead-boat {
   padding: 8%;
   background: var(--tile);
   overflow: hidden;
-  transition: transform 0.18s ease;
-}
-
-.game-tile:hover {
-  transform: translateY(-3px);
 }
 
 .game-art {
