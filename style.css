@@ -601,7 +601,6 @@ html[data-theme="dark"] .masthead-boat {
   justify-content: center;
   aspect-ratio: 4 / 3;
   padding: 8%;
-  border-radius: 0.9rem;
   background: var(--tile);
   overflow: hidden;
   transition: transform 0.18s ease;
@@ -620,6 +619,7 @@ html[data-theme="dark"] .masthead-boat {
    of the way down, then sea pale with fog near it and deep at the bottom, under
    the title screen's own vignette. */
 .tile-bb {
+  padding: 4%;
   --tile:
     radial-gradient(
       ellipse at 50% 40%,
@@ -640,33 +640,31 @@ html[data-theme="dark"] .masthead-boat {
     );
 }
 
-/* The deep space its own main menu sits in: the sky gradient and glow, the two
-   drifting nebulae, a vignette, and the halftone dots over everything. */
+/* Its main menu itself: pink light from the top, teal from the lower left and
+   purple from the lower right, a vignette, and the board under all of it. The
+   board squares are sized against the tile so eight of them fit across. */
 .tile-cursed {
   --tile:
-    radial-gradient(rgba(255, 255, 255, 0.055) 1.2px, transparent 1.6px) 0 0 /
-      9px 9px,
+    radial-gradient(60% 46% at 50% 0%, rgb(255 79 163 / 0.34), transparent 72%),
     radial-gradient(
-      ellipse 75% 70% at 50% 45%,
-      transparent 55%,
-      rgba(0, 0, 0, 0.45) 100%
+      46% 40% at 0% 100%,
+      rgb(62 230 176 / 0.16),
+      transparent 70%
     ),
     radial-gradient(
-      ellipse 58% 52% at 14% 26%,
-      rgba(255, 79, 216, 0.55) 0%,
-      rgba(122, 43, 255, 0.47) 40%,
-      rgba(122, 43, 255, 0.17) 72%,
-      rgba(122, 43, 255, 0) 100%
+      50% 44% at 100% 92%,
+      rgb(107 47 214 / 0.4),
+      transparent 70%
     ),
-    radial-gradient(
-      ellipse 54% 58% at 88% 96%,
-      rgba(33, 230, 255, 0.55) 0%,
-      rgba(36, 67, 255, 0.47) 38%,
-      rgba(36, 67, 255, 0.17) 70%,
-      rgba(36, 67, 255, 0) 100%
-    ),
-    radial-gradient(120% 80% at 50% 110%, #4a1170 0%, transparent 60%),
-    linear-gradient(180deg, #05031c 0%, #1b0b4f 65%, #4a1170 130%);
+    radial-gradient(90% 80% at 50% 30%, transparent 30%, #0b0a26 100%),
+    conic-gradient(
+        rgb(255 255 255 / 0.1) 0 25%,
+        transparent 0 50%,
+        rgb(255 255 255 / 0.1) 0 75%,
+        transparent 0
+      )
+      0 0 / 25% 25%,
+    linear-gradient(180deg, #1c1250, #0b0a26);
 }
 
 /* The mid water its own title screen floats in: the sea gradient the shader
@@ -724,6 +722,7 @@ html[data-theme="dark"] .masthead-boat {
   width: 40cqw;
   height: 40cqw;
   margin-bottom: -12cqw;
+  translate: 0 -2px;
 }
 
 /* Project wordmarks, reproduced from each project's own site */
