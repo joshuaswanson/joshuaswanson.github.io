@@ -597,6 +597,10 @@ html[data-theme="dark"] .masthead-boat {
   container-type: inline-size;
   color: inherit;
   text-decoration: none;
+  /* The mark on a tile stands in for a logo, so dragging across one
+     highlights nothing. The name under the tile still selects. */
+  -webkit-user-select: none;
+  user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -714,19 +718,6 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 /* Project wordmarks, reproduced from each project's own site */
-
-/* A wordmark stands in for a logo, so dragging across one highlights nothing */
-
-.game-tile,
-.wm-iam-title,
-.wm-latex,
-.wm-mct,
-.wm-sg,
-.wm-ssh-title,
-.wm-zht {
-  -webkit-user-select: none;
-  user-select: none;
-}
 
 /* iOS Activity Monitor: the README wordmark, broken onto two lines so the
    lockup is not twice the width of the column */
