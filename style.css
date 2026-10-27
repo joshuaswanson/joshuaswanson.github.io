@@ -617,9 +617,9 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 /* The bay its own title screen races across, straight down on the water from
-   38 units up. The wave bands, the foam dashes and the wake streaks left by
-   two boats that passed out of frame all come from the game's own shaders.
-   The title screen's own vignette goes over it. */
+   17 units up. The water, and the wake churned up by one boat that ran past
+   just off the right edge, are drawn by the game's own shaders. The title
+   screen's own vignette goes over it. */
 .tile-bb {
   padding: 4%;
   --tile:
