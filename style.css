@@ -715,6 +715,19 @@ html[data-theme="dark"] .masthead-boat {
 
 /* Project wordmarks, reproduced from each project's own site */
 
+/* A wordmark stands in for a logo, so dragging across one highlights nothing */
+
+.game-tile,
+.wm-iam-title,
+.wm-latex,
+.wm-mct,
+.wm-sg,
+.wm-ssh-title,
+.wm-zht {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* iOS Activity Monitor: the README wordmark, broken onto two lines so the
    lockup is not twice the width of the column */
 
@@ -1131,7 +1144,6 @@ html[data-theme="dark"] .masthead-boat {
   line-height: 1;
   transform: skew(-9deg);
   transform-origin: center;
-  user-select: none;
 }
 
 /* Chessbot, the engine who decided chess was the problem, drawn as he is on
