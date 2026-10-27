@@ -612,10 +612,10 @@ html[data-theme="dark"] .masthead-boat {
   height: auto;
 }
 
-/* The bay its own title screen races across, built from the game's own venue
-   code and photographed from out at sea, so the sea shader, the fogged island
-   skyline and a boat's wake are the game's. The title screen's own vignette
-   goes over it. */
+/* The bay its own title screen races across, straight down on the water from
+   70 units up. Built from the game's own venue code, so the sea shader, the
+   boats, their wake ribbons and the splash are the game's. The title screen's
+   own vignette goes over it. */
 .tile-bb {
   padding: 4%;
   --tile:
