@@ -428,6 +428,7 @@ html[data-theme="dark"] .masthead-boat {
 .social-links,
 .publication-links,
 .project-links {
+  align-self: end;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -554,10 +555,19 @@ html[data-theme="dark"] .masthead-boat {
    ========================================================================== */
 
 .project-grid {
+  /* Every card reserves this much room for its wordmark, so the descriptions
+     below them line up across a row whatever shape the mark is. */
+  --mark-h: 8.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0 2.5rem;
   margin-top: 1.5rem;
+}
+
+.project-body {
+  flex: 1;
+  display: grid;
+  grid-template-rows: minmax(var(--mark-h), auto) auto 1fr;
 }
 
 .project-card {
@@ -573,8 +583,9 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 .project-title {
+  align-self: end;
   font-size: 1rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.6rem;
 }
 
 /* Project wordmarks, reproduced from each project's own site */
@@ -1211,7 +1222,6 @@ html[data-theme="dark"] .wm-cursed-bot-stalk {
 .project-description {
   font-size: 0.925rem;
   margin-bottom: 1rem;
-  flex: 1;
 }
 
 /* ==========================================================================
