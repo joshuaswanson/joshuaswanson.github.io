@@ -1117,9 +1117,11 @@ html[data-theme="dark"] .wm-cursed-bot-stalk {
   stroke: #6f6a88;
 }
 
-/* He looks about the way the game shows him looking, with his smug eyes
-   giving way to round pupils that travel to one side and then the other. His
-   head comes upright while he looks, as it does for those moods in the game. */
+/* He looks about the way the game shows him looking. His closed eyes blink
+   open into round pupils that travel to one side and then the other, then
+   blink shut again. His head comes upright while he looks, as it does for
+   those moods in the game. The pupil travel stays short enough that the glow
+   never reaches the bezel of his screen. */
 
 .wm-cursed.is-playing .wm-cursed-bot-smug {
   animation: cursedBotSmug 2.4s both;
@@ -1139,46 +1141,56 @@ html[data-theme="dark"] .wm-cursed-bot-stalk {
 
 @keyframes cursedBotSmug {
   0%,
-  5% {
+  4% {
     opacity: 1;
   }
-  7%,
-  93% {
+  10%,
+  87% {
     opacity: 0;
   }
-  95%,
+  93%,
   100% {
     opacity: 1;
   }
 }
 
+/* The lid is the pupil group's own height. Scaling it about y 94, the centre
+   line of both pupils, keeps the slit where the closed arcs sit. */
+
 @keyframes cursedBotLook {
   0%,
-  5% {
+  4% {
     opacity: 0;
-    transform: translateX(0);
+    transform: translateY(94px) scaleY(0.07) translateY(-94px);
   }
   7% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(94px) scaleY(0.07) translateY(-94px);
+    animation-timing-function: cubic-bezier(0.2, 1.4, 0.4, 1);
   }
-  24%,
+  15% {
+    transform: translateY(94px) scaleY(1) translateY(-94px);
+  }
+  26%,
   40% {
-    transform: translateX(-17px);
+    transform: translateX(-11px) translateY(94px) scaleY(1) translateY(-94px);
   }
   58%,
-  74% {
-    transform: translateX(17px);
+  72% {
+    transform: translateX(11px) translateY(94px) scaleY(1) translateY(-94px);
   }
-  90%,
-  93% {
+  84% {
+    transform: translateY(94px) scaleY(1) translateY(-94px);
+    animation-timing-function: cubic-bezier(0.6, 0, 0.9, 0.5);
+  }
+  92% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(94px) scaleY(0.07) translateY(-94px);
   }
-  95%,
+  94%,
   100% {
     opacity: 0;
-    transform: translateX(0);
+    transform: translateY(94px) scaleY(0.07) translateY(-94px);
   }
 }
 
