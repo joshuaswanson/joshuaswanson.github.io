@@ -826,9 +826,8 @@ html[data-theme="dark"] .masthead-boat {
 
 .wm-zht {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.12em;
+  align-items: center;
+  gap: 0.4rem;
   font-family: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
@@ -868,7 +867,7 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 .wm-zht-rest {
-  display: block;
+  margin-left: 0.22em;
   color: #636b74;
 }
 
