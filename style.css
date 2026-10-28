@@ -659,35 +659,18 @@ html[data-theme="dark"] .masthead-boat {
     linear-gradient(180deg, #1c1250, #0b0a26);
 }
 
-/* The mid water its own title screen floats in: the sea gradient the shader
-   resolves to, god rays leaning left, and the title screen's own vignette. */
+/* The reef its own title screen floats over, photographed from the game with
+   the interface hidden, under a vignette that keeps the logo clear of the
+   coral. */
 .tile-sub {
+  padding: 4%;
   --tile:
     radial-gradient(
-      ellipse at center,
-      rgba(4, 18, 31, 0.35),
-      rgba(4, 18, 31, 0.8)
+      ellipse at 50% 45%,
+      rgba(4, 18, 31, 0) 40%,
+      rgba(4, 18, 31, 0.5) 100%
     ),
-    repeating-linear-gradient(
-      104deg,
-      rgba(223, 244, 255, 0) 0 16px,
-      rgba(223, 244, 255, 0.07) 16px 23px,
-      rgba(223, 244, 255, 0) 23px 42px
-    ),
-    linear-gradient(
-      180deg,
-      #60d7f0 0%,
-      #30b6e5 10%,
-      #0299da 20%,
-      #0291d0 30%,
-      #0181bd 40%,
-      #006ca6 50%,
-      #005c95 60%,
-      #00558b 70%,
-      #004a79 80%,
-      #003c63 90%,
-      #003050 100%
-    );
+    url("assets/submania-reef.webp") center / cover no-repeat;
 }
 
 .game-card .project-body {
