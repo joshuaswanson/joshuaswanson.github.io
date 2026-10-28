@@ -659,9 +659,10 @@ html[data-theme="dark"] .masthead-boat {
     linear-gradient(180deg, #1c1250, #0b0a26);
 }
 
-/* The reef its own title screen floats over, photographed from the game with
-   the interface hidden, under a vignette that keeps the logo clear of the
-   coral. */
+/* The open water of its own title screen, photographed from the game with the
+   seabed and everything standing on it taken out, so what is left is the
+   backdrop gradient, the sun shafts, the surface shimmer and the drifting
+   motes. A vignette deepens the corners under the logo. */
 .tile-sub {
   padding: 4%;
   --tile:
@@ -670,7 +671,7 @@ html[data-theme="dark"] .masthead-boat {
       rgba(4, 18, 31, 0) 40%,
       rgba(4, 18, 31, 0.5) 100%
     ),
-    url("assets/submania-reef.webp") center / cover no-repeat;
+    url("assets/submania-water.webp") center / cover no-repeat;
 }
 
 .game-card .project-body {
