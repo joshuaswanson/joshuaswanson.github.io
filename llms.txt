@@ -28,7 +28,7 @@ Paper: https://arxiv.org/abs/2504.19394
 ## Games
 - Battleship Bonanza: cute boats, big guns, two attachments, race to the finish. https://joshuaswanson.github.io/battleship-bonanza/
 - Cursed Chess: what if the first rogue AI was a chess bot? https://joshuaswanson.github.io/cursed-chess/
-- Depths of Doom: dive a submarine into the trench and bolt on more guns. https://joshuaswanson.github.io/depths-of-doom/
+- Submania: dive a submarine into the trench and bolt on more guns. https://joshuaswanson.github.io/submania/
 
 ## Projects
 - iOS Activity Monitor: live process monitor for a USB-tethered iPhone or iPad. https://github.com/joshuaswanson/ios-activity-monitor

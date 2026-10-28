@@ -661,7 +661,7 @@ html[data-theme="dark"] .masthead-boat {
 
 /* The mid water its own title screen floats in: the sea gradient the shader
    resolves to, god rays leaning left, and the title screen's own vignette. */
-.tile-dod {
+.tile-sub {
   --tile:
     radial-gradient(
       ellipse at center,

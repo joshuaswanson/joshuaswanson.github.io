@@ -32,7 +32,7 @@ const translations = {
     "project-battleship-desc":
       "Härzigi Boot. Grossi Kanone. Wähl zwee Uufsätz und rase is Ziil!",
     "project-cursedchess-desc": "So häsch du no nie Schach gspiilt.",
-    "project-depths-desc": "Tauch ab, wenn du di trausch.",
+    "project-submania-desc": "Tauch ab, wenn du di trausch.",
     "project-ios-desc":
       "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
@@ -72,7 +72,7 @@ const translations = {
     "project-battleship-desc":
       "Süsse Boote. Grosse Kanonen. Wähl zwei Aufsätze und rase ins Ziel!",
     "project-cursedchess-desc": "So hast du Schach noch nie gespielt.",
-    "project-depths-desc": "Tauch ein, wenn du dich traust.",
+    "project-submania-desc": "Tauch ein, wenn du dich traust.",
     "project-ios-desc":
       "Live-Prozessmonitor für ein per USB angeschlossenes iPhone oder iPad. Wie der macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
