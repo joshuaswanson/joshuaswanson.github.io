@@ -675,6 +675,7 @@ html[data-theme="dark"] .masthead-boat {
 
 .tile-sub .game-art {
   align-self: start;
+  margin-top: 4%;
 }
 
 .game-card .project-body {
