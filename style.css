@@ -474,9 +474,25 @@ html[data-theme="dark"] .masthead-boat {
    ========================================================================== */
 
 .publication {
+  display: flex;
+  gap: 1.1rem;
   padding-top: 1.75rem;
   margin-top: 1.75rem;
   border-top: 1px solid var(--border);
+}
+
+.publication-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.publication-thumb {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  object-fit: cover;
 }
 
 .publication:first-of-type {
