@@ -490,7 +490,6 @@ html[data-theme="dark"] .masthead-boat {
   flex: none;
   width: 88px;
   height: 88px;
-  border-radius: 8px;
   border: 1px solid var(--border);
   object-fit: cover;
 }
