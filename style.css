@@ -488,8 +488,8 @@ html[data-theme="dark"] .masthead-boat {
 
 .publication-thumb {
   flex: none;
-  width: 64px;
-  height: 64px;
+  width: 76px;
+  height: 76px;
   border-radius: 8px;
   border: 1px solid var(--border);
   object-fit: cover;
