@@ -48,6 +48,7 @@ const translations = {
       "En praktische Guide zu Züritüütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
     "project-zurichhousing-desc":
       "Durchsuech di grosse Schwiizer Wohnigs-Plattforme, filter und kartier d'Resultat, und generier massewiis massgschnideti Bewerbige.",
+    "play-now": "Jetz spiele",
   },
 
   de: {
@@ -89,6 +90,7 @@ const translations = {
       "Ein praktischer Leitfaden zu Zürichdeutsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
     "project-zurichhousing-desc":
       "Durchsuche die grossen Schweizer Wohnungsplattformen, filtere und kartiere die Ergebnisse und generiere massenhaft massgeschneiderte Bewerbungen.",
+    "play-now": "Jetzt spielen",
     "contact-heading": "Kontakt",
     "contact-standing":
       'Ich schliesse mich der <a href="https://www.kalzumeus.com/standing-invitation/" target="_blank" rel="noopener">Standing Invitation</a> an:',
