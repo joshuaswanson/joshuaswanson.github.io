@@ -660,7 +660,8 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 /* A reef the game's own submarine cruises through, cropped to the tile from a
-   wider painting. A vignette deepens the corners under the wordmark. */
+   wider painting so the sub sits in the lower half. The wordmark rides above
+   it, and a vignette deepens the corners. */
 .tile-sub {
   padding: 4%;
   --tile:
@@ -670,6 +671,10 @@ html[data-theme="dark"] .masthead-boat {
       rgba(4, 18, 31, 0.5) 100%
     ),
     url("assets/submania-scene.webp") center / cover no-repeat;
+}
+
+.tile-sub .game-art {
+  align-self: start;
 }
 
 .game-card .project-body {
