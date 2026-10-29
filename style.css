@@ -486,6 +486,10 @@ html[data-theme="dark"] .masthead-boat {
   min-width: 0;
 }
 
+.publication-body p {
+  margin-top: 0;
+}
+
 .publication-thumb {
   flex: none;
   width: 88px;
@@ -502,11 +506,12 @@ html[data-theme="dark"] .masthead-boat {
 .publication-title {
   font-size: 1.0625rem;
   line-height: 1.4;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.15rem;
 }
 
 .publication-authors {
   font-size: 0.95rem;
+  margin-bottom: 0.1rem;
 }
 
 .publication-authors strong {
