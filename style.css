@@ -18,8 +18,10 @@
   --measure: 60rem;
   --gutter: 2rem;
 
-  /* Each app icon is drawn on a rounded tile. Every wordmark is sized from
-     this so the tiles come out the same. */
+  /* Three wordmarks open with an app icon on a rounded tile. Each one takes
+     the share of the card that puts its tile at the same size as the other
+     two, and stops growing once that tile reaches this. slides-to-video is
+     the widest next to its tile, so it sets the share the others take. */
   --app-tile: 3.25rem;
 
   /* The portrait is a cutout, so the square behind it is drawn here. */
@@ -740,8 +742,8 @@ html[data-theme="dark"] .masthead-boat {
 
 .wm-iam {
   display: block;
-  width: 100%;
   /* tile is 512 scaled by 0.23 of the 578.5 unit viewBox */
+  width: calc(100% * 578.5 / 117.76 * 176 / 1014);
   max-width: calc(var(--app-tile) * 578.5 / 117.76);
   height: auto;
 }
@@ -936,13 +938,10 @@ html[data-theme="dark"] .masthead-boat {
   margin-bottom: 0.6rem;
 }
 
-/* At 5.3:1 this wordmark is wider than a three-column card, so there the card
-   sets its size and the tile lands a little under --app-tile. */
-
 .wm-s2v {
   display: block;
-  width: 100%;
   /* tile is 176 of the 1014 unit viewBox */
+  width: 100%;
   max-width: calc(var(--app-tile) * 1014 / 176);
   height: auto;
   color: #1a1a1e;
@@ -959,8 +958,8 @@ html[data-theme="dark"] .masthead-boat {
 
 .wm-ssh {
   display: block;
-  width: 100%;
   /* tile is 248 of the 816 unit viewBox */
+  width: calc(100% * 816 / 248 * 176 / 1014);
   max-width: calc(var(--app-tile) * 816 / 248);
   height: auto;
 }
