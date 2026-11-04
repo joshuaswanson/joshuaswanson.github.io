@@ -18,8 +18,8 @@
   --measure: 60rem;
   --gutter: 2rem;
 
-  /* Both app icons are drawn on a rounded tile. Each wordmark is sized from
-     this so the two tiles come out the same. */
+  /* Each app icon is drawn on a rounded tile. Every wordmark is sized from
+     this so the tiles come out the same. */
   --app-tile: 3.25rem;
 
   /* The portrait is a cutout, so the square behind it is drawn here. */
@@ -62,6 +62,11 @@ html[data-theme="dark"] .wm-sg-title {
 
 html[data-theme="dark"] .wm-latex {
   color: #ece9e4;
+}
+
+html[data-theme="dark"] .wm-s2v {
+  color: #e8e8ec;
+  --s2v-accent: #4caf50;
 }
 
 html[data-theme="dark"] .wm-latex em {
@@ -925,6 +930,23 @@ html[data-theme="dark"] .masthead-boat {
   100% {
     transform: none;
   }
+}
+
+.wm-s2v-title {
+  margin-bottom: 0.6rem;
+}
+
+/* At 5.3:1 this wordmark is wider than a three-column card, so there the card
+   sets its size and the tile lands a little under --app-tile. */
+
+.wm-s2v {
+  display: block;
+  width: 100%;
+  /* tile is 176 of the 1014 unit viewBox */
+  max-width: calc(var(--app-tile) * 1014 / 176);
+  height: auto;
+  color: #1a1a1e;
+  --s2v-accent: #3d8b40;
 }
 
 /* SSH GUI: the selection in each column moves to another row and back, one
