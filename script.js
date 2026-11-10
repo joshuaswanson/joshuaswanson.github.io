@@ -47,7 +47,7 @@ const translations = {
     "project-swissgerman-desc":
       "En praktische Guide zu Züritüütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
     "project-zurichhousing-desc":
-      "Durchsuech di grosse Schwiizer Wohnigs-Plattforme, filter und kartier d'Resultat, und generier massewiis massgschnideti Bewerbige.",
+      "Mac-App, wo di grosse Schwiizer Wohnigs-Plattforme durchsuecht, d'Resultat filteret und kartiert, und zu jedem Inserat e Bewerbig schriibt.",
     "play-now": "Jetz spiele",
   },
 
@@ -89,7 +89,7 @@ const translations = {
     "project-swissgerman-desc":
       "Ein praktischer Leitfaden zu Zürichdeutsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
     "project-zurichhousing-desc":
-      "Durchsuche die grossen Schweizer Wohnungsplattformen, filtere und kartiere die Ergebnisse und generiere massenhaft massgeschneiderte Bewerbungen.",
+      "Mac-App, die die grossen Schweizer Wohnungsplattformen durchsucht, die Ergebnisse filtert und kartiert und zu jedem Inserat eine Bewerbung schreibt.",
     "play-now": "Jetzt spielen",
     "contact-heading": "Kontakt",
     "contact-standing":

@@ -39,4 +39,4 @@ Paper: https://arxiv.org/abs/2504.19394
 
 ## Surviving Switzerland
 - The Ultimate Guide to Swiss German for English Speakers: a practical guide to the Zurich dialect. https://joshuaswanson.github.io/swiss-german/
-- Zurich Housing Tool: scrape the major Swiss housing platforms, filter and map the results, and generate tailored application messages. https://github.com/joshuaswanson/zurich-housing-tool
+- Zurich Housing Tool: Mac app that scrapes the major Swiss housing platforms, filters and maps the results, and writes an application message for each listing. https://github.com/joshuaswanson/zurich-housing-tool
