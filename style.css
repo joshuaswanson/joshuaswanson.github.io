@@ -950,6 +950,18 @@ html[data-theme="dark"] .masthead-boat {
    column after the next. The dim layer carries every row, so a row the
    selection leaves is still there underneath. */
 
+.wm-ytz-title {
+  margin-bottom: 0.6rem;
+}
+
+.wm-ytz {
+  display: block;
+  width: 100%;
+  /* tile is 824 of the 2742 unit viewBox */
+  max-width: calc(var(--app-tile) * 2742 / 824);
+  height: auto;
+}
+
 .wm-ssh-title {
   margin-bottom: 0.6rem;
 }

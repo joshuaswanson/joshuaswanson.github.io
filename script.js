@@ -42,6 +42,8 @@ const translations = {
       "Macht us emene Foliesatz es vertontes Video mit AI Voice Cloning. PDF ufelade, Skript schriibe, Stimm-Sample lifere, und chum es Präsentationsvideo überchoo.",
     "project-sshgui-desc":
       "Finder-Stil GUI für SSH-Server. Spalte-Browser, integrierts Terminal, Drag-and-Drop Dateiübertragig.",
+    "project-ytzero-desc":
+      "Natividi Mac-App für YouTube ohni Werbig, ohni Shorts und ohni Ruckle. Watch Later, Abos und Kanäl.",
     "project-swissgerman-desc":
       "En praktische Guide zu Züritüütsch für Änglischsprächigi, gschriebe us minä Notize als Master-Student z'Züri.",
     "project-zurichhousing-desc":
@@ -82,6 +84,8 @@ const translations = {
       "Macht aus einem Foliensatz ein vertontes Video mit AI Voice Cloning. PDF hochladen, Skript schreiben, Stimmprobe liefern, Präsentationsvideo erhalten.",
     "project-sshgui-desc":
       "Desktop-GUI im Finder-Stil für SSH-Server. Spaltenbrowser, integriertes Terminal, Drag-and-Drop-Dateiübertragung.",
+    "project-ytzero-desc":
+      "Native Mac-App für YouTube ohne Werbung, ohne Shorts und ohne Ruckeln. Watch Later, Abos und Kanäle.",
     "project-swissgerman-desc":
       "Ein praktischer Leitfaden zu Zürichdeutsch für Englischsprachige, geschrieben aus meinen eigenen Notizen als Masterstudent in Zürich.",
     "project-zurichhousing-desc":
