@@ -33,7 +33,6 @@ Paper: https://arxiv.org/abs/2504.19394
 ## Projects
 - iOS Activity Monitor: live process monitor for a USB-tethered iPhone or iPad. https://github.com/joshuaswanson/ios-activity-monitor
 - LaTeX PDF Translator: translate non-English LaTeX-typeset PDFs to English while preserving mathematical notation. https://joshuaswanson.github.io/latex-pdf-translator/
-- Monitor Comparison Tool: interactive scatter plot for comparing monitor specs like PPI, screen area, and price. https://joshuaswanson.github.io/monitor-comparison/
 - Slides to Video: turn a slide deck into a narrated video with AI voice cloning. https://github.com/joshuaswanson/slides-to-video
 - SSH GUI: Finder-style desktop GUI for SSH servers, with a column browser, integrated terminal, and drag-and-drop file transfer. https://github.com/joshuaswanson/ssh-gui
 

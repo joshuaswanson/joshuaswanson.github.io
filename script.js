@@ -38,8 +38,6 @@ const translations = {
       "Live Prozess-Monitor für es per USB aagschlossnigs iPhone oder iPad. Wie de macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
       "Übersetz nöd-änglischi LaTeX-gsetzti PDFs uf Änglisch und behaltet debii d'mathematischi Notation.",
-    "project-monitor-desc":
-      "Interaktivs Scatter-Plot zum Vergliiche vo Monitor-Spezifikatione wie PPI, Bildschirmflächi und Priis.",
     "project-slidestovideo-desc":
       "Macht us emene Foliesatz es vertontes Video mit AI Voice Cloning. PDF ufelade, Skript schriibe, Stimm-Sample lifere, und chum es Präsentationsvideo überchoo.",
     "project-sshgui-desc":
@@ -80,8 +78,6 @@ const translations = {
       "Live-Prozessmonitor für ein per USB angeschlossenes iPhone oder iPad. Wie der macOS Activity Monitor, aber für iOS.",
     "project-latex-desc":
       "Übersetze nicht-englische, in LaTeX gesetzte PDFs ins Englische und behalte dabei die mathematische Notation bei.",
-    "project-monitor-desc":
-      "Interaktives Streudiagramm zum Vergleichen von Monitorspezifikationen wie PPI, Bildschirmfläche und Preis.",
     "project-slidestovideo-desc":
       "Macht aus einem Foliensatz ein vertontes Video mit AI Voice Cloning. PDF hochladen, Skript schreiben, Stimmprobe liefern, Präsentationsvideo erhalten.",
     "project-sshgui-desc":
@@ -291,7 +287,6 @@ function playOnHover(logo, runFor, loops) {
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   [
     [".wm-zht", 800],
-    [".wm-mct", 1000],
     [".wm-bb", 1800, true],
     [".wm-cursed", 2500],
     [".wm-iam", 2400, true],
