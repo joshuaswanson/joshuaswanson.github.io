@@ -836,7 +836,8 @@ html[data-theme="dark"] .masthead-boat {
 .wm-zht {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  /* matches the gap the other app-icon wordmarks bake into their art */
+  gap: calc(var(--app-tile) * 0.2);
   font-family: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
@@ -880,10 +881,8 @@ html[data-theme="dark"] .masthead-boat {
   color: #636b74;
 }
 
-/* The housing tool plays this on hover on its own site; here it fires on a
-   timer instead, so it reads as a small flourish rather than a reaction. */
-
-.wm-zht.is-playing .wm-zht-mark {
+.wm-zht.is-playing .wm-zht-house {
+  transform-box: fill-box;
   transform-origin: 50% 100%;
   animation: zhtHop 0.6s ease-out;
 }
@@ -904,7 +903,7 @@ html[data-theme="dark"] .masthead-boat {
     transform: scale(1.1, 0.88);
   }
   50% {
-    transform: translateY(-7px) scale(0.95, 1.07) rotate(-7deg);
+    transform: translateY(-14%) scale(0.95, 1.07) rotate(-7deg);
   }
   78% {
     transform: scale(1.06, 0.94);
