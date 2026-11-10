@@ -847,8 +847,8 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 .wm-zht-mark {
-  width: 1.12em;
-  height: 1.12em;
+  width: var(--app-tile);
+  height: var(--app-tile);
   flex: none;
 }
 
@@ -876,7 +876,7 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 .wm-zht-rest {
-  margin-left: 0.22em;
+  display: block;
   color: #636b74;
 }
 
