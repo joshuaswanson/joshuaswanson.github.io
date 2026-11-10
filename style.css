@@ -939,8 +939,8 @@ html[data-theme="dark"] .masthead-boat {
 .wm-s2v {
   display: block;
   width: 100%;
-  /* tile is 176 of the 660 unit viewBox */
-  max-width: calc(var(--app-tile) * 660 / 176);
+  /* tile is 176 of the 811 unit viewBox */
+  max-width: calc(var(--app-tile) * 811 / 176);
   height: auto;
   color: #1a1a1e;
   --s2v-accent: #3d8b40;
