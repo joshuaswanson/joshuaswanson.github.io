@@ -765,12 +765,12 @@ html[data-theme="dark"] .masthead-boat {
 }
 
 .wm-iam.is-playing .iam-slide {
-  animation: iamSlide 3.2s linear infinite;
+  animation: iamSlide 1.25s linear infinite;
 }
 
 .wm-iam.is-playing .iam-pen {
   opacity: 1;
-  animation: iamPen 3.2s linear infinite;
+  animation: iamPen 1.25s linear infinite;
 }
 
 /* The pen lifts off while the chart glides to a halt */
@@ -1638,41 +1638,38 @@ blockquote {
   }
 }
 
-/* SSH GUI: a command types itself into the terminal under the columns */
+/* SSH GUI: the prompt cursor blinks under the columns */
 .wm-ssh.is-playing .ssh-type {
-  transform-box: fill-box;
-  transform-origin: 0 50%;
-  animation: sshType 1.6s steps(1, end);
+  animation: sshBlink 1.6s linear;
 }
 
-@keyframes sshType {
-  0% {
-    transform: scaleX(0.06);
+@keyframes sshBlink {
+  0%,
+  17% {
+    opacity: 1;
   }
-  14% {
-    transform: scaleX(0.28);
+  18%,
+  41% {
+    opacity: 0;
   }
-  28% {
-    transform: scaleX(0.5);
+  42%,
+  65% {
+    opacity: 1;
   }
-  42% {
-    transform: scaleX(0.72);
+  66%,
+  89% {
+    opacity: 0;
   }
-  56% {
-    transform: scaleX(0.88);
-  }
-  70% {
-    transform: scaleX(1);
-  }
+  90%,
   100% {
-    transform: scaleX(1);
+    opacity: 1;
   }
 }
 
 /* iOS Activity Monitor: the ticks either side of the phone beat with the chart,
    on the chart's own period so both reach rest together */
 .wm-iam.is-playing .iam-dash {
-  animation: iamPulse 3.2s ease-in-out infinite;
+  animation: iamPulse 1.25s ease-in-out infinite;
 }
 
 @keyframes iamPulse {
