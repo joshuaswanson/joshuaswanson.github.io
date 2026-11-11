@@ -939,7 +939,7 @@ html[data-theme="dark"] .masthead-boat {
   display: block;
   width: 100%;
   /* tile is 176 of the 811 unit viewBox */
-  max-width: calc(var(--app-tile) * 811 / 176);
+  max-width: calc(var(--app-tile) * 819 / 176);
   height: auto;
   color: #1a1a1e;
   --s2v-accent: #3d8b40;
@@ -979,7 +979,7 @@ html[data-theme="dark"] .masthead-boat {
   display: block;
   width: 100%;
   /* tile is 248 of the 816 unit viewBox */
-  max-width: calc(var(--app-tile) * 816 / 248);
+  max-width: calc(var(--app-tile) * 826 / 248);
   height: auto;
 }
 
