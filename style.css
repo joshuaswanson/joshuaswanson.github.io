@@ -961,6 +961,16 @@ html[data-theme="dark"] .masthead-boat {
   height: auto;
 }
 
+/* Each app tile casts a shadow past its own viewBox. */
+
+.wm-iam,
+.wm-s2v,
+.wm-ssh,
+.wm-ytz,
+.wm-zht-mark {
+  overflow: visible;
+}
+
 .wm-ssh-title {
   margin-bottom: 0.6rem;
 }
