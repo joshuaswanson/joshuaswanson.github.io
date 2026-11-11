@@ -884,7 +884,7 @@ html[data-theme="dark"] .masthead-boat {
 .wm-zht.is-playing .wm-zht-house {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: zhtHop 0.6s ease-out;
+  animation: zhtHop 1.15s cubic-bezier(0.3, 1.2, 0.5, 1);
 }
 
 .wm-zht.is-playing .wm-zht-u i {
@@ -899,14 +899,23 @@ html[data-theme="dark"] .masthead-boat {
   0% {
     transform: none;
   }
-  20% {
-    transform: scale(1.1, 0.88);
+  10% {
+    transform: scale(1.16, 0.82);
   }
-  50% {
-    transform: translateY(-14%) scale(0.95, 1.07) rotate(-7deg);
+  28% {
+    transform: translateY(-30%) scale(0.92, 1.12) rotate(-10deg);
+  }
+  46% {
+    transform: scale(1.13, 0.88);
+  }
+  62% {
+    transform: translateY(-16%) scale(0.95, 1.07) rotate(7deg);
   }
   78% {
-    transform: scale(1.06, 0.94);
+    transform: scale(1.07, 0.94);
+  }
+  90% {
+    transform: translateY(-5%) scale(0.98, 1.02);
   }
   100% {
     transform: none;
@@ -969,6 +978,88 @@ html[data-theme="dark"] .masthead-boat {
 .wm-ytz,
 .wm-zht-mark {
   overflow: visible;
+}
+
+/* Hovering a card wakes its tile with one shared spring, so the five read as a
+   family, and each icon then acts out what its app does. */
+
+.wm-iam.is-playing .app-tile-art,
+.wm-s2v.is-playing .app-tile-art,
+.wm-ssh.is-playing .app-tile-art,
+.wm-ytz.is-playing .app-tile-art {
+  transform-box: fill-box;
+  transform-origin: 50% 58%;
+  animation: tileWake 1.15s cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+
+/* This tile is the whole element, so it takes the border box as its origin */
+.wm-zht.is-playing .wm-zht-mark {
+  transform-origin: 50% 58%;
+  animation: tileWake 1.15s cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+
+@keyframes tileWake {
+  0% {
+    transform: none;
+  }
+  26% {
+    transform: scale(1.055) rotate(-2.6deg);
+  }
+  55% {
+    transform: scale(0.985) rotate(1.1deg);
+  }
+  78% {
+    transform: scale(1.012) rotate(-0.4deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* YT Zero: the play button takes a press and the triangle rebounds out of it */
+.wm-ytz.is-playing .ytz-pill {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: ytzPress 1.15s cubic-bezier(0.34, 1.5, 0.5, 1);
+}
+
+.wm-ytz.is-playing .ytz-play {
+  transform-box: fill-box;
+  transform-origin: 40% 50%;
+  animation: ytzPlay 1.15s ease-out;
+}
+
+@keyframes ytzPress {
+  0% {
+    transform: none;
+  }
+  16% {
+    transform: scale(1.14, 0.82);
+  }
+  42% {
+    transform: scale(0.94, 1.09);
+  }
+  68% {
+    transform: scale(1.03, 0.97);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes ytzPlay {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: translateX(-12%) scale(0.88);
+  }
+  52% {
+    transform: translateX(10%) scale(1.14);
+  }
+  100% {
+    transform: none;
+  }
 }
 
 .wm-ssh-title {
@@ -1496,5 +1587,102 @@ blockquote {
   .wm-cursed-word::before,
   .wm-cursed-word::after {
     animation: none;
+  }
+}
+
+/* Slides to Video: the slide clears itself out and the play button takes over */
+.wm-s2v.is-playing .s2v-line {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  animation: s2vClear 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation-delay: calc(var(--i) * 55ms);
+}
+
+.wm-s2v.is-playing .s2v-play {
+  transform-box: fill-box;
+  transform-origin: 35% 50%;
+  animation: s2vPlay 1.5s cubic-bezier(0.34, 1.6, 0.5, 1);
+}
+
+@keyframes s2vClear {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  24% {
+    transform: translateX(-30%) scaleX(0.5);
+    opacity: 0;
+  }
+  64% {
+    transform: translateX(-30%) scaleX(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes s2vPlay {
+  0% {
+    transform: none;
+  }
+  32% {
+    transform: scale(1.55);
+  }
+  58% {
+    transform: scale(1.34);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* SSH GUI: a command types itself into the terminal under the columns */
+.wm-ssh.is-playing .ssh-type {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  animation: sshType 1.6s steps(1, end);
+}
+
+@keyframes sshType {
+  0% {
+    transform: scaleX(0.06);
+  }
+  14% {
+    transform: scaleX(0.28);
+  }
+  28% {
+    transform: scaleX(0.5);
+  }
+  42% {
+    transform: scaleX(0.72);
+  }
+  56% {
+    transform: scaleX(0.88);
+  }
+  70% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* iOS Activity Monitor: the ticks either side of the phone beat with the chart,
+   on the chart's own period so both reach rest together */
+.wm-iam.is-playing .iam-dash {
+  animation: iamPulse 3.2s ease-in-out infinite;
+}
+
+@keyframes iamPulse {
+  0%,
+  50%,
+  100% {
+    stroke-opacity: 0.5;
+  }
+  25%,
+  75% {
+    stroke-opacity: 1;
   }
 }

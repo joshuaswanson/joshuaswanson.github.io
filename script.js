@@ -290,7 +290,9 @@ function playOnHover(logo, runFor, loops) {
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   [
-    [".wm-zht", 800],
+    [".wm-zht", 1300],
+    [".wm-s2v", 1500],
+    [".wm-ytz", 1300],
     [".wm-bb", 1800, true],
     [".wm-cursed", 2500],
     [".wm-iam", 2400, true],
